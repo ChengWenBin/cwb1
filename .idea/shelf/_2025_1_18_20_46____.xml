@@ -1,0 +1,1454 @@
+<changelist name="在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]" date="1737204365771" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/shelved.patch" />
+  <option name="DESCRIPTION" value="在进行更新之前于 2025/1/18 20:46 取消提交了更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/datasource/DynamicDataSource.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DynamicDataSource.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/InvalidExtensionException$InvalidImageExtensionException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/InvalidExtensionException$InvalidImageExtensionException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/DataSource.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DataSource.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/GlobalException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GlobalException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/RepeatableFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RepeatableFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/server/Cpu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Cpu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/task/RyTask.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RyTask.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/server/Sys.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Sys.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/DruidConfig$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DruidConfig$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/reflect/ReflectUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ReflectUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/ResourcesConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ResourcesConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/properties/DruidProperties.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DruidProperties.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysDeptMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDeptMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/domain/SysJob.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJob.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/file/FileTypeUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileTypeUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/text/Convert.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Convert.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/aspectj/DataScopeAspect.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DataScopeAspect.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/security/context/PermissionContextHolder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PermissionContextHolder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/service/GenTableServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTableServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/service/IGenTableService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/IGenTableService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/ip/AddressUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AddressUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysRoleMenuMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleMenuMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/domain/GenTable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysDictDataService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysDictDataService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysOperLogService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysOperLogService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/UserPasswordNotMatchException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserPasswordNotMatchException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/manager/factory/AsyncFactory$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AsyncFactory$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysRoleDept.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleDept.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/mapper/GenTableColumnMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTableColumnMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/Cart.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Cart.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/PageUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PageUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/tool/UserEntity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserEntity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysRoleMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysUserRoleMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserRoleMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/CaptchaConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CaptchaConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/domain/GenTableColumn.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTableColumn.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/ScheduleUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ScheduleUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysDept.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDept.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/SysPasswordService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPasswordService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/ServletUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ServletUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysPostService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysPostService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/KaptchaTextCreator.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/KaptchaTextCreator.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/datasource/DynamicDataSourceContextHolder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DynamicDataSourceContextHolder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/UserDetailsServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserDetailsServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysOperLog.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysOperLog.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysDictTypeMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictTypeMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/ProductController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ProductController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/poi/ExcelUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ExcelUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/DataSourceType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DataSourceType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysRegisterController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRegisterController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysPost.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPost.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/Server.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Server.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysRoleController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/TreeSelect.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TreeSelect.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/server/Mem.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Mem.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysPostMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPostMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysLogininforMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLogininforMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/CartServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CartServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysDictDataServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictDataServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/xss/Xss.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Xss.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysNoticeService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysNoticeService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysDictTypeController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictTypeController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysUserController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysCache.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysCache.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/file/FileUploadUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileUploadUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/model/RegisterBody.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RegisterBody.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysRoleMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysMenuServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysMenuServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/service/IGenTableColumnService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/IGenTableColumnService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysUser.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUser.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysUserOnline.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserOnline.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/service/impl/SysJobServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/PropertyPreExcludeFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PropertyPreExcludeFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/html/EscapeUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/EscapeUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/aspectj/LogAspect.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LogAspect.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/ServiceException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ServiceException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysDictDataMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictDataMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/security/context/AuthenticationContextHolder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AuthenticationContextHolder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/UserStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/config/GenConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/spring/SpringUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SpringUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/SysRegisterService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRegisterService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/XssHttpServletRequestWrapper$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/XssHttpServletRequestWrapper$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/RepeatSubmit.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RepeatSubmit.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Excel$Type.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Excel$Type.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/QuartzJobExecution.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/QuartzJobExecution.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/StringUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/StringUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/FileUploadException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileUploadException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/exception/GlobalExceptionHandler.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GlobalExceptionHandler.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/DemoModeException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DemoModeException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysProfileController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysProfileController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/CaptchaException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CaptchaException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/ThreadPoolConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ThreadPoolConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/DesensitizedType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DesensitizedType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/mapper/GenTableMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTableMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/OperatorType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/OperatorType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/common/CaptchaController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CaptchaController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/vo/RouterVo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RouterVo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysLogininforService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysLogininforService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysDeptService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysDeptService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Excels.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Excels.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysRoleServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/bean/BeanUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BeanUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/vo/MetaVo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/MetaVo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysUserPost.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserPost.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/http/HttpUtils$TrustAnyTrustManager.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpUtils$TrustAnyTrustManager.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/DataScope.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DataScope.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/page/TableSupport.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TableSupport.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/BaseEntity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BaseEntity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/InvalidExtensionException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/InvalidExtensionException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysMenuController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysMenuController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Sensitive.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Sensitive.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/RateLimiter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RateLimiter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/http/HttpHelper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpHelper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/GenConstants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenConstants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/ProductBrowseController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ProductBrowseController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysDictTypeService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysDictTypeService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/Threads.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Threads.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/SecurityUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SecurityUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/I18nConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/I18nConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/IProductService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/IProductService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/interceptor/impl/SameUrlDataInterceptor.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SameUrlDataInterceptor.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/CartController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CartController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/XssFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/XssFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysUserMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/TokenService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TokenService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/util/VelocityUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/VelocityUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysLogininforServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLogininforServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/Product.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Product.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/CacheConstants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CacheConstants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/RedisConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RedisConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/model/LoginUser.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LoginUser.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Excel$ColumnType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Excel$ColumnType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/monitor/SysLogininforController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLogininforController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/InvalidExtensionException$InvalidVideoExtensionException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/InvalidExtensionException$InvalidVideoExtensionException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/util/VelocityInitializer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/VelocityInitializer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysUserServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/http/HttpUtils$TrustAnyHostnameVerifier.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpUtils$TrustAnyHostnameVerifier.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysNoticeController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysNoticeController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/sign/Base64.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Base64.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysUserRole.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserRole.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/UserPasswordRetryLimitExceedException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserPasswordRetryLimitExceedException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/ExceptionUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ExceptionUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/http/HttpUtils$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpUtils$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/aspectj/DataSourceAspect.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DataSourceAspect.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/service/GenTableColumnServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenTableColumnServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ICartService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ICartService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/page/PageDomain.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PageDomain.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/QuartzDisallowConcurrentExecution.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/QuartzDisallowConcurrentExecution.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/monitor/CacheController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CacheController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/UserNotExistsException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserNotExistsException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysDeptServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDeptServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/ProductPublicController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ProductPublicController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/MyBatisConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/MyBatisConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/config/RuoYiConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RuoYiConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/tool/TestController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TestController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Anonymous.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Anonymous.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/InvalidExtensionException$InvalidFlashExtensionException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/InvalidExtensionException$InvalidFlashExtensionException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/FilterConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FilterConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysLogininfor.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLogininfor.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysRole.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRole.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/CaptchaExpireException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CaptchaExpireException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Excel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Excel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/CartMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CartMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/ProductServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ProductServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/R.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/R.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/http/HttpUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/controller/BaseController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BaseController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/SysPermissionService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPermissionService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/security/filter/JwtAuthenticationTokenFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/JwtAuthenticationTokenFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/server/SysFile.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysFile.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysOperLogServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysOperLogServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/controller/SysJobController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/HttpStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/manager/factory/AsyncFactory.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AsyncFactory.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/ScheduleConstants$Status.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ScheduleConstants$Status.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/aspectj/RateLimiterAspect.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RateLimiterAspect.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/UserConstants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserConstants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/AjaxResult.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AjaxResult.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/service/impl/SysJobLogServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobLogServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/controller/GenController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/properties/PermitAllUrlProperties.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PermitAllUrlProperties.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/UserException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UserException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysConfigMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysConfigMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/BusinessType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BusinessType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/ScheduleConstants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ScheduleConstants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysDictType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/manager/AsyncManager.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AsyncManager.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/CronUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CronUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/shopApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/shopApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/DictUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DictUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/FileNameLengthLimitExceededException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileNameLengthLimitExceededException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/html/HTMLFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HTMLFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/user/BlackListException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BlackListException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/manager/factory/AsyncFactory$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AsyncFactory$2.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/uuid/UUID$Holder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UUID$Holder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-generator/target/classes/com/shop/generator/util/GenUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/GenUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/service/ISysJobLogService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysJobLogService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/SysLoginService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLoginService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysMenuService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysMenuService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysDictData.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictData.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/FileSizeLimitExceededException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileSizeLimitExceededException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/service/ISysJobService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysJobService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/shopServletInitializer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/shopServletInitializer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/DateUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DateUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysPostServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPostServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/mapper/SysJobMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/model/LoginBody.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LoginBody.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/monitor/ServerController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ServerController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/core/config/SwaggerConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SwaggerConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/LimitType.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LimitType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/DesensitizedUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DesensitizedUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/manager/ShutdownManager.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ShutdownManager.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/security/handle/LogoutSuccessHandlerImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LogoutSuccessHandlerImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysDictDataController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictDataController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/ProductMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ProductMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysUserOnlineService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysUserOnlineService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysConfigServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysConfigServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysPostController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysPostController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/constant/Constants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Constants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/redis/RedisCache.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RedisCache.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/MessageUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/MessageUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/sign/Md5Utils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Md5Utils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/text/CharsetKit.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CharsetKit.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/HttpMethod.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/HttpMethod.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysUserPostMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserPostMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysConfigService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysConfigService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/controller/SysJobLogController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobLogController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/ip/IpUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/IpUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysIndexController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysIndexController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/JobInvokeUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/JobInvokeUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysNoticeServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysNoticeServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/DruidConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/DruidConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/file/FileUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/sql/SqlUtil.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SqlUtil.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/RepeatedlyRequestWrapper$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RepeatedlyRequestWrapper$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/bean/BeanValidators.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BeanValidators.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/util/AbstractQuartzJob.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AbstractQuartzJob.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/entity/SysMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/LogUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/LogUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/SecurityConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SecurityConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/uuid/IdUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/IdUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysNoticeMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysNoticeMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/poi/ExcelHandlerAdapter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ExcelHandlerAdapter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/xss/XssValidator.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/XssValidator.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/FastJson2JsonRedisSerializer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FastJson2JsonRedisSerializer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/page/TableDataInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TableDataInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/uuid/Seq.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Seq.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysRoleService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysRoleService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/Arith.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Arith.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/enums/BusinessStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BusinessStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysOperLogMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysOperLogMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/ISysUserService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ISysUserService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysConfigController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysConfigController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/InvalidExtensionException$InvalidMediaExtensionException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/InvalidExtensionException$InvalidMediaExtensionException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/service/PermissionService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/PermissionService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/mapper/SysJobLogMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobLogMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/ServerConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ServerConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/XssHttpServletRequestWrapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/XssHttpServletRequestWrapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysDeptController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDeptController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/security/handle/AuthenticationEntryPointImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/AuthenticationEntryPointImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/monitor/SysOperlogController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysOperlogController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/UtilException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UtilException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysDictTypeServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysDictTypeServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/config/serializer/SensitiveJsonSerializer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SensitiveJsonSerializer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/base/BaseException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BaseException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/service/impl/SysUserOnlineServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserOnlineServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysRoleDeptMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysRoleDeptMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/interceptor/RepeatSubmitInterceptor.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RepeatSubmitInterceptor.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/web/domain/server/Jvm.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Jvm.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/ApplicationConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ApplicationConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/filter/RepeatedlyRequestWrapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/RepeatedlyRequestWrapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/system/SysLoginController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysLoginController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/uuid/UUID.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/UUID.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysNotice.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysNotice.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/monitor/SysUserOnlineController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysUserOnlineController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/job/TaskException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TaskException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/file/ImageUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ImageUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/domain/SysConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/file/FileException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/FileException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-framework/target/classes/com/shop/framework/config/ThreadPoolConfig$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/ThreadPoolConfig$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-quartz/target/classes/com/shop/quartz/domain/SysJobLog.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysJobLog.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/domain/TreeEntity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TreeEntity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/utils/file/MimeTypeUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/MimeTypeUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-admin/target/classes/com/shop/web/controller/common/CommonController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/CommonController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/annotation/Log.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/Log.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/text/StrFormatter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/StrFormatter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/core/controller/BaseController$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/BaseController$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-common/target/classes/com/shop/common/exception/job/TaskException$Code.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/TaskException$Code.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="shop-system/target/classes/com/shop/system/mapper/SysMenuMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_1_18_20_46_取消提交了更改_[更改]/SysMenuMapper.class" />
+  </binary>
+</changelist>

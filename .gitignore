@@ -1,0 +1,7 @@
+# 项目排除路径
+/shop-admin/target/
+/shop-common/target/
+/shop-framework/target/
+/shop-generator/target/
+/shop-quartz/target/
+/shop-system/target/

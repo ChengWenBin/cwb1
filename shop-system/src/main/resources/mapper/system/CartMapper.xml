@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.system.mapper.CartMapper">
+
+    <resultMap id="CartResult" type="com.shop.system.domain.Cart">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="updatedTime" column="updated_time"/>
+    </resultMap>
+
+    <!-- 查询 -->
+    <select id="selectCartList" parameterType="Long" resultMap="CartResult">
+        SELECT * FROM cart
+        WHERE user_id = #{userId}
+        ORDER BY updated_time DESC
+    </select>
+
+    <!-- 插入 -->
+    <insert id="insertCart">
+        INSERT INTO cart (user_id, product_id, quantity)
+        VALUES (#{userId}, #{productId}, #{quantity})
+    </insert>
+
+    <!-- 更新 -->
+    <update id="updateCart">
+        UPDATE cart
+        SET quantity = #{quantity}, updated_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteCartById">
+        DELETE FROM cart WHERE id = #{cartId}
+    </delete>
+    <!-- 批量删除 -->
+    <delete id="deleteCartByProductIds">
+        DELETE FROM cart WHERE product_id IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        AND user_id = #{userId}
+    </delete>
+</mapper>
