@@ -16,7 +16,7 @@ public class shopApplication
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(shopApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  wcb111123若依启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
+        System.out.println("(♥◠‿◠)ﾉﾞ  cwb若依启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.       ____     __        \n" +
                 " |  _ _   \\      \\   \\   /  /    \n" +
                 " | ( ' )  |       \\  _. /  '       \n" +
