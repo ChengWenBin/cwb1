@@ -28,6 +28,7 @@
         @pagination="getList"
       />
       <el-button type="danger" @click="handleClearCart">清空购物车</el-button>
+      <el-button type="primary" @click="handleCreateOrder">生成订单</el-button>
     </el-card>
   </div>
 </template>
