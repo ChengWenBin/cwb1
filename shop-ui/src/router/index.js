@@ -162,7 +162,7 @@ export const dynamicRoutes = [
         name: 'Cart',
         component: () => import('@/views/system/product/Cart'),
         meta: { title: '购物车', icon: 'el-icon-shopping-cart-full' }
-      }
+      },
     ]
   },
 ]
