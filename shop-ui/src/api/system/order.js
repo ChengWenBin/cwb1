@@ -12,7 +12,7 @@ export function listOrder(query) {
 // 修改订单主表
 export function updateOrder(data) {
   return request({
-    url: '/shop/order',
+    url: '/system/order',
     method: 'put',
     data: data
   })
@@ -22,6 +22,14 @@ export function cancelOrder(data) {
   return request({
     url: '/system/order/cancel',
     method: 'put',
+    data: data
+  })
+}
+//  新增订单主表
+export function createOrder(data) {
+  return request({
+    url: '/system/order/create',
+    method: 'post',
     data: data
   })
 }

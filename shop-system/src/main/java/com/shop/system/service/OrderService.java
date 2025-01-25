@@ -1,6 +1,8 @@
 package com.shop.system.service;
 
 import com.shop.system.domain.Order;
+import com.shop.system.domain.OrderItem;
+
 import java.util.List;
 
 /**
@@ -71,4 +73,6 @@ public interface OrderService {
      * @return 订单列表
      */
     List<Order> selectOrderByUserId(Long userId);
+
+    int createOrder(List<OrderItem> orderItems);
 }

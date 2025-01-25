@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="3 commit">
-      <change afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/OrderItemMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderItemServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderItemMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-ui/src/api/system/orderItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/userOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/core/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/core/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +149,8 @@
       <workItem from="1737732070375" duration="196000" />
       <workItem from="1737732278496" duration="1802000" />
       <workItem from="1737735353863" duration="1195000" />
-      <workItem from="1737808756071" duration="1458000" />
+      <workItem from="1737808756071" duration="11688000" />
+      <workItem from="1737824022068" duration="277000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -235,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737642431980</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="3 commit">
+      <option name="closed" value="true" />
+      <created>1737810568639</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737810568639</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

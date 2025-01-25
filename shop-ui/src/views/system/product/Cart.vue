@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-card>
-      <el-table :data="cartList" v-loading="loading">
+      <el-table :data="cartList" v-loading="loading" border style="width: 100%" v-if="cartList.length > 0">
         <el-table-column label="产品名称" prop="productName" align="center" />
         <el-table-column label="价格" prop="price" align="center" />
         <el-table-column label="图片" prop="imageUrl" align="center" width="100">
@@ -20,6 +20,9 @@
           </template>
         </el-table-column>
       </el-table>
+      <div v-else class="no-data">
+        暂无数据
+      </div>
       <pagination
         v-show="total > 0"
         :total="total"
@@ -32,10 +35,12 @@
     </el-card>
   </div>
 </template>
-
 <script>
 import { listCart, deleteCart, updateCart, deleteCartByProductIds} from "@/api/system/cart";
+import {createOrder} from "@/api/system/order";
 import request from '@/utils/request'; // 引入若依的request
+import { getToken } from "@/utils/auth";
+
 export default {
   data() {
     return {
@@ -46,12 +51,26 @@ export default {
         pageSize: 10
       },
       total: 0,
+      userId: ""
     };
   },
   created() {
+    this.getUserId();
     this.getList();
   },
   methods: {
+    getUserId() {
+      const token = getToken();
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          this.userId = payload.userId;
+
+        } catch (e) {
+          console.error("解析token失败", e);
+        }
+      }
+    },
     handleClearCart() {
       this.$modal.confirm('是否确认清空购物车？').then(() => {
         const productIds = this.cartList.map(item=> item.productId);
@@ -125,8 +144,6 @@ export default {
         });
 
         this.cartList = await Promise.all(productInfoPromises);
-
-
       } catch (e) {
         console.error('获取商品详情失败',e);
         this.$modal.msgError('获取商品详情失败');
@@ -163,13 +180,43 @@ export default {
       }).then(() => {
         this.$modal.msgSuccess('删除成功');
         this.getList();
-      });``
+      });
     },
     handleQuantityChange(row) {
       updateCart(row).then(() => {
         this.$modal.msgSuccess('修改成功')
       });
     },
+    handleCreateOrder() {
+      if(this.cartList.length === 0) {
+        this.$modal.msgWarning('当前购物车为空')
+        return;
+      }
+
+      const orderItems = this.cartList.map(item => ({
+        productId: item.productId,
+        productName: item.productName,
+        quantity: item.quantity,
+        unitPrice: item.price,
+        totalPrice: item.quantity * item.price
+      }));
+      createOrder(orderItems).then(response => {
+        if (response.code === 200) {
+          this.$modal.msgSuccess('生成订单成功');
+          // this.$router.push({ path: 'system/order' });
+        } else {
+          this.$modal.msgError("生成订单失败");
+        }
+      })
+    },
   }
 };
 </script>
+<style scoped>
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #999;
+}
+</style>

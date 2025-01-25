@@ -41,4 +41,8 @@ public class OrderController extends BaseController {
     public AjaxResult update(@RequestBody Order order){
         return toAjax(orderService.updateOrder(order));
     }
+    @PostMapping("/create")
+    public AjaxResult createOrder(@RequestBody List<com.shop.system.domain.OrderItem> orderItems) {
+        return toAjax(orderService.createOrder(orderItems));
+    }
 }

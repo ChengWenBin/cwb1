@@ -1,13 +1,19 @@
 package com.shop.system.service.impl;
 
 import com.shop.common.utils.DateUtils;
+import com.shop.common.utils.SecurityUtils;
+import com.shop.common.utils.StringUtils;
 import com.shop.system.domain.Order;
+import com.shop.system.domain.OrderItem;
 import com.shop.system.mapper.OrderMapper;
+import com.shop.system.mapper.OrderItemMapper;
 import com.shop.system.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 订单主表Service业务层处理
@@ -19,6 +25,9 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private OrderItemMapper orderItemMapper;
 
     /**
      * 查询订单主表
@@ -106,5 +115,34 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> selectOrderByUserId(Long userId) {
         return orderMapper.selectOrderByUserId(userId);
+    }
+
+    @Override
+    public int createOrder(List<OrderItem> orderItems) {
+        if (orderItems == null || orderItems.isEmpty()) {
+            throw new IllegalArgumentException("订单商品列表不能为空");
+        }
+
+        Order order = new Order();
+        // 生成订单编号
+        String orderNo = UUID.randomUUID().toString().replace("-", "").substring(0, 20);
+        order.setOrderNo(orderNo);
+        order.setUserId(SecurityUtils.getUserId());
+        BigDecimal totalAmount = BigDecimal.ZERO;
+        for (OrderItem orderItem : orderItems) {
+            totalAmount = totalAmount.add(orderItem.getTotalPrice());
+        }
+
+        order.setTotalAmount(totalAmount);
+        order.setOrderStatus("待付款");
+        order.setCreateTime(DateUtils.getNowDate());
+        int orderInsert = orderMapper.insertOrder(order);
+
+        for(OrderItem orderItem : orderItems){
+            orderItem.setOrderId(order.getOrderId());
+            orderItemMapper.insertOrderItem(orderItem);
+        }
+
+        return  orderInsert;
     }
 }
