@@ -4,18 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="3 commit">
+      <change afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/OrderItemMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderItemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderItemServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderItemMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-ui/src/api/system/orderItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/userOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/ShopOrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/ShopOrder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/ShopOrderMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IShopOrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/ShopOrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ShopOrderMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/core/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/core/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,31 +65,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/java-learn/cwb/sql",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "8a817c5716e8c38f5b41c08122d81398",
-    "ts.external.directory.path": "D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java-learn/cwb/sql&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8a817c5716e8c38f5b41c08122d81398&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\java-learn\cwb\sql" />
@@ -148,7 +156,12 @@
       <workItem from="1737460272814" duration="6379000" />
       <workItem from="1737636389229" duration="1051000" />
       <workItem from="1737638305775" duration="73000" />
-      <workItem from="1737638386775" duration="3970000" />
+      <workItem from="1737638386775" duration="5492000" />
+      <workItem from="1737694930050" duration="2815000" />
+      <workItem from="1737732070375" duration="196000" />
+      <workItem from="1737732278496" duration="1802000" />
+      <workItem from="1737735353863" duration="1195000" />
+      <workItem from="1737808756071" duration="1458000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -214,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737473866933</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="3 commit">
+      <option name="closed" value="true" />
+      <created>1737642431980</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737642431980</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +266,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="3 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

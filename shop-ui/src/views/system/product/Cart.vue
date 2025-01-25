@@ -163,7 +163,7 @@ export default {
       }).then(() => {
         this.$modal.msgSuccess('删除成功');
         this.getList();
-      });
+      });``
     },
     handleQuantityChange(row) {
       updateCart(row).then(() => {
