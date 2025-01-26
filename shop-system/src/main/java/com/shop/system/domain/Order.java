@@ -1,8 +1,9 @@
 package com.shop.system.domain;
 
-import com.shop.common.core.domain.BaseEntity; // 修正后的导入
+import com.shop.common.core.domain.BaseEntity;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 订单主表 对象 order
@@ -36,6 +37,9 @@ public class Order extends BaseEntity {
 
     /** 完成时间 */
     private Date receiveTime;
+
+    /** 收货地址*/
+    private String address;
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
@@ -94,6 +98,15 @@ public class Order extends BaseEntity {
         return receiveTime;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
     @Override
     public String toString() {
         return "Order{" +
@@ -105,9 +118,21 @@ public class Order extends BaseEntity {
                 ", paymentTime=" + paymentTime +
                 ", deliveryTime=" + deliveryTime +
                 ", receiveTime=" + receiveTime +
+                ", address='" + address + '\'' +
                 ", createTime=" + getCreateTime() +
                 ", updateTime=" + getUpdateTime() +
                 ", remark='" + getRemark() + '\'' +
                 '}';
+    }
+
+    /** 订单明细集合*/
+    private List<OrderItem> orderItems;
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

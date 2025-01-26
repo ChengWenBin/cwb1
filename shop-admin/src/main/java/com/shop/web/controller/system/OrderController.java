@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 /**
  * 订单主表 信息操作处理
  *
@@ -42,7 +41,7 @@ public class OrderController extends BaseController {
         return toAjax(orderService.updateOrder(order));
     }
     @PostMapping("/create")
-    public AjaxResult createOrder(@RequestBody List<com.shop.system.domain.OrderItem> orderItems) {
-        return toAjax(orderService.createOrder(orderItems));
+    public AjaxResult createOrder(@RequestBody Order order){
+        return toAjax(orderService.createOrder(order.getOrderItems(),order.getAddress()));
     }
 }

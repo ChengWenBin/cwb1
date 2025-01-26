@@ -98,6 +98,3 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItemMapper.selectOrderItemByOrderId(orderId);
     }
 }
-
-
-

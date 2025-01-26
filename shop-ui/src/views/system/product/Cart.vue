@@ -200,14 +200,27 @@ export default {
         unitPrice: item.price,
         totalPrice: item.quantity * item.price
       }));
-      createOrder(orderItems).then(response => {
-        if (response.code === 200) {
-          this.$modal.msgSuccess('生成订单成功');
-          // this.$router.push({ path: 'system/order' });
-        } else {
-          this.$modal.msgError("生成订单失败");
+
+      this.$prompt('请输入收货地址', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        inputPlaceholder: '请输入收货地址'
+      }).then(({ value }) => {
+        const order = {
+          address:value,
+          orderItems: orderItems,
         }
-      })
+        createOrder(order).then(response => {
+          if (response.code === 200) {
+            this.$modal.msgSuccess('生成订单成功');
+            //this.$router.push({ name: 'UserOrder' });
+          } else {
+            this.$modal.msgError("生成订单失败");
+          }
+        })
+      }).catch(() =>{
+
+      });
     },
   }
 };

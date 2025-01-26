@@ -2,7 +2,6 @@ package com.shop.system.service;
 
 import com.shop.system.domain.Order;
 import com.shop.system.domain.OrderItem;
-
 import java.util.List;
 
 /**
@@ -74,5 +73,5 @@ public interface OrderService {
      */
     List<Order> selectOrderByUserId(Long userId);
 
-    int createOrder(List<OrderItem> orderItems);
+    int createOrder(List<OrderItem> orderItems, String address);
 }

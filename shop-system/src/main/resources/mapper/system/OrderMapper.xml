@@ -14,10 +14,11 @@
         <result property="createTime"      column="create_time"   />
         <result property="updateTime"      column="update_time"   />
         <result property="remark"          column="remark"        />
+        <result property="address" column="address"/>
     </resultMap>
 
     <sql id="selectOrderVo">
-        select order_id, order_no, user_id, total_amount, order_status, payment_time, delivery_time, receive_time, create_time, update_time, remark from `order`
+        select order_id, order_no, user_id, total_amount, order_status, payment_time, delivery_time, receive_time, create_time, update_time, remark,address from `order`
     </sql>
 
     <select id="selectOrderList" parameterType="com.shop.system.domain.Order" resultMap="OrderResult">
@@ -85,6 +86,7 @@
             <if test="createTime != null">create_time,</if>
             <if test="updateTime != null">update_time,</if>
             <if test="remark != null">remark,</if>
+            <if test="address != null">address,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="orderNo != null">#{orderNo},</if>
@@ -97,6 +99,7 @@
             <if test="createTime != null">#{createTime},</if>
             <if test="updateTime != null">#{updateTime},</if>
             <if test="remark != null">#{remark},</if>
+            <if test="address != null">#{address},</if>
         </trim>
     </insert>
 
@@ -112,6 +115,7 @@
             <if test="receiveTime != null">receive_time = #{receiveTime},</if>
             <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="remark != null">remark = #{remark},</if>
+            <if test="address != null">address = #{address},</if>
         </trim>
         where order_id = #{orderId}
     </update>
