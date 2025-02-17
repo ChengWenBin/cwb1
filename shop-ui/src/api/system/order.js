@@ -9,6 +9,14 @@ export function listOrder(query) {
   })
 }
 
+// 查询订单主表详细
+export function selectOrderById(orderId) {  //  <==  添加 `selectOrderById` 函数，并使用 export 导出
+  return request({
+    url: '/system/order/' + orderId,
+    method: 'get'
+  })
+}
+
 // 修改订单主表
 export function updateOrder(data) {
   return request({
@@ -17,6 +25,7 @@ export function updateOrder(data) {
     data: data
   })
 }
+
 // 取消订单主表
 export function cancelOrder(data) {
   return request({
@@ -25,7 +34,8 @@ export function cancelOrder(data) {
     data: data
   })
 }
-//  新增订单主表
+
+// 新增订单主表
 export function createOrder(data) {
   return request({
     url: '/system/order/create',

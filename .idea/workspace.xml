@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="3 commit">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="4 commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/api/system/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/userOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/userOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +149,10 @@
       <workItem from="1737735353863" duration="1195000" />
       <workItem from="1737808756071" duration="11688000" />
       <workItem from="1737824022068" duration="428000" />
-      <workItem from="1737863500683" duration="4945000" />
+      <workItem from="1737863500683" duration="4998000" />
+      <workItem from="1738058457842" duration="556000" />
+      <workItem from="1738991897338" duration="269000" />
+      <workItem from="1739758861489" duration="7307000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -244,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737824308342</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="4 commit">
+      <option name="closed" value="true" />
+      <created>1737872003633</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1737872003633</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +282,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="3 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="3 commit" />
+    <MESSAGE value="4 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="4 commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -50,7 +50,7 @@
           <el-tag v-else-if="selectedOrder.orderStatus === '已完成'" type="success">{{ selectedOrder.orderStatus }}</el-tag>
           <el-tag v-else-if="selectedOrder.orderStatus === '已取消'" type="danger">{{ selectedOrder.orderStatus }}</el-tag>
         </el-descriptions-item>
-        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime }}</el-descriptions-item>
+        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>  <-- 使用 formatDate 过滤器 -->
         <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime }}</el-descriptions-item>
         <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ selectedOrder.remark }}</el-descriptions-item>
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { listOrder, cancelOrder, updateOrder } from '@/api/system/order';
+import { listOrder, cancelOrder, updateOrder, selectOrderById } from '@/api/system/order';
 import {listOrderItem} from '@/api/system/orderItem'
 import { getToken } from "@/utils/auth";
 
@@ -90,6 +90,22 @@ export default {
       orderItemList:[],
       userId: "",
     };
+  },
+  // 添加 filters 选项
+  filters: {
+    formatDate(time) {
+      if (!time) {
+        return ''; // 或其他默认值
+      }
+      const date = new Date(time);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份从 0 开始，所以要 +1
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0'); // 添加秒
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
   },
   created() {
     this.getUserId();
@@ -113,11 +129,19 @@ export default {
       })
     },
     handleDetail(row) {
-      this.selectedOrder = row;
-      listOrderItem({orderId:row.orderId}).then(response => {
-        this.orderItemList = response.rows;
-        this.detailDialogVisible = true;
-      })
+      this.detailDialogVisible = true;
+      this.selectedOrder = row; // 先赋值基本信息
+      // 调用 selectOrderById 获取订单详情
+      selectOrderById(row.orderId).then(response => {
+        if (response.code === 200 && response.data) {
+          this.selectedOrder = response.data; // 使用 selectOrderById 获取的完整订单信息
+          listOrderItem({orderId:row.orderId}).then(response => {
+            this.orderItemList = response.rows;
+          })
+        } else {
+          this.$modal.msgError("加载订单详情失败");
+        }
+      });
     },
     handleCancel(row) {
       this.$confirm("确定取消该订单吗?", "提示", {
@@ -148,6 +172,19 @@ export default {
         if(response.code === 200){
           this.$message.success("支付成功")
           this.fetchData();
+          // 支付成功后， 立即重新获取订单详情
+          selectOrderById(this.selectedOrder.orderId).then(detailResponse => { //  调用 selectOrderById
+            if (detailResponse.code === 200 && detailResponse.data) {
+              this.selectedOrder = detailResponse.data; // 更新 selectedOrder 为最新的订单详情
+              // this.fetchData(); // 刷新订单列表, 这里可以不刷新
+            } else {
+              this.$modal.msgError("支付成功，但订单详情加载失败"); // 提示用户订单详情加载失败
+              this.fetchData(); // 即使详情加载失败，也刷新订单列表
+            }
+          }).catch(() => {
+            this.$modal.msgError("支付成功，但订单详情加载失败"); // 提示用户订单详情加载失败
+            this.fetchData(); // 即使详情加载失败，也刷新订单列表
+          });
         }else{
           this.$message.error("支付失败")
         }

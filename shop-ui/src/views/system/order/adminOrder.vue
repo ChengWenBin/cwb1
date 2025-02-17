@@ -11,6 +11,7 @@
         <el-button type="primary" @click="fetchData">查询</el-button>
       </el-form-item>
     </el-form>
+
     <el-table :data="orderList" style="width: 100%" border>
       <el-table-column label="订单编号" prop="orderNo" />
       <el-table-column label="用户ID" prop="userId" />
@@ -56,7 +57,7 @@
           <el-tag v-else-if="selectedOrder.orderStatus === '已完成'" type="success">{{ selectedOrder.orderStatus }}</el-tag>
           <el-tag v-else-if="selectedOrder.orderStatus === '已取消'" type="danger">{{ selectedOrder.orderStatus }}</el-tag>
         </el-descriptions-item>
-        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime }}</el-descriptions-item>
+        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
         <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime }}</el-descriptions-item>
         <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ selectedOrder.remark }}</el-descriptions-item>
@@ -74,7 +75,7 @@
 </template>
 
 <script>
-import { listOrder, updateOrder } from '@/api/system/order';
+import { listOrder, updateOrder,selectOrderById } from '@/api/system/order';
 import {listOrderItem} from '@/api/system/orderItem'
 
 export default {
@@ -98,10 +99,18 @@ export default {
     },
     handleDetail(row) {
       this.selectedOrder = row;
-      listOrderItem({orderId:row.orderId}).then(response => {
-        this.orderItemList = response.rows;
-        this.detailDialogVisible = true;
-      })
+      // 调用 selectOrderById 获取订单详情
+      selectOrderById(row.orderId).then(response => {
+        if (response.code === 200 && response.data) {
+          this.selectedOrder = response.data; // 使用 selectOrderById 获取的完整订单信息
+          listOrderItem({orderId:row.orderId}).then(response => {
+            this.orderItemList = response.rows;
+            this.detailDialogVisible = true;
+          })
+        } else {
+          this.$modal.msgError("加载订单详情失败");
+        }
+      });
     },
     handleStatusChange(row){
       updateOrder(row).then(response =>{
@@ -112,6 +121,21 @@ export default {
         }
         this.fetchData()
       })
+    }
+  },
+  filters: {
+    formatDate(time) {
+      if (!time) {
+        return ''; // 或其他默认值
+      }
+      const date = new Date(time);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份从 0 开始，所以要 +1
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0'); // 添加秒
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
   },
 };
