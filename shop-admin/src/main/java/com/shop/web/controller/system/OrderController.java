@@ -56,6 +56,10 @@ public class OrderController extends BaseController {
     public AjaxResult update(@RequestBody Order order) {
         if ("待发货".equals(order.getOrderStatus())) { //  <==  判断订单状态
             order.setPaymentTime(new Date()); // <==  设置 paymentTime
+        } else if ("已发货".equals(order.getOrderStatus())) {
+            order.setDeliveryTime(new Date()); // 设置发货时间
+        } else if ("已完成".equals(order.getOrderStatus())) {
+            order.setReceiveTime(new Date());  // 设置完成时间
         }
         return toAjax(orderService.updateOrder(order));
     }

@@ -15,10 +15,15 @@
     <el-table :data="orderList" style="width: 100%" border>
       <el-table-column label="订单编号" prop="orderNo" />
       <el-table-column label="用户ID" prop="userId" />
-      <el-table-column label="下单时间" prop="createTime" width="180" />
+      <el-table-column label="下单时间" prop="createTime" width="180">
+        <template #default="scope">
+          {{ scope.row.createTime | formatDate }}
+        </template>
+      </el-table-column>
       <el-table-column label="总金额" prop="totalAmount" width="100"/>
+      <el-table-column label="收货地址" prop="address"/>
       <el-table-column label="订单状态" prop="orderStatus" width="120">
-        <template slot-scope="scope">
+        <template #default="scope">
           <el-tag v-if="scope.row.orderStatus === '待付款'" type="info">{{ scope.row.orderStatus }}</el-tag>
           <el-tag v-else-if="scope.row.orderStatus === '待发货'" type="warning">{{ scope.row.orderStatus }}</el-tag>
           <el-tag v-else-if="scope.row.orderStatus === '已发货'" type="success">{{ scope.row.orderStatus }}</el-tag>
@@ -27,7 +32,7 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" width="200">
-        <template slot-scope="scope">
+        <template #default="scope">
           <el-button
             size="mini"
             type="primary"
@@ -48,8 +53,9 @@
       <el-descriptions :column="3" border>
         <el-descriptions-item label="订单编号">{{ selectedOrder.orderNo }}</el-descriptions-item>
         <el-descriptions-item label="用户ID">{{ selectedOrder.userId }}</el-descriptions-item>
-        <el-descriptions-item label="下单时间">{{ selectedOrder.createTime }}</el-descriptions-item>
+        <el-descriptions-item label="下单时间">{{ selectedOrder.createTime | formatDate}}</el-descriptions-item>
         <el-descriptions-item label="总金额">{{ selectedOrder.totalAmount }}</el-descriptions-item>
+        <el-descriptions-item label="收货地址">{{selectedOrder.address}}</el-descriptions-item>
         <el-descriptions-item label="订单状态" >
           <el-tag v-if="selectedOrder.orderStatus === '待付款'" type="info">{{ selectedOrder.orderStatus }}</el-tag>
           <el-tag v-else-if="selectedOrder.orderStatus === '待发货'" type="warning">{{ selectedOrder.orderStatus }}</el-tag>
@@ -58,8 +64,8 @@
           <el-tag v-else-if="selectedOrder.orderStatus === '已取消'" type="danger">{{ selectedOrder.orderStatus }}</el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
-        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime }}</el-descriptions-item>
-        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime }}</el-descriptions-item>
+        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>
+        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ selectedOrder.remark }}</el-descriptions-item>
       </el-descriptions>
       <h3>订单商品</h3>
@@ -113,6 +119,7 @@ export default {
       });
     },
     handleStatusChange(row){
+      //这里直接调用了this.fetchData()方法来刷新数据，你也可以按照userOrder.vue里面一样，调用selectOrderById来获取更新后的数据，效果是一样的。
       updateOrder(row).then(response =>{
         if (response.code === 200){
           this.$message.success("修改成功")
