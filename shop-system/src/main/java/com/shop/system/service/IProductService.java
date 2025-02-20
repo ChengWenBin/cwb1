@@ -9,4 +9,7 @@ public interface IProductService {
     int deleteProductByIds(Long[] ids);
     Product selectProductById(Long productId);
     List<Product> selectProductListByCategory(Product product);
+
+    // 添加 reduceStock 方法
+    boolean reduceStock(Long productId, Integer quantity);
 }

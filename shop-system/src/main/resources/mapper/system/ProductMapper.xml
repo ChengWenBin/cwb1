@@ -57,6 +57,13 @@
         WHERE id = #{id}
     </update>
 
+    <update id="reduceStock">
+        UPDATE product
+        SET stock = stock - #{quantity}
+        WHERE id = #{productId}
+        AND stock >= #{quantity}  <!-- 增加库存检查 -->
+    </update>
+
     <!-- 批量删除 -->
     <delete id="deleteProductByIds">
         DELETE FROM product WHERE id IN

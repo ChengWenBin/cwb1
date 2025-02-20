@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="4 commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +157,7 @@
       <workItem from="1739793154019" duration="228000" />
       <workItem from="1739886179508" duration="1263000" />
       <workItem from="1740027908722" duration="1466000" />
-      <workItem from="1740036773407" duration="1783000" />
+      <workItem from="1740036773407" duration="4118000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -261,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739777433814</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="4 commit">
+      <option name="closed" value="true" />
+      <created>1740039220092</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1740039220092</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

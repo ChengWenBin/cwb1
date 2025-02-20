@@ -7,10 +7,11 @@ import com.shop.system.domain.Order;
 import com.shop.system.domain.OrderItem;
 import com.shop.system.mapper.OrderMapper;
 import com.shop.system.mapper.OrderItemMapper;
+import com.shop.system.service.IProductService;
 import com.shop.system.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +30,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderItemMapper orderItemMapper;
+
+    @Autowired
+    private IProductService productService;
 
     /**
      * 查询订单主表
@@ -121,11 +125,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional // 添加事务注解, 确保订单状态更新和库存扣减的原子性
     public int createOrder(List<OrderItem> orderItems, String address) {
         if (orderItems == null || orderItems.isEmpty()) {
             throw new IllegalArgumentException("订单商品列表不能为空");
         }
-
         Order order = new Order();
         // 使用时间戳+用户ID生成订单编号
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -144,11 +148,17 @@ public class OrderServiceImpl implements OrderService {
         order.setAddress(address);
         int orderInsert = orderMapper.insertOrder(order);
 
-        for (OrderItem orderItem : orderItems) {
+        for(OrderItem orderItem : orderItems){
             orderItem.setOrderId(order.getOrderId());
             orderItemMapper.insertOrderItem(orderItem);
-        }
+            // 调用 ProductService 的 reduceStock 方法
+            boolean success = productService.reduceStock(orderItem.getProductId(), orderItem.getQuantity()); // 使用 productService 对象调用
+            if (!success) {
+                // 库存不足，抛出异常,  这里可以自定义业务异常
+                throw new RuntimeException("商品 " + orderItem.getProductName() + " 库存不足！");
+            }
 
-        return orderInsert;
+        }
+        return  orderInsert;
     }
 }
