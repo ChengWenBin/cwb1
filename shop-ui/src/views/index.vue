@@ -14,7 +14,8 @@
       <el-col :span="24">
         <h2 class="section-title">系统简介</h2>
         <p class="system-description">
-          电子产品销售系统是一套集电子产品管理、订单管理、购物车管理、电子产品浏览、数据分析于一体的综合性产品销售系统。系统采用先进的前后端分离架构，提供从商品上架到售后服务全流程数字化管理。通过智能化的数据分析和实时的库存监控，助力企业提升运营效率，优化客户体验。
+          电子产品销售系统是一套集电子产品管理、订单管理、购物车管理、电子产品浏览、数据分析于一体的综合性产品销售系统。
+          系统采用先进的前后端分离架构，提供从商品上架到售后服务全流程数字化管理。通过智能化的数据分析和实时的库存监控，助力企业提升运营效率，优化客户体验。
         </p>
       </el-col>
     </el-row>
@@ -34,6 +35,8 @@
               :xs="24"
               :sm="12"
               :md="8"
+              @click.native="goTarget(feature.path)"
+              style="cursor: pointer;"
             >
               <el-card shadow="hover">
                 <div class="function-card">
@@ -56,19 +59,23 @@ export default {
     return {
       version: "1.0.0",
       coreFeatures: [
-        { icon: "el-icon-s-goods", name: "电子产品管理" },
-        { icon: "el-icon-shopping-cart-full", name: "购物车管理" },
-        { icon: "el-icon-s-order", name: "订单管理" },
-        { icon: "el-icon-view", name: "电子产品浏览" },
-        { icon: "el-icon-data-analysis", name: "数据分析" },
-        { icon: "el-icon-document", name: "我的订单" }
+        { icon: "el-icon-s-goods", name: "电子产品管理", path: "/system/product" },
+        { icon: "el-icon-shopping-cart-full", name: "购物车管理", path: "/system/cart" },
+        { icon: "el-icon-s-order", name: "订单管理", path: "/system/adminOrder" },
+        { icon: "el-icon-view", name: "电子产品浏览", path: "/system/product-browse" },
+        // { icon: "el-icon-data-analysis", name: "数据分析", path: "/data-analysis" },  // 假设数据分析的路径是 /data-analysis
+        { icon: "el-icon-document", name: "我的订单", path: "/system/order" }
       ]
     };
   },
   methods: {
-    goTarget(href) {
-      // 使用 Vue Router 进行路由跳转
-      this.$router.push(href);
+    goTarget(path) {
+      // 使用 Vue Router 进行路由跳转, 确保 path 不为空
+      if (path) {
+        this.$router.push({ path: path });
+      } else {
+        console.warn("未配置跳转路径");
+      }
     }
   }
 };

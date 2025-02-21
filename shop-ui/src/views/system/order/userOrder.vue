@@ -33,6 +33,7 @@
             :disabled="scope.row.orderStatus !== '待付款'"
             @click="handleCancel(scope.row)"
           >取消</el-button>
+          <el-button size="mini" type="info" @click="handleRemark(scope.row)">备注</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -51,8 +52,8 @@
           <el-tag v-else-if="selectedOrder.orderStatus === '已取消'" type="danger">{{ selectedOrder.orderStatus }}</el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
-        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>  <-- 在这里使用过滤器
-        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>  <-- 在这里使用过滤器
+        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>
+        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>
         <el-descriptions-item label="备注">{{ selectedOrder.remark }}</el-descriptions-item>
       </el-descriptions>
       <h3>订单商品</h3>
@@ -72,6 +73,13 @@
         <el-button type="primary" @click="confirmPay">确定</el-button>
       </div>
     </el-dialog>
+    <el-dialog title="添加备注" :visible.sync="remarkDialogVisible" width="40%">
+      <el-input type="textarea" v-model="currentRemark" :rows="4" placeholder="请输入备注"></el-input>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="remarkDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="confirmRemark">确定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -89,9 +97,11 @@ export default {
       payDialogVisible: false,
       orderItemList:[],
       userId: "",
+      remarkDialogVisible: false, // 控制备注对话框的显示/隐藏
+      currentRemark: '',        // 存储当前订单的备注内容
+      currentOrderId: null,     // 存储当前操作的订单ID
     };
   },
-  // 添加 filters 选项
   filters: {
     formatDate(time) {
       if (!time) {
@@ -107,11 +117,18 @@ export default {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
   },
+  // 添加 filters 选项
+
   created() {
     this.getUserId();
     this.fetchData();
   },
   methods: {
+    handleRemark(row) {
+      this.currentOrderId = row.orderId; // 保存当前订单 ID
+      this.currentRemark = row.remark || ''; // 获取当前订单的备注 (如果订单没有备注，则设置为空字符串)
+      this.remarkDialogVisible = true;     // 显示备注对话框
+    },
     getUserId() {
       const token = getToken();
       if (token) {
@@ -164,6 +181,23 @@ export default {
     handlePay(row){
       this.selectedOrder = row;
       this.payDialogVisible = true;
+    },
+    confirmRemark() {
+      // 调用后端 API 更新备注
+      updateOrder({ orderId: this.currentOrderId, remark: this.currentRemark,orderStatus:this.selectedOrder.orderStatus })
+        .then(response => { //  这里把新增的备注随着订单一起更新
+          if (response.code === 200) {
+            this.$message.success("备注更新成功");
+            this.remarkDialogVisible = false; // 关闭对话框
+            // 刷新订单列表 (或者只更新当前行的备注, 这里是全部刷新)
+            this.fetchData();
+          } else {
+            this.$modal.msgError("备注更新失败");
+          }
+        })
+        .catch(() => {
+          this.$modal.msgError("备注更新失败");
+        });
     },
     confirmPay(){
       this.payDialogVisible = false;

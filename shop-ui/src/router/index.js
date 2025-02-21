@@ -163,6 +163,18 @@ export const dynamicRoutes = [
         component: () => import('@/views/system/product/Cart'),
         meta: { title: '购物车', icon: 'el-icon-shopping-cart-full' }
       },
+      {
+        path: 'order',
+        component: () => import('@/views/system/order/userOrder'),
+        name: 'UserOrder',
+        meta: { title: '我的订单', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'adminOrder',
+        component: () => import('@/views/system/order/adminOrder'),
+        name: 'AdminOrder',
+        meta: { title: '订单管理', icon: 'el-icon-s-order' }
+      },
     ]
   },
 ]
