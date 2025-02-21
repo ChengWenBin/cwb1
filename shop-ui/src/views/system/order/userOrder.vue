@@ -50,9 +50,9 @@
           <el-tag v-else-if="selectedOrder.orderStatus === '已完成'" type="success">{{ selectedOrder.orderStatus }}</el-tag>
           <el-tag v-else-if="selectedOrder.orderStatus === '已取消'" type="danger">{{ selectedOrder.orderStatus }}</el-tag>
         </el-descriptions-item>
-        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>  <-- 使用 formatDate 过滤器 -->
-        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime }}</el-descriptions-item>
-        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime }}</el-descriptions-item>
+        <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
+        <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>  <-- 在这里使用过滤器
+        <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>  <-- 在这里使用过滤器
         <el-descriptions-item label="备注">{{ selectedOrder.remark }}</el-descriptions-item>
       </el-descriptions>
       <h3>订单商品</h3>
