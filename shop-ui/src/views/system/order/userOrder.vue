@@ -41,7 +41,7 @@
     <el-dialog title="订单详情" :visible.sync="detailDialogVisible" width="70%">
       <el-descriptions :column="3" border>
         <el-descriptions-item label="订单编号">{{ selectedOrder.orderNo }}</el-descriptions-item>
-        <el-descriptions-item label="下单时间">{{ selectedOrder.createTime }}</el-descriptions-item>
+        <el-descriptions-item label="下单时间">{{ selectedOrder.createTime | formatDate}}</el-descriptions-item>
         <el-descriptions-item label="总金额">{{ selectedOrder.totalAmount }}</el-descriptions-item>
         <el-descriptions-item label="收货地址">{{ selectedOrder.address }}</el-descriptions-item>
         <el-descriptions-item label="订单状态" >
@@ -96,10 +96,15 @@ export default {
       selectedOrder: {},
       payDialogVisible: false,
       orderItemList:[],
-      userId: "",
+      userId: "",  // 用于存储当前用户的 ID
       remarkDialogVisible: false, // 控制备注对话框的显示/隐藏
       currentRemark: '',        // 存储当前订单的备注内容
       currentOrderId: null,     // 存储当前操作的订单ID
+      queryParams: {
+        pageNum: 1,
+        pageSize: 10
+      }, // 查询参数,
+      total:0
     };
   },
   filters: {
@@ -117,32 +122,27 @@ export default {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
   },
-  // 添加 filters 选项
-
   created() {
     this.getUserId();
     this.fetchData();
   },
   methods: {
-    handleRemark(row) {
-      this.currentOrderId = row.orderId; // 保存当前订单 ID
-      this.currentRemark = row.remark || ''; // 获取当前订单的备注 (如果订单没有备注，则设置为空字符串)
-      this.remarkDialogVisible = true;     // 显示备注对话框
-    },
     getUserId() {
       const token = getToken();
       if (token) {
         try {
           const payload = JSON.parse(atob(token.split('.')[1]));
-          this.userId = payload.userId;
+          this.userId = payload.userId; // 获取用户 ID
         } catch (e) {
           console.error("解析token失败", e);
         }
       }
     },
+    //  修改这里， 传入 userId
     fetchData() {
-      listOrder({userId: this.userId}).then(response => {
-        this.orderList = response.rows
+      listOrder({ userId: this.userId, ...this.queryParams }).then(response => {
+        this.orderList = response.rows;
+        this.total = response.total;
       })
     },
     handleDetail(row) {
@@ -205,7 +205,6 @@ export default {
       updateOrder(this.selectedOrder).then(response => {
         if(response.code === 200){
           this.$message.success("支付成功")
-          this.fetchData();
           // 支付成功后， 立即重新获取订单详情
           selectOrderById(this.selectedOrder.orderId).then(detailResponse => { //  调用 selectOrderById
             if (detailResponse.code === 200 && detailResponse.data) {
@@ -223,7 +222,12 @@ export default {
           this.$message.error("支付失败")
         }
       })
-    }
+    },
+    handleRemark(row) {
+      this.currentOrderId = row.orderId; // 保存当前订单 ID
+      this.currentRemark = row.remark || ''; // 获取当前订单的备注 (如果订单没有备注，则设置为空字符串)
+      this.remarkDialogVisible = true;     // 显示备注对话框
+    },
   },
 };
 </script>
