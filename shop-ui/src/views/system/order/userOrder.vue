@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { listOrder, cancelOrder, updateOrder, selectOrderById } from '@/api/system/order';
+import {listOrder, cancelOrder, updateOrder, selectOrderById, listMyOrder} from '@/api/system/order';
 import {listOrderItem} from '@/api/system/orderItem'
 import { getToken } from "@/utils/auth";
 
@@ -96,15 +96,10 @@ export default {
       selectedOrder: {},
       payDialogVisible: false,
       orderItemList:[],
-      userId: "",  // 用于存储当前用户的 ID
+      userId: "", // 存储当前用户的 ID
       remarkDialogVisible: false, // 控制备注对话框的显示/隐藏
       currentRemark: '',        // 存储当前订单的备注内容
       currentOrderId: null,     // 存储当前操作的订单ID
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10
-      }, // 查询参数,
-      total:0
     };
   },
   filters: {
@@ -123,26 +118,31 @@ export default {
     }
   },
   created() {
-    this.getUserId();
+    //this.getUserId();
     this.fetchData();
   },
   methods: {
-    getUserId() {
-      const token = getToken();
-      if (token) {
-        try {
-          const payload = JSON.parse(atob(token.split('.')[1]));
-          this.userId = payload.userId; // 获取用户 ID
-        } catch (e) {
-          console.error("解析token失败", e);
-        }
-      }
-    },
-    //  修改这里， 传入 userId
+    // 获取用户 ID
+    // getUserId() {
+    //   const token = getToken();
+    //   if (token) {
+    //     try {
+    //       const payload = JSON.parse(atob(token.split('.')[1]));
+    //       this.userId =  Number(payload.userId);  // <---  确保转换为数字类型！
+    //       if (isNaN(this.userId)) {
+    //         console.error("userId is not a valid number:", payload.userId);
+    //         this.userId = null; // 或者设置为其他默认值
+    //         return;
+    //       }
+    //     } catch (e) {
+    //       console.error("解析token失败", e);
+    //     }
+    //   }
+    // },
     fetchData() {
-      listOrder({ userId: this.userId, ...this.queryParams }).then(response => {
+      // 将 userId 作为参数传递给 listOrder API
+      listMyOrder().then(response => {  // <---  不再需要传递 userId
         this.orderList = response.rows;
-        this.total = response.total;
       })
     },
     handleDetail(row) {

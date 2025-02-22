@@ -73,4 +73,6 @@ public interface OrderMapper {
      * @return 订单列表
      */
     List<Order> selectOrderByUserId(Long userId);
+
+    List<Order> selectMyOrderList(Long userId);
 }

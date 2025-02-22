@@ -56,6 +56,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectOrderList(order);
     }
 
+    public List<Order> selectMyOrderList() { // 无需传入 Order 对象
+        Long userId = SecurityUtils.getUserId(); //获取当前用户ID
+        return orderMapper.selectMyOrderList(userId);
+    }
     /**
      * 新增订单主表
      *

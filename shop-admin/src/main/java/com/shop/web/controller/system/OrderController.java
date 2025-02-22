@@ -5,34 +5,42 @@ import com.shop.common.core.domain.AjaxResult;
 import com.shop.common.core.page.TableDataInfo;
 import com.shop.system.domain.Order;
 import com.shop.system.service.OrderService;
+import com.shop.system.service.impl.OrderServiceImpl; // 导入实现类
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Date;
 import java.util.List;
 
-/**
- * 订单主表 信息操作处理
- *
- * @author yourName
- * @date 2023-12-10
- */
 @RestController
 @RequestMapping("/system/order")
 public class OrderController extends BaseController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private OrderServiceImpl orderServiceImpl; // 注入 OrderServiceImpl
+
     /**
-     * 获取订单主表列表
+     * 获取当前用户订单列表 (我的订单)
+     */
+    @GetMapping("/myList")
+    public TableDataInfo myList() { // 不需要传入 Order 对象
+        startPage();
+        List<Order> list = orderServiceImpl.selectMyOrderList(); // 调用新的方法
+        return getDataTable(list);
+    }
+
+    /**
+     * 获取所有订单列表 (订单管理)
      */
     @GetMapping("/list")
     public TableDataInfo list(Order order) {
         startPage();
-        List<Order> list = orderService.selectOrderList(order);
+        List<Order> list = orderService.selectOrderList(order); // 使用原来的方法
         return getDataTable(list);
     }
 
+    // ... 其他方法保持不变 ...
     /**
      * 获取订单主表详细信息
      */
@@ -82,4 +90,5 @@ public class OrderController extends BaseController {
     public AjaxResult createOrder(@RequestBody Order order){
         return toAjax(orderService.createOrder(order.getOrderItems(),order.getAddress()));
     }
+
 }

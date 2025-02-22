@@ -21,18 +21,20 @@
         select order_id, order_no, user_id, total_amount, order_status, payment_time, delivery_time, receive_time, create_time, update_time, remark,address from `order`
     </sql>
 
+    <!-- 保持原样，用于订单管理 -->
     <select id="selectOrderList" parameterType="com.shop.system.domain.Order" resultMap="OrderResult">
         <include refid="selectOrderVo"/>
         <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
             <if test="orderId != null">
                 and order_id = #{orderId}
             </if>
             <if test="orderNo != null and orderNo != ''">
                 and order_no like concat('%', #{orderNo}, '%')
             </if>
-            <if test="userId != null">
-                and user_id = #{userId}
-            </if>
+
             <if test="totalAmount != null">
                 and total_amount = #{totalAmount}
             </if>
@@ -57,6 +59,13 @@
         </where>
     </select>
 
+    <!-- 新增 SQL，专门用于查询当前用户的订单 -->
+    <select id="selectMyOrderList" parameterType="java.lang.Long" resultMap="OrderResult">
+        <include refid="selectOrderVo"/>
+        WHERE user_id = #{userId}  <!-- 强制根据 userId 过滤 -->
+    </select>
+
+    <!-- 其他 SQL 保持不变 -->
     <select id="selectOrderById" parameterType="java.lang.Long" resultMap="OrderResult">
         <include refid="selectOrderVo"/>
         where order_id = #{orderId}

@@ -1,9 +1,18 @@
 import request from '@/utils/request'
 
-// 查询订单主表列表
+// 查询订单主表列表 (用于订单管理)
 export function listOrder(query) {
   return request({
     url: '/system/order/list',
+    method: 'get',
+    params: query
+  })
+}
+
+// 查询当前用户订单列表 (用于我的订单)
+export function listMyOrder(query) {
+  return request({
+    url: '/system/order/myList',
     method: 'get',
     params: query
   })
