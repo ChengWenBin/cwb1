@@ -15,12 +15,14 @@
         <result property="updateTime"      column="update_time"   />
         <result property="remark"          column="remark"        />
         <result property="address" column="address"/>
+        <!-- 添加 minAmount 和 maxAmount 的映射 -->
+        <result property="minAmount" column="min_amount" />
+        <result property="maxAmount" column="max_amount" />
     </resultMap>
 
     <sql id="selectOrderVo">
         select order_id, order_no, user_id, total_amount, order_status, payment_time, delivery_time, receive_time, create_time, update_time, remark,address from `order`
     </sql>
-
     <!-- 保持原样，用于订单管理 -->
     <select id="selectOrderList" parameterType="com.shop.system.domain.Order" resultMap="OrderResult">
         <include refid="selectOrderVo"/>
@@ -55,6 +57,18 @@
             </if>
             <if test="updateTime != null">
                 and update_time = #{updateTime}
+            </if>
+
+            <!-- 新增：金额范围 -->
+            <if test="minAmount != null">
+                AND total_amount >= #{minAmount}
+            </if>
+            <if test="maxAmount != null">
+                AND total_amount &lt;= #{maxAmount}
+                <!-- &lt;= 是小于等于的意思, (大于号): 在 XML 中，> 字符 只有 在作为标签的结束符时才具有特殊意义（例如 </select>）。
+                 在其他情况下，例如在 SQL 语句中作为大于号运算符，> 通常 不需要转义。 大多数 XML 解析器足够智能，可以区分这两种情况
+                  在 XML 中，< 字符 始终 被解释为标签的开始。 因此，如果你想在文本内容（例如 SQL 语句）中使用 < 作为小于号运算符,
+                   必须 使用转义字符 &lt;，否则 XML 解析器会认为你正在尝试开始一个新的标签，从而导致解析错误-->
             </if>
         </where>
     </select>
@@ -96,6 +110,9 @@
             <if test="updateTime != null">update_time,</if>
             <if test="remark != null">remark,</if>
             <if test="address != null">address,</if>
+            <!-- 添加 minAmount 和 maxAmount -->
+            <if test="minAmount != null">min_amount,</if>
+            <if test="maxAmount != null">max_amount,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="orderNo != null">#{orderNo},</if>
@@ -109,6 +126,9 @@
             <if test="updateTime != null">#{updateTime},</if>
             <if test="remark != null">#{remark},</if>
             <if test="address != null">#{address},</if>
+            <!-- 添加 minAmount 和 maxAmount -->
+            <if test="minAmount != null">#{minAmount},</if>
+            <if test="maxAmount != null">#{maxAmount},</if>
         </trim>
     </insert>
 
@@ -125,6 +145,9 @@
             <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="remark != null">remark = #{remark},</if>
             <if test="address != null">address = #{address},</if>
+            <!-- 添加 minAmount 和 maxAmount -->
+            <if test="minAmount != null">min_amount = #{minAmount},</if>
+            <if test="maxAmount != null">max_amount = #{maxAmount},</if>
         </trim>
         where order_id = #{orderId}
     </update>

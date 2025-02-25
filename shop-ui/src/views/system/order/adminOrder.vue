@@ -1,18 +1,46 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" :model="queryParams" class="demo-form-inline">
-      <el-form-item label="订单编号">
-        <el-input v-model="queryParams.orderNo"  placeholder="请输入订单编号"/>
+    <el-form :inline="true" :model="queryParams" class="demo-form-inline" size="small">
+      <el-form-item label="订单编号" prop="orderNo">
+        <el-input
+          v-model="queryParams.orderNo"
+          placeholder="订单编号"
+          clearable
+          style="width: 160px"
+        />
       </el-form-item>
-      <el-form-item label="用户ID">
-        <el-input v-model="queryParams.userId" placeholder="请输入用户ID" />
+      <el-form-item label="用户ID" prop="userId">
+        <el-input
+          v-model="queryParams.userId"
+          placeholder="用户ID"
+          clearable
+          style="width: 120px"
+        />
+      </el-form-item>
+      <el-form-item label="状态" prop="orderStatus">
+        <el-select v-model="queryParams.orderStatus" placeholder="全部" clearable style="width: 120px">
+          <el-option label="全部" value="" />
+          <el-option label="待付款" value="待付款" />
+          <el-option label="待发货" value="待发货" />
+          <el-option label="已发货" value="已发货" />
+          <el-option label="已完成" value="已完成" />
+          <el-option label="已取消" value="已取消" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="最小金额" prop="minAmount">
+        <el-input-number v-model="queryParams.minAmount" :controls="false" placeholder="最小金额" style="width: 130px"/>
+      </el-form-item>
+      <el-form-item label="最大金额" prop="maxAmount">
+        <el-input-number v-model="queryParams.maxAmount" :controls="false" placeholder="最大金额" style="width: 130px"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="fetchData">查询</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="fetchData">查询</el-button>
+        <el-button icon="el-icon-refresh" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
     <el-table :data="orderList" style="width: 100%" border>
+      <!-- ... 表格列保持不变 ... -->
       <el-table-column label="订单编号" prop="orderNo" />
       <el-table-column label="用户ID" prop="userId" />
       <el-table-column label="下单时间" prop="createTime" width="180">
@@ -92,6 +120,9 @@ export default {
       queryParams:{},
       selectedOrder: {},
       orderItemList:[],
+      orderStatus: '', // 新增：订单状态, 默认为空字符串（全部）
+      minAmount: null, // 新增：最小金额
+      maxAmount: null, // 新增：最大金额
     };
   },
   created() {
@@ -128,6 +159,16 @@ export default {
         }
         this.fetchData()
       })
+    },
+    resetQuery() { // 新增：重置查询条件
+      this.queryParams = {
+        orderNo: null,
+        userId: null,
+        orderStatus: '',
+        minAmount: null,
+        maxAmount: null,
+      };
+      this.fetchData(); // 重置后重新查询
     }
   },
   filters: {
@@ -145,5 +186,5 @@ export default {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
   },
-};
+}
 </script>

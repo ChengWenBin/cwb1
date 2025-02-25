@@ -122,23 +122,6 @@ export default {
     this.fetchData();
   },
   methods: {
-    // 获取用户 ID
-    // getUserId() {
-    //   const token = getToken();
-    //   if (token) {
-    //     try {
-    //       const payload = JSON.parse(atob(token.split('.')[1]));
-    //       this.userId =  Number(payload.userId);  // <---  确保转换为数字类型！
-    //       if (isNaN(this.userId)) {
-    //         console.error("userId is not a valid number:", payload.userId);
-    //         this.userId = null; // 或者设置为其他默认值
-    //         return;
-    //       }
-    //     } catch (e) {
-    //       console.error("解析token失败", e);
-    //     }
-    //   }
-    // },
     fetchData() {
       // 将 userId 作为参数传递给 listOrder API
       listMyOrder().then(response => {  // <---  不再需要传递 userId

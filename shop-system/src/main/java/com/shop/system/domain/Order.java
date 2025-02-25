@@ -41,6 +41,32 @@ public class Order extends BaseEntity {
     /** 收货地址*/
     private String address;
 
+    /** 最小金额 (用于筛选) */
+    private BigDecimal minAmount;
+
+    /** 最大金额 (用于筛选) */
+    private BigDecimal maxAmount;
+
+
+    //  minAmount 和 maxAmount 的 getter 和 setter
+    public BigDecimal getMinAmount() {
+        return minAmount;
+    }
+
+    public void setMinAmount(BigDecimal minAmount) {
+        this.minAmount = minAmount;
+    }
+
+    public BigDecimal getMaxAmount() {
+        return maxAmount;
+    }
+
+    public void setMaxAmount(BigDecimal maxAmount) {
+        this.maxAmount = maxAmount;
+    }
+
+
+    // 其余属性的 getter 和 setter ...
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
@@ -105,6 +131,16 @@ public class Order extends BaseEntity {
     public void setAddress(String address) {
         this.address = address;
     }
+    /** 订单明细集合*/
+    private List<OrderItem> orderItems;
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 
 
     @Override
@@ -119,20 +155,11 @@ public class Order extends BaseEntity {
                 ", deliveryTime=" + deliveryTime +
                 ", receiveTime=" + receiveTime +
                 ", address='" + address + '\'' +
+                ", minAmount=" + minAmount +
+                ", maxAmount=" + maxAmount +
                 ", createTime=" + getCreateTime() +
                 ", updateTime=" + getUpdateTime() +
                 ", remark='" + getRemark() + '\'' +
                 '}';
-    }
-
-    /** 订单明细集合*/
-    private List<OrderItem> orderItems;
-
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
     }
 }
