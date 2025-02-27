@@ -12,7 +12,12 @@ public class Product {
     private Date createdTime;
     private Date updatedTime;
 
-    // 省略 Getter 和 Setter 方法
+    private BigDecimal minPrice;  // 最小价格
+    private BigDecimal maxPrice;  // 最大价格
+    private Integer minStock;     // 最小库存
+
+    // ... 其他字段的 getter 和 setter ...
+
     public Long getId() {
         return id;
     }
@@ -82,5 +87,30 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    // 新增字段的 getter 和 setter 方法
+    public BigDecimal getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(BigDecimal minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public BigDecimal getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(BigDecimal maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+    public Integer getMinStock() {
+        return minStock;
+    }
+
+    public void setMinStock(Integer minStock) {
+        this.minStock = minStock;
     }
 }

@@ -17,16 +17,32 @@
     </resultMap>
 
     <!-- 查询 -->
-    <select id="selectProductList" resultMap="ProductResultMap">
+    <select id="selectProductList" resultMap="ProductResultMap" parameterType="com.shop.system.domain.Product">
         SELECT * FROM product
         <where>
             <if test="name != null and name != ''">
                 name LIKE CONCAT('%', #{name}, '%')
             </if>
+            <if test="category != null and category != ''">
+                AND category = #{category}
+            </if>
+            <choose>
+                <when test="minPrice != null and maxPrice != null">
+                    AND price BETWEEN #{minPrice} AND #{maxPrice}
+                </when>
+                <when test="minPrice != null">
+                    AND price >= #{minPrice}
+                </when>
+                <when test="maxPrice != null">
+                    AND price <![CDATA[ <= ]]> #{maxPrice}
+                </when>
+            </choose>
+            <if test="minStock != null">
+                AND stock >= #{minStock}
+            </if>
         </where>
         ORDER BY updated_time DESC
     </select>
-
     <!-- 根据类别查询 -->
     <select id="selectProductListByCategory" resultMap="ProductResultMap">
         SELECT * FROM product

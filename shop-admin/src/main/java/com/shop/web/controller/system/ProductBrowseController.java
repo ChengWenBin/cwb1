@@ -1,4 +1,5 @@
 package com.shop.web.controller.system;
+
 import com.shop.common.core.controller.BaseController;
 import com.shop.common.core.page.TableDataInfo;
 import com.shop.system.domain.Product;
@@ -13,18 +14,15 @@ import java.util.List;
  * 电子产品浏览 Controller
  */
 @RestController
-@RequestMapping("/system/product-browse")  //修改了RequestMapping路径
+@RequestMapping("/system/product-browse")
 public class ProductBrowseController extends BaseController {
     @Autowired
     private IProductService productService;
 
-    /**
-     * 查询电子产品列表 (按类别)
-     */
     @GetMapping("/list")
     public TableDataInfo list(Product product) {
         startPage();
-        List<Product> list = productService.selectProductListByCategory(product);
+        List<Product> list = productService.selectProductList(product);
         return getDataTable(list);
     }
 }

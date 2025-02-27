@@ -60,7 +60,7 @@ export default {
       version: "1.0.0",
       coreFeatures: [
         { icon: "el-icon-s-goods", name: "电子产品管理", path: "/system/product" },
-        { icon: "el-icon-shopping-cart-full", name: "购物车管理", path: "/system/cart" },
+        { icon: "el-icon-shopping-cart-full", name: "购物车", path: "/system/cart" },
         { icon: "el-icon-s-order", name: "订单管理", path: "/system/adminOrder" },
         { icon: "el-icon-view", name: "电子产品浏览", path: "/system/product-browse" },
         // { icon: "el-icon-data-analysis", name: "数据分析", path: "/data-analysis" },  // 假设数据分析的路径是 /data-analysis
