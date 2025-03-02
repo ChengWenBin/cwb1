@@ -63,7 +63,7 @@ export default {
         { icon: "el-icon-shopping-cart-full", name: "购物车", path: "/system/cart" },
         { icon: "el-icon-s-order", name: "订单管理", path: "/system/adminOrder" },
         { icon: "el-icon-view", name: "电子产品浏览", path: "/system/product-browse" },
-        // { icon: "el-icon-data-analysis", name: "数据分析", path: "/data-analysis" },  // 假设数据分析的路径是 /data-analysis
+        { icon: "el-icon-data-analysis", name: "数据看板", path: "/system/dashboard" },
         { icon: "el-icon-document", name: "我的订单", path: "/system/order" }
       ]
     };

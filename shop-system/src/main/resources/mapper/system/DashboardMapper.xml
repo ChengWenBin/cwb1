@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.system.mapper.DashboardMapper">
+
+    <select id="getSalesTrend" resultType="map">
+        SELECT DATE(create_time) AS date, SUM(total_amount) AS sales
+        FROM `order`
+        WHERE order_status != '已取消'
+        GROUP BY DATE(create_time)
+        ORDER BY DATE(create_time)
+    </select>
+
+    <select id="getProductSales" resultType="map">
+        SELECT p.name AS productName, SUM(oi.total_price) AS sales
+        FROM order_item oi
+                 JOIN product p ON oi.product_id = p.id
+                 JOIN `order` o ON oi.order_id = o.order_id
+        WHERE o.order_status != '已取消'
+        GROUP BY p.name
+    </select>
+
+    <select id="getOrderTrend" resultType="map">
+        SELECT DATE(create_time) AS date, COUNT(*) AS orderCount
+        FROM `order`
+        GROUP BY DATE(create_time)
+        ORDER BY DATE(create_time)
+    </select>
+
+    <select id="getOrderStatus" resultType="map">
+        SELECT order_status AS status, COUNT(*) AS count
+        FROM `order`
+        GROUP BY order_status
+    </select>
+
+    <!--  删除这两个 SQL
+    <select id="getSalesReportTotalSales" resultType="map">
+        SELECT SUM(total_amount) as totalSales FROM `order` WHERE order_status != '已取消'
+     </select>
+
+    <select id="getSalesReportDailySales" resultType="map">
+        SELECT DATE(create_time) AS date, SUM(total_amount) AS amount
+        FROM `order`
+        WHERE order_status != '已取消'
+        GROUP BY DATE(create_time)
+        ORDER BY DATE(create_time)
+    </select>
+    -->
+
+    <!-- 修改这个 SQL，只查询需要的字段 -->
+    <select id="getSalesReportProductSales" resultType="map">
+        SELECT p.name as name, SUM(oi.quantity) AS quantity, SUM(oi.total_price) AS amount
+        FROM order_item oi
+                 JOIN product p ON oi.product_id = p.id
+                 JOIN `order` o ON oi.order_id = o.order_id
+        WHERE o.order_status != '已取消'
+        GROUP BY p.name
+    </select>
+
+    <select id="getOrderReport" resultType="map">
+        SELECT create_time, user_id, order_no, order_status, total_amount, address
+        FROM `order`
+        ORDER BY create_time DESC
+    </select>
+
+</mapper>

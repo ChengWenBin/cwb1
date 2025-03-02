@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import Dashboard from '@/views/system/data/Dashboard.vue'
 Vue.use(Router)
 
 /* Layout */
@@ -174,6 +174,12 @@ export const dynamicRoutes = [
         component: () => import('@/views/system/order/adminOrder'),
         name: 'AdminOrder',
         meta: { title: '订单管理', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'dashboard', // 添加新的 dashboard 路由
+        name: 'Dashboard',
+        component: Dashboard, // 确保这里指向了正确的组件
+        meta: { title: '数据看板', icon: 'dashboard' } // 您可以自定义图标和标题
       },
     ]
   },

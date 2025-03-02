@@ -1,18 +1,17 @@
 <template>
   <div class="app-container">
-    <el-form ref="queryForm" :model="queryParams" :inline="true">
+    <el-form :inline="true" :model="queryParams" class="demo-form-inline" size="small">
       <el-form-item label="产品名称" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入产品名称"
+          placeholder="产品名称"
           clearable
+          style="width: 240px"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="handleQuery"
-        >搜索</el-button
-        >
+        <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
@@ -24,8 +23,7 @@
           icon="el-icon-plus"
           @click="handleAdd"
           v-hasPermi="['system:product:add']"
-        >新增</el-button
-        >
+        >新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -34,8 +32,7 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['system:product:remove']"
-        >删除</el-button
-        >
+        >删除</el-button>
       </el-col>
     </el-row>
 
@@ -43,6 +40,8 @@
       v-loading="loading"
       :data="productList"
       @selection-change="handleSelectionChange"
+      :cell-style="tableCellStyle"
+      :header-cell-style="headerCellStyle"
     >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column prop="name" label="产品名称" align="center" />
@@ -59,8 +58,17 @@
           ></el-image>
         </template>
       </el-table-column>
-      <el-table-column prop="createdTime" label="上架时间" align="center" width="160" />
-      <el-table-column prop="updatedTime" label="更新时间" align="center" width="160" />
+      <!-- 使用过滤器格式化日期 -->
+      <el-table-column prop="createdTime" label="上架时间" align="center" width="160">
+        <template #default="scope">
+          {{ scope.row.createdTime | formatDate }}
+        </template>
+      </el-table-column>
+      <el-table-column prop="updatedTime" label="更新时间" align="center" width="160">
+        <template #default="scope">
+          {{ scope.row.updatedTime | formatDate }}
+        </template>
+      </el-table-column>
       <el-table-column
         label="操作"
         align="center"
@@ -73,16 +81,14 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:product:edit']"
-          >修改</el-button
-          >
+          >修改</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['system:product:remove']"
-          >删除</el-button
-          >
+          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -95,6 +101,7 @@
       @pagination="getList"
     />
 
+    <!-- 添加或修改产品的对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="产品名称" prop="name">
@@ -165,52 +172,23 @@ export default {
     this.getList();
   },
   methods: {
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    /** 查询列表 */
+    /** 查询产品列表 */
     getList() {
       this.loading = true;
-      listProduct(this.queryParams)
-        .then((response) => {
+      listProduct(this.queryParams).then(response => {
           this.productList = response.rows;
           this.total = response.total;
           this.loading = false;
-        })
-        .catch((err) => {
-          console.error("获取电子产品列表失败:", err);
-          this.loading = false;
-        });
+        }
+      );
     },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map((item) => item.id);
-      this.multiple = !selection.length;
+    // 取消按钮
+    cancel() {
+      this.open = false;
+      this.reset();
     },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const productIds = row.id || this.ids;
-      const ids = Array.isArray(productIds) ? productIds: [productIds]
-      this.$modal
-        .confirm("是否确认删除电子产品数据项?")
-        .then(() => {
-          return deleteProduct(ids); // 传递数组
-        })
-        .then(() => {
-          this.getList();
-          this.$modal.msgSuccess("删除成功");
-        })
-        .catch(() => {});
-    },
-    /** 添加按钮操作 */
-    handleAdd() {
-      this.open = true;
-      this.title = "添加电子产品";
+    // 表单重置
+    reset() {
       this.form = {
         name: '',
         price: null,
@@ -219,27 +197,52 @@ export default {
         imageUrl: '',
         category:''
       };
+      this.resetForm("form");
+    },
+    /** 搜索按钮操作 */
+    handleQuery() {
+      this.queryParams.pageNum = 1;
+      this.getList();
+    },
+    /** 重置按钮操作 */
+    resetQuery() {
+      this.resetForm("queryForm");
+      this.handleQuery();
+    },
+    // 多选框选中数据
+    handleSelectionChange(selection) {
+      this.ids = selection.map(item => item.id)
+      this.multiple = !selection.length
+    },
+    /** 新增按钮操作 */
+    handleAdd() {
+      this.reset();
+      this.open = true;
+      this.title = "添加产品";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
-      this.open = true;
-      this.title = "修改电子产品";
-      getProduct(row.id).then((response) => {
+      this.reset();
+      const id = row.id || this.ids
+      getProduct(id).then(response => {
         this.form = response.data;
+        this.open = true;
+        this.title = "修改产品";
       });
     },
-    submitForm() {
-      this.$refs["form"].validate((valid) => {
+    /** 提交按钮 */
+    submitForm: function() {
+      this.$refs["form"].validate(valid => {
         if (valid) {
-          if(this.form.id) {
-            updateProduct(this.form).then(res =>{
-              this.$modal.msgSuccess("修改成功")
+          if (this.form.id!= undefined) {
+            updateProduct(this.form).then(response => {
+              this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
             });
-          }else{
-            addProduct(this.form).then(res =>{
-              this.$modal.msgSuccess("新增成功")
+          } else {
+            addProduct(this.form).then(response => {
+              this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
             });
@@ -247,10 +250,49 @@ export default {
         }
       });
     },
-    /** 取消按钮 */
-    cancel() {
-      this.open = false;
+    /** 删除按钮操作 */
+    handleDelete(row) {
+      const productIds = row.id || this.ids;
+      const ids = Array.isArray(productIds) ? productIds: [productIds]
+      this.$modal.confirm('是否确认删除产品编号为"' + productIds + '"的数据项？').then(function() {
+        return deleteProduct(ids);
+      }).then(() => {
+        this.getList();
+        this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
+    // 表格单元格样式
+    tableCellStyle({ row, column, rowIndex, columnIndex }) {
+      return 'padding: 8px 0;'; // 减小单元格的垂直内边距
+    },
+    // 表格表头单元格样式
+    headerCellStyle({ row, column, rowIndex, columnIndex }) {
+      return 'background-color: #f5f7fa; color: #606266; font-weight: bold; padding: 8px 0;'; // 修改表头背景色、文字颜色、字体加粗
+    },
+  },
+  // 定义过滤器
+  filters: {
+    formatDate(time) {
+      if (!time) {
+        return ''; // 或其他默认值，例如 'N/A'
+      }
+      const date = new Date(time);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份从 0 开始，所以要 +1
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
   },
 };
 </script>
+
+<style scoped>
+/* 可以添加一些自定义样式，例如更紧凑的间距 */
+.el-form--inline .el-form-item {
+  margin-right: 10px; /* 减少水平间距 */
+  margin-bottom: 10px; /* 减少垂直间距 */
+}
+</style>
