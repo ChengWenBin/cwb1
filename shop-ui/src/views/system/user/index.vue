@@ -3,7 +3,8 @@
     <el-row :gutter="20">
       <splitpanes :horizontal="this.$store.getters.device === 'mobile'" class="default-theme">
         <!--部门数据-->
-        <pane size="16">
+        <!-- 注释掉或移除部门相关的代码 -->
+        <!-- <pane size="16">
           <el-col>
             <div class="head-container">
               <el-input v-model="deptName" placeholder="请输入部门名称" clearable size="small" prefix-icon="el-icon-search" style="margin-bottom: 20px" />
@@ -12,9 +13,9 @@
               <el-tree :data="deptOptions" :props="defaultProps" :expand-on-click-node="false" :filter-node-method="filterNode" ref="tree" node-key="id" default-expand-all highlight-current @node-click="handleNodeClick" />
             </div>
           </el-col>
-        </pane>
+        </pane> -->
         <!--用户数据-->
-        <pane size="84">
+        <pane size="100">  <!-- 原来是84，现在改为100 -->
           <el-col>
             <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
               <el-form-item label="用户名称" prop="userName">
@@ -61,7 +62,8 @@
               <el-table-column label="用户编号" align="center" key="userId" prop="userId" v-if="columns[0].visible" />
               <el-table-column label="用户名称" align="center" key="userName" prop="userName" v-if="columns[1].visible" :show-overflow-tooltip="true" />
               <el-table-column label="用户昵称" align="center" key="nickName" prop="nickName" v-if="columns[2].visible" :show-overflow-tooltip="true" />
-              <el-table-column label="部门" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
+              <!-- 隐藏部门列 -->
+              <el-table-column label="部门" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" v-show="false"/>
               <el-table-column label="手机号码" align="center" key="phonenumber" prop="phonenumber" v-if="columns[4].visible" width="120" />
               <el-table-column label="状态" align="center" key="status" v-if="columns[5].visible">
                 <template slot-scope="scope">
@@ -104,7 +106,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="归属部门" prop="deptId">
+            <!-- 保留归属部门，但在新增/编辑时不显示 -->
+            <el-form-item label="归属部门" prop="deptId" v-show="false">
               <treeselect v-model="form.deptId" :options="enabledDeptOptions" :show-count="true" placeholder="请选择归属部门" />
             </el-form-item>
           </el-col>
@@ -151,7 +154,8 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="岗位">
+            <!-- 隐藏岗位选择 -->
+            <el-form-item label="岗位" v-show="false">
               <el-select v-model="form.postIds" multiple placeholder="请选择岗位">
                 <el-option v-for="item in postOptions" :key="item.postId" :label="item.postName" :value="item.postId" :disabled="item.status == 1" ></el-option>
               </el-select>
@@ -276,12 +280,12 @@ export default {
         status: undefined,
         deptId: undefined
       },
-      // 列信息
+      // 列信息 , 修改这里
       columns: [
         { key: 0, label: `用户编号`, visible: true },
         { key: 1, label: `用户名称`, visible: true },
         { key: 2, label: `用户昵称`, visible: true },
-        { key: 3, label: `部门`, visible: true },
+        { key: 3, label: `部门`, visible: false }, //部门
         { key: 4, label: `手机号码`, visible: true },
         { key: 5, label: `状态`, visible: true },
         { key: 6, label: `创建时间`, visible: true }
@@ -319,35 +323,47 @@ export default {
   },
   watch: {
     // 根据名称筛选部门树
-    deptName(val) {
-      this.$refs.tree.filter(val);
-    }
+    // deptName(val) {   //注释掉
+    //   this.$refs.tree.filter(val);
+    // }
   },
   created() {
     this.getList();
-    this.getDeptTree();
+    // this.getDeptTree(); //获取部门树，但是不进行展示
     this.getConfigKey("sys.user.initPassword").then(response => {
       this.initPassword = response.msg;
+    });
+    deptTreeSelect().then(response => { // 部门树加载到 enabledDeptOptions
+      this.enabledDeptOptions = this.filterDisabledDept(JSON.parse(JSON.stringify(response.data)));
     });
   },
   methods: {
     /** 查询用户列表 */
     getList() {
       this.loading = true;
-      listUser(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.userList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
-    },
-    /** 查询部门下拉树结构 */
-    getDeptTree() {
-      deptTreeSelect().then(response => {
-        this.deptOptions = response.data;
-        this.enabledDeptOptions = this.filterDisabledDept(JSON.parse(JSON.stringify(response.data)));
+      // listUser(this.addDateRange(this.queryParams, this.dateRange)).then(response => { //注释掉
+      //   this.userList = response.rows;
+      //   this.total = response.total;
+      //   this.loading = false;
+      // }
+
+      // );
+      //查询的时候不再需要部门id
+      let query = { ...this.queryParams };
+      delete query.deptId;
+      listUser(this.addDateRange(query, this.dateRange)).then(response => {
+        this.userList = response.rows;
+        this.total = response.total;
+        this.loading = false;
       });
     },
+    /** 查询部门下拉树结构 */
+    // getDeptTree() {  //注释掉
+    //   deptTreeSelect().then(response => {
+    //     this.deptOptions = response.data;
+    //     this.enabledDeptOptions = this.filterDisabledDept(JSON.parse(JSON.stringify(response.data)));
+    //   });
+    // },
     // 过滤禁用的部门
     filterDisabledDept(deptList) {
       return deptList.filter(dept => {
@@ -361,15 +377,15 @@ export default {
       });
     },
     // 筛选节点
-    filterNode(value, data) {
-      if (!value) return true;
-      return data.label.indexOf(value) !== -1;
-    },
+    // filterNode(value, data) {  //注释掉
+    //   if (!value) return true;
+    //   return data.label.indexOf(value) !== -1;
+    // },
     // 节点单击事件
-    handleNodeClick(data) {
-      this.queryParams.deptId = data.id;
-      this.handleQuery();
-    },
+    // handleNodeClick(data) { //注释掉
+    //   this.queryParams.deptId = data.id;
+    //   this.handleQuery();
+    // },
     // 用户状态修改
     handleStatusChange(row) {
       let text = row.status === "0" ? "启用" : "停用";
@@ -413,8 +429,8 @@ export default {
     resetQuery() {
       this.dateRange = [];
       this.resetForm("queryForm");
-      this.queryParams.deptId = undefined;
-      this.$refs.tree.setCurrentKey(null);
+      this.queryParams.deptId = undefined; //清除部门id
+      // this.$refs.tree.setCurrentKey(null); //注释掉
       this.handleQuery();
     },
     // 多选框选中数据
@@ -446,6 +462,7 @@ export default {
         this.title = "添加用户";
         this.form.password = this.initPassword;
       });
+      this.form.postIds = [];
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -455,7 +472,7 @@ export default {
         this.form = response.data;
         this.postOptions = response.posts;
         this.roleOptions = response.roles;
-        this.$set(this.form, "postIds", response.postIds);
+        // this.$set(this.form, "postIds", response.postIds); //注释
         this.$set(this.form, "roleIds", response.roleIds);
         this.open = true;
         this.title = "修改用户";
@@ -476,10 +493,10 @@ export default {
           }
         },
       }).then(({ value }) => {
-          resetUserPwd(row.userId, value).then(response => {
-            this.$modal.msgSuccess("修改成功，新密码是：" + value);
-          });
-        }).catch(() => {});
+        resetUserPwd(row.userId, value).then(response => {
+          this.$modal.msgSuccess("修改成功，新密码是：" + value);
+        });
+      }).catch(() => {});
     },
     /** 分配角色操作 */
     handleAuthRole: function(row) {
