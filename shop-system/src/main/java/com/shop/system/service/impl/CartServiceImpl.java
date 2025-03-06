@@ -20,7 +20,16 @@ public class CartServiceImpl implements ICartService {
     }
     @Override
     public int insertCart(Cart cart) {
-        return cartMapper.insertCart(cart);
+        List<Cart> carts = cartMapper.selectCartList(cart.getUserId());
+        Cart historyCart = carts.stream().filter(item -> item.getProductId().equals(cart.getProductId()))
+                .findFirst().orElse(new Cart());
+        if (null == historyCart.getId()){
+            return cartMapper.insertCart(cart);
+        } else {
+            historyCart.setQuantity(historyCart.getQuantity() + 1);
+            return cartMapper.updateCart(historyCart);
+        }
+
     }
     @Override
     public int updateCart(Cart cart) {

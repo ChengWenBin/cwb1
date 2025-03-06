@@ -87,21 +87,24 @@ export default {
     },
 
     async fetchReportData() {
-      try{
-        this.salesLoading = true; //开始加载
+      try {
+        this.salesLoading = true;
         const salesReportRes = await getSalesReport();
-        // this.salesReportData = salesReportRes.data;  // 不需要这行了
-        // 直接将 productSales 赋值给 salesReportData.productSales
-        this.salesReportData.productSales = salesReportRes.data.productSales;
-        this.salesLoading = false
 
-        this.orderLoading = true
+        // 对 productSales 数组进行排序 (倒序)
+        this.salesReportData.productSales = salesReportRes.data.productSales.sort((a, b) => {
+          return b.amount - a.amount; // 从大到小排序
+        });
+
+        this.salesLoading = false;
+
+        this.orderLoading = true;
         const orderReportRes = await getOrderReport();
         this.orderReportData = orderReportRes.data;
-        this.orderLoading = false; // 加载完成
-      }catch (error){
-        this.salesLoading = false
-        this.orderLoading = false
+        this.orderLoading = false;
+      } catch (error) {
+        this.salesLoading = false;
+        this.orderLoading = false;
         console.error('Error fetching report data:', error);
       }
     },
