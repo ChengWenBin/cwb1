@@ -2,6 +2,9 @@
   <div class="app-container">
     <el-card>
       <el-form :inline="true" ref="queryForm" :model="queryParams">
+        <el-form-item label="产品名称" prop="name">
+          <el-input v-model="queryParams.name" placeholder="请输入产品名称" clearable />
+        </el-form-item>
         <el-form-item label="产品类别" prop="category">
           <el-select v-model="queryParams.category" placeholder="请选择产品类别" clearable>
             <el-option label="电脑" value="电脑" />
@@ -73,6 +76,7 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        name: "",
         category: "",   //初始 category 就是空字符串，代表查询所有类别
         minPrice: null,
         maxPrice: null,
@@ -92,6 +96,7 @@ export default {
     },
     resetQuery() {
       this.$refs.queryForm.resetFields(); // 重置表单控件的值
+      this.queryParams.name = "";
       this.queryParams.category = "";     // 显式地设置 category 为空，触发重新查询
       this.queryParams.minPrice = null;
       this.queryParams.maxPrice = null;
