@@ -53,6 +53,17 @@
             <if test="name != null and name != ''">
                 AND name LIKE CONCAT('%', #{name}, '%')
             </if>
+            <choose>
+                <when test="minPrice != null and maxPrice != null">
+                    AND price BETWEEN #{minPrice} AND #{maxPrice}
+                </when>
+                <when test="minPrice != null">
+                    AND price >= #{minPrice}
+                </when>
+                <when test="maxPrice != null">
+                    AND price <![CDATA[ <= ]]> #{maxPrice}
+                </when>
+            </choose>
         </where>
         ORDER BY updated_time DESC
     </select>

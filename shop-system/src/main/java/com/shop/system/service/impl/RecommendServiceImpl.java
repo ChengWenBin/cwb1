@@ -35,10 +35,10 @@ public class RecommendServiceImpl implements IRecommendService {
     
     /**
      * 根据用户订单历史获取推荐产品
-     * 推荐算法：
+     * 优化后的推荐算法：
      * 1. 获取用户的历史订单
-     * 2. 从订单中提取用户购买过的产品类别和价格范围
-     * 3. 查找相同类别且价格相近的产品进行推荐
+     * 2. 从订单中提取用户购买过的产品，按类别分组并记录每个类别的价格信息
+     * 3. 为每个类别单独计算价格范围，查找相同类别且价格在该范围内的产品进行推荐
      * 
      * @return 推荐产品列表
      */
@@ -67,9 +67,9 @@ public class RecommendServiceImpl implements IRecommendService {
             return new ArrayList<>();
         }
         
-        // 收集用户购买过的产品类别和价格信息
-        Set<String> userCategories = new HashSet<>();
-        List<BigDecimal> userPrices = new ArrayList<>();
+        // 按类别收集用户购买过的产品价格信息
+        // 使用Map存储每个类别的价格列表
+        java.util.Map<String, List<BigDecimal>> categoryPricesMap = new java.util.HashMap<>();
         Set<Long> purchasedProductIds = new HashSet<>();
         
         for (Order order : userOrders) {
@@ -80,36 +80,43 @@ public class RecommendServiceImpl implements IRecommendService {
                 // 获取产品详情
                 Product product = productService.selectProductById(item.getProductId());
                 if (product != null) {
-                    userCategories.add(product.getCategory());
-                    userPrices.add(product.getPrice());
+                    // 按类别分组存储价格信息
+                    String category = product.getCategory();
+                    categoryPricesMap.computeIfAbsent(category, k -> new ArrayList<>())
+                                     .add(product.getPrice());
                     purchasedProductIds.add(product.getId());
                 }
             }
         }
         
-        if (userCategories.isEmpty()) {
+        if (categoryPricesMap.isEmpty()) {
             return new ArrayList<>();
         }
-        
-        // 计算用户购买产品的平均价格
-        BigDecimal avgPrice = BigDecimal.ZERO;
-        for (BigDecimal price : userPrices) {
-            avgPrice = avgPrice.add(price);
-        }
-        avgPrice = avgPrice.divide(new BigDecimal(userPrices.size()), 2, BigDecimal.ROUND_HALF_UP);
-        
-        // 设置价格范围（平均价格的±30%）
-        BigDecimal minPrice = avgPrice.multiply(new BigDecimal("0.7"));
-        BigDecimal maxPrice = avgPrice.multiply(new BigDecimal("1.3"));
         
         // 查找符合条件的推荐产品
         List<Product> recommendedProducts = new ArrayList<>();
         
-        for (String category : userCategories) {
+        // 为每个类别单独计算价格范围并查找推荐产品
+        for (java.util.Map.Entry<String, List<BigDecimal>> entry : categoryPricesMap.entrySet()) {
+            String category = entry.getKey();
+            List<BigDecimal> prices = entry.getValue();
+            
+            // 计算该类别产品的平均价格
+            BigDecimal categoryAvgPrice = BigDecimal.ZERO;
+            for (BigDecimal price : prices) {
+                categoryAvgPrice = categoryAvgPrice.add(price);
+            }
+            categoryAvgPrice = categoryAvgPrice.divide(new BigDecimal(prices.size()), 2, BigDecimal.ROUND_HALF_UP);
+            
+            // 设置该类别的价格范围（平均价格的±30%）
+            BigDecimal categoryMinPrice = categoryAvgPrice.multiply(new BigDecimal("0.7"));
+            BigDecimal categoryMaxPrice = categoryAvgPrice.multiply(new BigDecimal("1.3"));
+            
+            // 构建查询条件
             Product queryProduct = new Product();
             queryProduct.setCategory(category);
-            queryProduct.setMinPrice(minPrice);
-            queryProduct.setMaxPrice(maxPrice);
+            queryProduct.setMinPrice(categoryMinPrice);
+            queryProduct.setMaxPrice(categoryMaxPrice);
             
             // 查询相同类别且价格在范围内的产品
             List<Product> similarProducts = productService.selectProductListByCategory(queryProduct);
@@ -117,6 +124,12 @@ public class RecommendServiceImpl implements IRecommendService {
             // 过滤掉用户已购买过的产品
             similarProducts = similarProducts.stream()
                     .filter(p -> !purchasedProductIds.contains(p.getId()))
+                    .collect(Collectors.toList());
+            
+            // 确保只添加符合价格区间的产品
+            similarProducts = similarProducts.stream()
+                    .filter(p -> p.getPrice().compareTo(categoryMinPrice) >= 0 && 
+                                p.getPrice().compareTo(categoryMaxPrice) <= 0)
                     .collect(Collectors.toList());
             
             recommendedProducts.addAll(similarProducts);
