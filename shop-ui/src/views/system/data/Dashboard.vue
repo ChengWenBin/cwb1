@@ -19,16 +19,16 @@
 
     <el-row style="margin-top: 20px;">
       <el-col :span="24">
-        <h2 style="text-align: center;">销售数据报表</h2>  <!-- 标题居中 -->
+        <h2 style="text-align: center;">销售数据报表</h2>
         <el-button type="primary" @click="exportSalesReport">导出销售报表</el-button>
         <el-table v-if="!salesLoading" :data="salesReportData.productSales" border style="width: 100%">
           <el-table-column prop="name" label="产品名称"></el-table-column>
           <el-table-column prop="quantity" label="销售数量"></el-table-column>
           <el-table-column prop="amount" label="产品销售总额"></el-table-column>
         </el-table>
-        <div v-else>正在加载数据...</div>
+        <div v-else> 正在加载数据...</div>
 
-        <h2 style="text-align: center;">订单数据报表</h2> <!-- 标题居中 -->
+        <h2 style="text-align: center;">订单数据报表</h2>
         <el-button type="primary" @click="exportOrderReport">导出订单报表</el-button>
         <el-table v-if="!orderLoading" :data="orderReportData" border style="width: 100%">
           <el-table-column prop="create_time" label="下单日期"></el-table-column>
@@ -141,12 +141,12 @@ export default {
     },
 
     renderProductSalesChart(data) {
-      const productNames = data.map(item => item.productName);
+      const categories = data.map(item => item.category);
       const sales = data.map(item => item.sales);
 
       const option = {
         title: {
-          text: '产品销售分布',
+          text: '产品类型销售分布',
           left: 'center'
         },
         tooltip: {
@@ -154,16 +154,17 @@ export default {
           formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: productNames
+          orient: 'vertical', // 垂直排列
+          left: 'left',       // 左侧
+          top: 'center',      // 垂直居中
+          data: categories
         },
         series: [{
           name: '销售额',
           type: 'pie',
-          radius: '50%', // 可以适当增大半径
-          center: ['50%', '60%'],
-          data: data.map(item => ({ value: item.sales, name: item.productName })),
+          radius: '50%',
+          center: ['60%', '55%'],  // 调整圆心位置，为图例腾出空间。  注意这里改了
+          data: data.map(item => ({ value: item.sales, name: item.category })),
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
@@ -171,16 +172,13 @@ export default {
               shadowColor: 'rgba(0, 0, 0, 0.5)'
             }
           },
-          label: {  // 调整 label 配置
-            // position: 'outside', // 默认就是 outside, 可以省略
-            formatter: '{b}\n{d}%', // 显示名称和百分比，并换行
-            // overflow: 'truncate', // 超出部分显示省略号 (如果需要)
-            avoidLabelOverlap: true, // 开启防止标签重叠 (ECharts 5+)
-            // rotate: 30 // 旋转标签 (如果需要)
+          label: {
+            formatter: '{b}\n{d}%',
+            avoidLabelOverlap: true,
           },
-          labelLine: { // 如果需要, 调整引导线
-            length: 10,  // 第一段引导线长度
-            length2: 5 // 第二段引导线长度
+          labelLine: {
+            length: 10,
+            length2: 5
           }
 
         }]
@@ -188,7 +186,6 @@ export default {
 
       this.productSalesChart.setOption(option)
     },
-
     renderOrderTrendChart(data) {
       const dates = data.map(item => item.date);
       const orderCounts = data.map(item => item.orderCount);
@@ -212,6 +209,7 @@ export default {
       };
       this.orderTrendChart.setOption(option);
     },
+
     renderOrderStatusChart(data) {
       const option = {
         title: {
@@ -223,20 +221,20 @@ export default {
           formatter: '{b}: {c} ({d}%)'
         },
         legend: {
-          orient: 'vertical',
-          left: 'left',
+          orient: 'vertical', // 垂直排列
+          left: 'left',       // 左侧
+          top: 'center',      // 垂直居中
           data: data.map(item => item.status)
         },
         series: [{
           name: '订单状态',
           type: 'pie',
-          radius: '50%',  // 可以适当调整
-          // center: ['50%', '50%'], // 可以适当调整
+          radius: '50%',
+          center: ['60%', '55%'], // 调整圆心，为图例腾出更多空间。 注意这里也改了
           data: data.map(item => ({ value: item.count, name: item.status })),
           label: {
             formatter: '{b}\n{d}%',
-            avoidLabelOverlap: true, // 非常重要, 开启防重叠
-            // overflow: 'truncate', // 根据需要
+            avoidLabelOverlap: true,
           },
           labelLine: {
             length: 8,
@@ -248,9 +246,9 @@ export default {
     },
 
     exportSalesReport() {
-      const tHeader = ['产品名称', '销售数量', '产品销售总额'];  // 修改表头
-      const filterVal = ['name', 'quantity', 'amount']; // 修改要导出的字段
-      const list = this.salesReportData.productSales;  // 直接使用 productSales 数组
+      const tHeader = ['产品名称', '销售数量', '产品销售总额'];  // 改回原来的表头
+      const filterVal = ['name', 'quantity', 'amount']; // 改回原来的字段
+      const list = this.salesReportData.productSales;
       const data = this.formatJson(filterVal, list);
       this.exportExcel(data, tHeader, '销售数据报表.xlsx');
     },
@@ -264,16 +262,15 @@ export default {
     },
 
     formatJson(filterVal, jsonData) {
-      // 更简洁的写法
       return jsonData.map(item => {
-        return filterVal.map(key => item[key] || ''); // 返回每个字段的值，如果没有则为空字符串
+        return filterVal.map(key => item[key] || '');
       });
     },
 
     exportExcel(data, header, filename) {
-      const ws = XLSX.utils.aoa_to_sheet([header]); // 先创建表头sheet
+      const ws = XLSX.utils.aoa_to_sheet([header]);
       const jsonData = data;
-      XLSX.utils.sheet_add_json(ws, jsonData, { origin: 'A2', skipHeader: true });  //从A2开始追加数据
+      XLSX.utils.sheet_add_json(ws, jsonData, { origin: 'A2', skipHeader: true });
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });

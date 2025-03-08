@@ -12,11 +12,14 @@ public interface DashboardMapper {
 
     List<Map<String, Object>> getProductSales();
 
-    List<Map<String, Object>> getOrderTrend();
-
-    List<Map<String, Object>> getOrderStatus();
+    Map<String, Object> getSalesReportTotalSales();
 
     List<Map<String, Object>> getSalesReportProductSales();
 
+    List<Map<String, Object>> getSalesReportDailySales();
+
     List<Map<String, Object>> getOrderReport();
+    List<Map<String, Object>> getOrderTrend();
+
+    List<Map<String, Object>> getOrderStatus();
 }

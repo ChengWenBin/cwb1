@@ -29,6 +29,7 @@
         <el-form-item>
           <el-button type="primary" @click="handleQuery">查询</el-button>
           <el-button @click="resetQuery">重置</el-button>
+          <el-button type="success" @click="showRecommend">查看推荐</el-button>
         </el-form-item>
       </el-form>
       <el-table v-loading="loading" :data="productList">
@@ -61,14 +62,20 @@
         @pagination="getList"
       />
     </el-card>
+    <!-- 推荐产品弹窗 -->
+    <recommend-popup :visible.sync="recommendVisible" />
   </div>
 </template>
 
 <script>
 import { listProduct } from "@/api/system/product-browse";
 import { addCart } from "@/api/system/cart";
+import RecommendPopup from "./components/RecommendPopup.vue";
 
 export default {
+  components: {
+    RecommendPopup
+  },
   data() {
     return {
       loading: true,
@@ -83,10 +90,17 @@ export default {
         minStock: null,
       },
       total: 0,
+      recommendVisible: false,
     };
   },
   created() {
     this.getList();
+    // 页面加载后显示推荐弹窗
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.recommendVisible = true;
+      }, 1000); // 延迟1秒显示，给页面加载留出时间
+    });
   },
   methods: {
     handleQuery() {
@@ -135,6 +149,9 @@ export default {
         console.log(err);
         this.$modal.msgError("添加购物车失败");
       });
+    },
+    showRecommend() {
+      this.recommendVisible = true;
     }
   }
 };

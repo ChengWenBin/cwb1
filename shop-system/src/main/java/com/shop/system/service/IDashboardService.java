@@ -16,4 +16,6 @@ public interface IDashboardService {
     Map<String, Object> getSalesReport();
 
     List<Map<String, Object>> getOrderReport();
+
+    List<Map<String, Object>> getSalesReportProductSales();
 }

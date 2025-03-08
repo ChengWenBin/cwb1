@@ -11,12 +11,20 @@
     </select>
 
     <select id="getProductSales" resultType="map">
-        SELECT p.name AS productName, SUM(oi.total_price) AS sales
+        SELECT
+            CASE p.category
+                WHEN '电脑' THEN '电脑'
+                WHEN '手机' THEN '手机'
+                WHEN '平板' THEN '平板'
+                WHEN '耳机' THEN '耳机'
+                ELSE '其他'
+                END AS category,
+            SUM(oi.total_price) AS sales
         FROM order_item oi
                  JOIN product p ON oi.product_id = p.id
                  JOIN `order` o ON oi.order_id = o.order_id
         WHERE o.order_status != '已取消'
-        GROUP BY p.name
+        GROUP BY category
     </select>
 
     <select id="getOrderTrend" resultType="map">
@@ -32,10 +40,17 @@
         GROUP BY order_status
     </select>
 
-    <!--  删除这两个 SQL
     <select id="getSalesReportTotalSales" resultType="map">
         SELECT SUM(total_amount) as totalSales FROM `order` WHERE order_status != '已取消'
-     </select>
+    </select>
+    <select id="getSalesReportProductSales" resultType="map">
+        SELECT p.name, SUM(oi.quantity) AS quantity, SUM(oi.total_price) AS amount
+        FROM order_item oi
+                 JOIN product p ON oi.product_id = p.id
+                 JOIN `order` o ON oi.order_id = o.order_id
+        WHERE o.order_status != '已取消'
+        GROUP BY p.name
+    </select>
 
     <select id="getSalesReportDailySales" resultType="map">
         SELECT DATE(create_time) AS date, SUM(total_amount) AS amount
@@ -43,17 +58,6 @@
         WHERE order_status != '已取消'
         GROUP BY DATE(create_time)
         ORDER BY DATE(create_time)
-    </select>
-    -->
-
-    <!-- 修改这个 SQL，只查询需要的字段 -->
-    <select id="getSalesReportProductSales" resultType="map">
-        SELECT p.name as name, SUM(oi.quantity) AS quantity, SUM(oi.total_price) AS amount
-        FROM order_item oi
-                 JOIN product p ON oi.product_id = p.id
-                 JOIN `order` o ON oi.order_id = o.order_id
-        WHERE o.order_status != '已取消'
-        GROUP BY p.name
     </select>
 
     <select id="getOrderReport" resultType="map">
