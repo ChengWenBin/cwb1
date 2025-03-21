@@ -28,10 +28,22 @@
         </el-select>
       </el-form-item>
       <el-form-item label="最小金额" prop="minAmount">
-        <el-input-number v-model="queryParams.minAmount" :controls="false" placeholder="最小金额" style="width: 130px"/>
+        <el-input-number
+          v-model="queryParams.minAmount"
+          :controls="false"
+          placeholder="最小金额"
+          style="width: 130px"
+          :value="queryParams.minAmount === undefined ? undefined : queryParams.minAmount"
+        />
       </el-form-item>
       <el-form-item label="最大金额" prop="maxAmount">
-        <el-input-number v-model="queryParams.maxAmount" :controls="false" placeholder="最大金额" style="width: 130px"/>
+        <el-input-number
+          v-model="queryParams.maxAmount"
+          :controls="false"
+          placeholder="最大金额"
+          style="width: 130px"
+          :value="queryParams.maxAmount === undefined ? undefined : queryParams.maxAmount"
+        />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="fetchData">查询</el-button>
@@ -117,12 +129,16 @@ export default {
     return {
       orderList: [],
       detailDialogVisible: false,
-      queryParams:{},
+      queryParams: {
+        orderNo: undefined,
+        userId: undefined,
+        orderStatus: '',
+        minAmount: undefined, // 使用 undefined 而不是 null
+        maxAmount: undefined  // 使用 undefined 而不是 null
+      },
       selectedOrder: {},
       orderItemList:[],
-      orderStatus: '', // 新增：订单状态, 默认为空字符串（全部）
-      minAmount: null, // 新增：最小金额
-      maxAmount: null, // 新增：最大金额
+      orderStatus: '', // 默认为空字符串（全部）
     };
   },
   created() {
@@ -130,7 +146,14 @@ export default {
   },
   methods: {
     fetchData(){
-      listOrder(this.queryParams).then(response => {
+      // 创建一个新对象用于发送请求，过滤掉 undefined 值
+      const params = {};
+      for (const key in this.queryParams) {
+        if (this.queryParams[key] !== undefined) {
+          params[key] = this.queryParams[key];
+        }
+      }
+      listOrder(params).then(response => {
         this.orderList = response.rows
       })
     },
@@ -160,13 +183,13 @@ export default {
         this.fetchData()
       })
     },
-    resetQuery() { // 新增：重置查询条件
+    resetQuery() { // 修改：重置查询条件
       this.queryParams = {
-        orderNo: null,
-        userId: null,
+        orderNo: undefined,
+        userId: undefined,
         orderStatus: '',
-        minAmount: null,
-        maxAmount: null,
+        minAmount: undefined, // 关键修改：使用 undefined 而不是 null
+        maxAmount: undefined  // 关键修改：使用 undefined 而不是 null
       };
       this.fetchData(); // 重置后重新查询
     }
