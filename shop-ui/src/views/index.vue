@@ -1,28 +1,39 @@
 <template>
   <div class="app-container home">
-    <!-- 顶部 Hero 区域 -->
-    <el-row :gutter="20" class="hero-row">
-      <el-col :span="24" class="hero-content">
-        <h2 class="home-title">欢迎进入电子产品销售系统</h2>
-        <p class="home-description">专业高效的电子产品全流程管理平台</p>
-        <hr class="hero-divider" />
-      </el-col>
-    </el-row>
-
-    <!-- 系统简介 -->
-    <el-row :gutter="20" class="intro-row">
-      <el-col :span="24" class="intro-box">
-        <h2 class="section-title">系统简介</h2>
-        <p class="system-description">
-          电子产品销售系统是一套集电子产品管理、订单管理、购物车管理、电子产品浏览、数据分析于一体的综合性电子产品销售系统。
-          系统采用先进的前后端分离架构，提供从商品上架到售后服务全流程数字化管理。通过智能化的数据分析和实时的库存监控，助力企业提升运营效率，优化客户体验。
-        </p>
-      </el-col>
-    </el-row>
-
+    <!-- 推荐产品 -->
+    <el-divider content-position="center" class="section-divider">
+      <span class="divider-text">为您推荐</span>
+    </el-divider>
+    <div v-if="recommendLoading" class="loading-container">
+      <el-skeleton :rows="3" animated />
+    </div>
+    <div v-else-if="recommendedProducts.length === 0" class="empty-container">
+      <i class="el-icon-shopping-bag-1" style="font-size: 48px; color: #909399;"></i>
+      <p>暂无推荐产品，快去购买更多商品吧！</p>
+    </div>
+    <div v-else>
+      <p class="recommend-tip">根据您的购买历史，我们为您推荐以下产品：</p>
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="12" :md="8" v-for="(product, index) in recommendedProducts" :key="index" class="product-col">
+          <el-card shadow="hover" class="product-card">
+            <div class="product-img">
+              <el-image :src="product.imageUrl" fit="cover"></el-image>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">{{ product.name }}</h3>
+              <p class="product-category">{{ product.category }}</p>
+              <p class="product-description">{{ product.description }}</p>
+              <p class="product-price">¥{{ product.price }}</p>
+              <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+    
     <!-- 核心功能 -->
     <el-divider content-position="center" class="section-divider">
-      <span class="divider-text">核心功能</span>
+      <span class="divider-text">快速跳转</span>
     </el-divider>
     <el-row class="features-row" :gutter="30">
       <el-col
@@ -50,6 +61,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { getRecommendedProducts } from '@/api/system/recommend';
+import { addCart } from '@/api/system/cart';
 
 export default {
   name: "Index",
@@ -115,8 +128,15 @@ export default {
         { icon: "el-icon-document", name: "我的订单", path: "/system/order", ...featureStyles[5] },
         { icon: "el-icon-s-order", name: "订单管理", path: "/system/adminOrder", ...featureStyles[6] },
         { icon: "el-icon-data-analysis", name: "数据看板", path: "/dashboard", ...featureStyles[7] },
-      ]
+      ],
+      // 推荐产品数据
+      recommendedProducts: [],
+      recommendLoading: true
     };
+  },
+  created() {
+    // 页面创建时获取推荐产品
+    this.fetchRecommendedProducts();
   },
   methods: {
     goTarget(path) {
@@ -126,6 +146,34 @@ export default {
         this.$message.warning('该功能暂未开放或路径未配置');
         console.warn("未配置跳转路径");
       }
+    },
+    // 获取推荐产品数据
+    fetchRecommendedProducts() {
+      this.recommendLoading = true;
+      getRecommendedProducts()
+        .then(response => {
+          this.recommendedProducts = response.data || [];
+          this.recommendLoading = false;
+        })
+        .catch(error => {
+          console.error('获取推荐产品失败:', error);
+          this.recommendLoading = false;
+        });
+    },
+    // 添加到购物车
+    handleAddToCart(product) {
+      const cart = {
+        productId: product.id,
+        quantity: 1
+      };
+      addCart(cart)
+        .then(() => {
+          this.$modal.msgSuccess('添加购物车成功');
+        })
+        .catch(err => {
+          console.error(err);
+          this.$modal.msgError('添加购物车失败');
+        });
     }
   }
 };
@@ -293,6 +341,91 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
     height: 100%;
     @include flex-center(); // 同样在卡片体内居中内容
   }
+}
+
+// --- 推荐产品区域样式 ---
+.recommend-tip {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: $text-color-secondary;
+  text-align: center;
+}
+
+.product-col {
+  margin-bottom: 25px;
+}
+
+.product-card {
+  height: 100%;
+  transition: $transition-common;
+  border-radius: $border-radius;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-hover;
+  }
+}
+
+.product-img {
+  height: 180px;
+  overflow: hidden;
+  
+  .el-image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-name {
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-category {
+  color: $text-color-light;
+  font-size: 14px;
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 限制显示两行 */
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+
+.product-price {
+  color: #f56c6c;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.loading-container,
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  
+  .el-icon-shopping-bag-1 {
+    margin-bottom: 15px;
+  }
+}
+
+.empty-container p {
+  margin-top: 15px;
+  color: $text-color-light;
+  font-size: 16px;
 }
 
 // 功能卡片内部内容样式

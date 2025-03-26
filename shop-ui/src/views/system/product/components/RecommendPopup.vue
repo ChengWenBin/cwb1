@@ -25,6 +25,7 @@
               <h3 class="product-name">{{ product.name }}</h3>
               <p class="product-category">{{ product.category }}</p>
               <p class="product-price">¥{{ product.price }}</p>
+              <p class="product-description">{{ product.description }}</p>
               <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
             </div>
           </el-card>
@@ -149,7 +150,11 @@ export default {
   font-weight: bold;
   margin: 10px 0;
 }
-
+.product-description {
+  color: #606266;
+  font-size: 14px;
+  margin: 10px 0;
+}
 .loading-container,
 .empty-container {
   display: flex;
