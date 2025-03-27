@@ -55,9 +55,13 @@
     </el-form>
 
     <el-table :data="orderList" style="width: 100%" border>
-      <!-- ... 表格列保持不变 ... -->
       <el-table-column label="订单编号" prop="orderNo" />
-      <el-table-column label="用户ID" prop="userId" />
+      <el-table-column label="用户名称">
+        <template #default="scope">
+          <span v-if="userNameCache[scope.row.userId]">{{ userNameCache[scope.row.userId] }}</span>
+          <el-tag v-else size="small" type="info">加载中...</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="下单时间" prop="createTime" width="180">
         <template #default="scope">
           {{ scope.row.createTime | formatDate }}
@@ -74,14 +78,18 @@
           <el-tag v-else-if="scope.row.orderStatus === '已取消'" type="danger">{{ scope.row.orderStatus }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="200">
+      <el-table-column label="详情" width="90" align="center">
         <template #default="scope">
           <el-button
             size="mini"
             type="primary"
             @click="handleDetail(scope.row)"
           >详情</el-button>
-          <el-select v-model="scope.row.orderStatus" placeholder="请选择"  @change="handleStatusChange(scope.row)">
+        </template>
+      </el-table-column>
+      <el-table-column label="状态操作" width="160" align="center">
+        <template #default="scope">
+          <el-select v-model="scope.row.orderStatus" placeholder="请选择" size="mini" style="width: 100%" @change="handleStatusChange(scope.row)">
             <el-option label="待付款" value="待付款"></el-option>
             <el-option label="待发货" value="待发货"></el-option>
             <el-option label="已发货" value="已发货"></el-option>
@@ -95,7 +103,9 @@
     <el-dialog title="订单详情" :visible.sync="detailDialogVisible" width="70%">
       <el-descriptions :column="3" border>
         <el-descriptions-item label="订单编号">{{ selectedOrder.orderNo }}</el-descriptions-item>
-        <el-descriptions-item label="用户ID">{{ selectedOrder.userId }}</el-descriptions-item>
+        <el-descriptions-item label="用户名称">
+          {{ userNameCache[selectedOrder.userId] || '未知用户' }}
+        </el-descriptions-item>
         <el-descriptions-item label="下单时间">{{ selectedOrder.createTime | formatDate}}</el-descriptions-item>
         <el-descriptions-item label="总金额">{{ selectedOrder.totalAmount }}</el-descriptions-item>
         <el-descriptions-item label="收货地址">{{selectedOrder.address}}</el-descriptions-item>
@@ -124,8 +134,9 @@
 </template>
 
 <script>
-import { listOrder, updateOrder,selectOrderById } from '@/api/system/order';
-import {listOrderItem} from '@/api/system/orderItem'
+import { listOrder, updateOrder, selectOrderById } from '@/api/system/order';
+import { listOrderItem } from '@/api/system/orderItem';
+import { getUser } from '@/api/system/user';
 
 export default {
   data() {
@@ -140,8 +151,10 @@ export default {
         maxAmount: undefined  // 使用 undefined 而不是 null
       },
       selectedOrder: {},
-      orderItemList:[],
+      orderItemList: [],
       orderStatus: '', // 默认为空字符串（全部）
+      // 用户名称缓存
+      userNameCache: {}
     };
   },
   created() {
@@ -176,7 +189,12 @@ export default {
         }
       }
       listOrder(params).then(response => {
-        this.orderList = response.rows
+        // 按下单时间倒序排序
+        this.orderList = response.rows.sort((a, b) => {
+          return new Date(b.createTime) - new Date(a.createTime);
+        });
+        // 获取所有订单的用户名称
+        this.fetchUserNames();
       })
     },
     handleDetail(row) {
@@ -185,6 +203,20 @@ export default {
       selectOrderById(row.orderId).then(response => {
         if (response.code === 200 && response.data) {
           this.selectedOrder = response.data; // 使用 selectOrderById 获取的完整订单信息
+          
+          // 确保用户名称已加载
+          if (this.selectedOrder.userId && !this.userNameCache[this.selectedOrder.userId]) {
+            getUser(this.selectedOrder.userId).then(res => {
+              if (res.data && res.code === 200) {
+                this.$set(this.userNameCache, this.selectedOrder.userId, res.data.nickName || res.data.userName || '未知用户');
+              } else {
+                this.$set(this.userNameCache, this.selectedOrder.userId, '未知用户');
+              }
+            }).catch(() => {
+              this.$set(this.userNameCache, this.selectedOrder.userId, '未知用户');
+            });
+          }
+          
           listOrderItem({orderId:row.orderId}).then(response => {
             this.orderItemList = response.rows;
             this.detailDialogVisible = true;
@@ -214,7 +246,41 @@ export default {
         maxAmount: undefined  // 关键修改：使用 undefined 而不是 null
       };
       this.fetchData(); // 重置后重新查询
-    }
+    },
+    // 获取用户名称
+    fetchUserNames() {
+      // 收集所有需要获取名称的用户ID
+      const userIds = [];
+      this.orderList.forEach(order => {
+        if (order.userId && !this.userNameCache[order.userId]) {
+          userIds.push(order.userId);
+        }
+      });
+      
+      // 如果没有需要获取的用户名，直接返回
+      if (userIds.length === 0) {
+        return;
+      }
+      
+      // 获取每个用户的名称
+      const promises = userIds.map(userId => {
+        return getUser(userId).then(res => {
+          if (res.data && res.code === 200) {
+            // 优先使用昵称，如果没有则使用用户名
+            this.$set(this.userNameCache, userId, res.data.nickName || res.data.userName || '未知用户');
+          } else {
+            this.$set(this.userNameCache, userId, '未知用户');
+          }
+        }).catch(() => {
+          this.$set(this.userNameCache, userId, '未知用户');
+        });
+      });
+      
+      // 等待所有请求完成
+      Promise.all(promises).catch(error => {
+        console.error('获取用户名称发生错误:', error);
+      });
+    },
   },
   filters: {
     formatDate(time) {
@@ -233,3 +299,36 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.app-container {
+  padding: 20px;
+}
+
+.el-table {
+  margin-top: 15px;
+}
+
+.el-tag {
+  font-weight: bold;
+}
+
+.el-select {
+  margin-top: 5px;
+}
+
+.el-form-item {
+  margin-bottom: 15px;
+}
+
+.el-descriptions {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #303133;
+}
+</style>

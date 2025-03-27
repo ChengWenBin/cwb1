@@ -1,37 +1,90 @@
 <template>
   <div class="app-container">
-    <el-card>
-      <el-table :data="cartList" v-loading="loading" border style="width: 100%" v-if="cartList.length > 0">
-        <el-table-column label="产品名称" prop="productName" align="center" />
-        <el-table-column label="价格" prop="price" align="center" />
-        <el-table-column label="图片" prop="imageUrl" align="center" width="100">
-          <template slot-scope="scope">
-            <el-image style="width: 80px;height:80px" :src="scope.row.imageUrl" :preview-src-list="[scope.row.imageUrl]"></el-image>
-          </template>
-        </el-table-column>
-        <el-table-column label="数量" prop="quantity" align="center">
-          <template slot-scope="scope">
-            <el-input-number v-model="scope.row.quantity" @change="handleQuantityChange(scope.row)" :min="1" :max="100" size="mini"></el-input-number>
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" align="center">
-          <template slot-scope="scope">
-            <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)">删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-      <div v-else class="no-data">
-        暂无数据
+    <div class="cart-header">
+      <div class="title-area">
+        <i class="el-icon-shopping-cart-full"></i>
+        <span>我的购物车</span>
       </div>
-      <pagination
-        v-show="total > 0"
-        :total="total"
-        :page.sync="queryParams.pageNum"
-        :limit.sync="queryParams.pageSize"
-        @pagination="getList"
-      />
-      <el-button type="danger" @click="handleClearCart">清空购物车</el-button>
-      <el-button type="primary" @click="openOrderDialog">生成订单</el-button>
+    </div>
+
+    <el-card class="cart-card">
+      <div v-if="cartList.length > 0">
+        <el-table :data="cartList" v-loading="loading" border style="width: 100%">
+          <el-table-column label="商品图片" prop="imageUrl" align="center" width="120">
+            <template slot-scope="scope">
+              <el-image 
+                style="width: 80px; height: 80px; border-radius: 4px;" 
+                :src="scope.row.imageUrl" 
+                :preview-src-list="[scope.row.imageUrl]"
+                fit="cover">
+                <div slot="error" class="image-error">
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </el-image>
+            </template>
+          </el-table-column>
+          <el-table-column label="商品名称" prop="productName" align="left" min-width="200" show-overflow-tooltip/>
+          <el-table-column label="单价" prop="price" align="center" width="150">
+            <template slot-scope="scope">
+              <span class="price">¥ {{ scope.row.price }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="数量" prop="quantity" align="center" width="150">
+            <template slot-scope="scope">
+              <el-input-number 
+                v-model="scope.row.quantity" 
+                @change="handleQuantityChange(scope.row)" 
+                :min="1" 
+                :max="100" 
+                size="small"
+                controls-position="right">
+              </el-input-number>
+            </template>
+          </el-table-column>
+          <el-table-column label="小计" align="center" width="150">
+            <template slot-scope="scope">
+              <span class="subtotal">¥ {{ (scope.row.price * scope.row.quantity).toFixed(2) }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="操作" align="center" width="100">
+            <template slot-scope="scope">
+              <el-button 
+                size="mini" 
+                type="danger" 
+                icon="el-icon-delete" 
+                circle
+                @click="handleDelete(scope.row)">
+              </el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>合计金额: </span>
+            <span class="total-price">¥ {{ totalAmount }}</span>
+          </div>
+          <div class="cart-actions">
+            <el-button type="default" @click="goToShopping">继续购物</el-button>
+            <el-button type="danger" @click="handleClearCart">清空购物车</el-button>
+            <el-button type="primary" @click="openOrderDialog">去结算</el-button>
+          </div>
+        </div>
+
+        <pagination
+          v-show="total > 0"
+          :total="total"
+          :page.sync="queryParams.pageNum"
+          :limit.sync="queryParams.pageSize"
+          @pagination="getList"
+        />
+      </div>
+
+      <div v-else class="empty-cart">
+        <i class="el-icon-shopping-cart-2"></i>
+        <p>购物车还是空的，去挑选喜欢的商品吧~</p>
+        <el-button type="primary" @click="goToShopping">去购物</el-button>
+      </div>
     </el-card>
 
     <!-- 收货地址填写对话框，内含省市区联动和详细地址输入 -->
@@ -60,7 +113,7 @@
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="confirmOrder">确 定</el-button>
+        <el-button type="primary" @click="confirmOrder">确认下单</el-button>
       </span>
     </el-dialog>
   </div>
@@ -251,6 +304,16 @@ export default {
       ]
     };
   },
+  computed: {
+    // 计算购物车总金额
+    totalAmount() {
+      if (!this.cartList.length) return '0.00';
+      const total = this.cartList.reduce((sum, item) => {
+        return sum + (item.price * item.quantity);
+      }, 0);
+      return total.toFixed(2);
+    }
+  },
   created() {
     this.getUserId();
     this.getList();
@@ -286,7 +349,6 @@ export default {
       this.loading = true;
       try {
         const response = await listCart(this.queryParams);
-        console.log("listCart response:", response);
         this.total = response.total;
         if (response && response.rows && Array.isArray(response.rows)) {
           this.cartList = response.rows.map(item => ({
@@ -428,16 +490,102 @@ export default {
         }
       });
       this.dialogVisible = false;
+    },
+    goToShopping() {
+      this.$router.push('/system/product-browse');
     }
   }
 };
 </script>
 
 <style scoped>
-.no-data {
+.cart-header {
+  background-color: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+}
+
+.title-area {
+  font-size: 18px;
+  font-weight: 600;
+  color: #303133;
+  display: flex;
+  align-items: center;
+}
+
+.title-area i {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #409EFF;
+}
+
+.cart-card {
+  margin-bottom: 20px;
+}
+
+.empty-cart {
   text-align: center;
-  padding: 20px;
+  padding: 60px 0;
+  color: #909399;
+}
+
+.empty-cart i {
+  font-size: 60px;
+  color: #DCDFE6;
+  margin-bottom: 20px;
+}
+
+.empty-cart p {
   font-size: 16px;
-  color: #999;
+  margin-bottom: 20px;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f7fa;
+  border-radius: 4px;
+}
+
+.cart-total {
+  font-size: 16px;
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #F56C6C;
+  margin-left: 10px;
+}
+
+.cart-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.price {
+  color: #F56C6C;
+  font-weight: 500;
+}
+
+.subtotal {
+  color: #F56C6C;
+  font-weight: bold;
+}
+
+.image-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f7fa;
+  color: #909399;
+  font-size: 20px;
 }
 </style>
