@@ -2,10 +2,10 @@
   <div class="category-charts-container">
     <el-row :gutter="20">
       <el-col :span="24">
-        <h3 class="charts-title">{{ isAdmin ? '电子产品类别销售分析' : '产品销售数据分析' }}</h3>
+<!--        <h3 class="charts-title">{{ isAdmin ? '电子产品类别销售分析' : '产品销售数据分析' }}</h3>-->
       </el-col>
     </el-row>
-    
+
     <!-- 管理员可见的详细销售分析 -->
     <div v-if="isAdmin">
       <el-row :gutter="20">
@@ -36,7 +36,7 @@
         </el-col>
       </el-row>
     </div>
-    
+
     <!-- 普通用户可见的数据分析 -->
     <div v-else>
       <el-row :gutter="20">
@@ -75,11 +75,11 @@ export default {
       tabletChart: null,
       headphoneChart: null,
       otherChart: null,
-      
+
       // 普通用户图表实例
       userCategoryChart: null,
       hotProductsChart: null,
-      
+
       loading: true,
       categoryData: null,
       userData: null
@@ -102,7 +102,7 @@ export default {
         this.tabletChart = echarts.init(this.$refs.tabletChart)
         this.headphoneChart = echarts.init(this.$refs.headphoneChart)
         this.otherChart = echarts.init(this.$refs.otherChart)
-        
+
         // 设置加载动画 - 管理员图表
         const loadingOption = {
           text: '加载中...',
@@ -110,7 +110,7 @@ export default {
           textColor: '#000',
           maskColor: 'rgba(255, 255, 255, 0.8)'
         }
-        
+
         this.phoneChart.showLoading(loadingOption)
         this.computerChart.showLoading(loadingOption)
         this.tabletChart.showLoading(loadingOption)
@@ -120,7 +120,7 @@ export default {
         // 初始化普通用户图表
         this.userCategoryChart = echarts.init(this.$refs.userCategoryChart)
         this.hotProductsChart = echarts.init(this.$refs.hotProductsChart)
-        
+
         // 设置加载动画 - 普通用户图表
         const loadingOption = {
           text: '加载中...',
@@ -128,12 +128,12 @@ export default {
           textColor: '#000',
           maskColor: 'rgba(255, 255, 255, 0.8)'
         }
-        
+
         this.userCategoryChart.showLoading(loadingOption)
         this.hotProductsChart.showLoading(loadingOption)
       }
     },
-    
+
     // 管理员数据获取方法
     async fetchCategoryData() {
       try {
@@ -143,7 +143,7 @@ export default {
       } catch (error) {
         console.error('获取产品类别销售数据失败:', error)
         this.$message.error('获取产品类别销售数据失败')
-        
+
         // 隐藏加载动画
         if (this.phoneChart) this.phoneChart.hideLoading()
         if (this.computerChart) this.computerChart.hideLoading()
@@ -152,7 +152,7 @@ export default {
         if (this.otherChart) this.otherChart.hideLoading()
       }
     },
-    
+
     // 普通用户数据获取方法
     async fetchUserData() {
       try {
@@ -161,48 +161,48 @@ export default {
           getUserCategorySales(),
           getHotProducts()
         ])
-        
+
         this.userData = {
           userCategoryData: userCategoryRes.data,
           hotProductsData: hotProductsRes.data
         }
-        
+
         this.renderUserCharts()
       } catch (error) {
         console.error('获取用户数据分析失败:', error)
         this.$message.error('获取数据分析失败')
-        
+
         // 隐藏用户图表加载动画
         if (this.userCategoryChart) this.userCategoryChart.hideLoading()
         if (this.hotProductsChart) this.hotProductsChart.hideLoading()
       }
     },
-    
+
     // 渲染管理员图表方法
     renderAdminCharts() {
       if (!this.categoryData) return
-      
+
       this.renderPhoneChart()
       this.renderComputerChart()
       this.renderTabletChart()
       this.renderHeadphoneChart()
       this.renderOtherChart()
     },
-    
+
     // 渲染普通用户图表方法
     renderUserCharts() {
       if (!this.userData) return
-      
+
       this.renderUserCategoryChart()
       this.renderHotProductsChart()
     },
-    
+
     // --- 管理员图表渲染方法 ---
-    
+
     // 手机类别饼图
     renderPhoneChart() {
       const { phoneData } = this.categoryData
-      
+
       const option = {
         title: {
           text: '手机销售分布',
@@ -234,15 +234,15 @@ export default {
           data: phoneData
         }]
       }
-      
+
       this.phoneChart.hideLoading()
       this.phoneChart.setOption(option)
     },
-    
+
     // 电脑类别饼图
     renderComputerChart() {
       const { computerData } = this.categoryData
-      
+
       const option = {
         title: {
           text: '电脑销售分布',
@@ -274,15 +274,15 @@ export default {
           data: computerData
         }]
       }
-      
+
       this.computerChart.hideLoading()
       this.computerChart.setOption(option)
     },
-    
+
     // 平板类别饼图
     renderTabletChart() {
       const { tabletData } = this.categoryData
-      
+
       const option = {
         title: {
           text: '平板销售分布',
@@ -314,15 +314,15 @@ export default {
           data: tabletData
         }]
       }
-      
+
       this.tabletChart.hideLoading()
       this.tabletChart.setOption(option)
     },
-    
+
     // 耳机类别饼图
     renderHeadphoneChart() {
       const { headphoneData } = this.categoryData
-      
+
       const option = {
         title: {
           text: '耳机销售分布',
@@ -354,15 +354,15 @@ export default {
           data: headphoneData
         }]
       }
-      
+
       this.headphoneChart.hideLoading()
       this.headphoneChart.setOption(option)
     },
-    
+
     // 其他类别饼图
     renderOtherChart() {
       const { otherData } = this.categoryData
-      
+
       const option = {
         title: {
           text: '其他产品销售分布',
@@ -394,17 +394,17 @@ export default {
           data: otherData
         }]
       }
-      
+
       this.otherChart.hideLoading()
       this.otherChart.setOption(option)
     },
-    
+
     // --- 普通用户图表渲染方法 ---
-    
+
     // 用户个人购买类别饼图
     renderUserCategoryChart() {
       const { categoryData } = this.userData.userCategoryData
-      
+
       const option = {
         title: {
           text: '我的购买类别分布',
@@ -439,16 +439,16 @@ export default {
           data: categoryData
         }]
       }
-      
+
       this.userCategoryChart.hideLoading()
       this.userCategoryChart.setOption(option)
     },
-    
+
     // 热门产品排行图表
     renderHotProductsChart() {
       const { products } = this.userData.hotProductsData
       const topProducts = products.slice(0, 5) // 只显示前5个热门产品
-      
+
       const option = {
         title: {
           text: '热门产品排行',
@@ -502,7 +502,7 @@ export default {
           }
         }]
       }
-      
+
       this.hotProductsChart.hideLoading()
       this.hotProductsChart.setOption(option)
     }
@@ -521,7 +521,7 @@ export default {
       if (this.userCategoryChart) this.userCategoryChart.dispose()
       if (this.hotProductsChart) this.hotProductsChart.dispose()
     }
-    
+
     window.removeEventListener('resize', this.resizeHandler)
   },
   activated() {
@@ -536,7 +536,7 @@ export default {
     if (this.isAdmin) {
       // 重置管理员图表大小
       if (this.phoneChart) this.phoneChart.resize()
-      if (this.computerChart) this.computerChart.resize() 
+      if (this.computerChart) this.computerChart.resize()
       if (this.tabletChart) this.tabletChart.resize()
       if (this.headphoneChart) this.headphoneChart.resize()
       if (this.otherChart) this.otherChart.resize()
@@ -587,7 +587,7 @@ export default {
   .chart-container {
     height: 250px;
   }
-  
+
   .chart-box {
     padding: 10px;
   }

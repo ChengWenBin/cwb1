@@ -32,15 +32,15 @@
         </el-row>
       </div>
     </div>
-    
-    <!-- 产品类别销售分析 -->
+
+    <!-- 可视化图表 -->
     <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
-      <span class="divider-text">产品类别销售分析</span>
+      <span class="divider-text">可视化图表</span>
     </el-divider>
     <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
       <category-charts :isAdmin="false" />
     </div>
-    
+
     <!-- 核心功能 -->
     <el-divider content-position="center" class="section-divider">
       <span class="divider-text">快速跳转</span>
@@ -114,8 +114,7 @@ export default {
       return allFeatures.filter(feature =>
         feature.name === '电子产品浏览' ||
         feature.name === '购物车' ||
-        feature.name === '我的订单' ||
-        feature.name === '数据看板'
+        feature.name === '我的订单'
       );
     }
   },
@@ -374,7 +373,7 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
   transition: $transition-common;
   border-radius: $border-radius;
   overflow: hidden;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: $shadow-hover;
@@ -384,7 +383,7 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
 .product-img {
   height: 180px;
   overflow: hidden;
-  
+
   .el-image {
     width: 100%;
     height: 100%;
@@ -430,7 +429,7 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
   align-items: center;
   justify-content: center;
   padding: 40px 0;
-  
+
   .el-icon-shopping-bag-1 {
     margin-bottom: 15px;
   }
