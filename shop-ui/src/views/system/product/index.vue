@@ -11,6 +11,15 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="产品类型" prop="category">
+        <el-select v-model="queryParams.category" placeholder="请选择产品类型" clearable style="width: 240px">
+          <el-option label="电脑" value="电脑" />
+          <el-option label="手机" value="手机" />
+          <el-option label="平板" value="平板" />
+          <el-option label="耳机" value="耳机" />
+          <el-option label="其他" value="其他" />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" @click="resetQuery">重置</el-button>
@@ -117,7 +126,13 @@
           <el-input v-model="form.stock" placeholder="请输入库存"/>
         </el-form-item>
         <el-form-item label="产品类型" prop="category">
-          <el-input v-model="form.category" placeholder="请输入产品类型"/>
+          <el-select v-model="form.category" placeholder="请选择产品类型" style="width: 100%">
+            <el-option label="电脑" value="电脑" />
+            <el-option label="手机" value="手机" />
+            <el-option label="平板" value="平板" />
+            <el-option label="耳机" value="耳机" />
+            <el-option label="其他" value="其他" />
+          </el-select>
         </el-form-item>
         <el-form-item label="描述" prop="description">
           <el-input
@@ -162,6 +177,9 @@ export default {
         pageNum: 1,
         pageSize: 10,
         name: "",
+        category: "",
+        orderByColumn: "updatedTime",
+        isAsc: "desc"
       },
       // 新增/修改产品表单数据
       form: {
@@ -202,6 +220,9 @@ export default {
     /** 查询产品列表 */
     getList() {
       this.loading = true;
+      this.queryParams.orderByColumn = "updatedTime";
+      this.queryParams.isAsc = "desc";
+      
       listProduct(this.queryParams).then(response => {
         this.productList = response.rows;
         this.total = response.total;
@@ -240,7 +261,10 @@ export default {
       this.queryParams = {
         pageNum: 1,
         pageSize: 10,
-        name: ""
+        name: "",
+        category: "",
+        orderByColumn: "updatedTime",
+        isAsc: "desc"
       };
       // 调用查询表单的 resetFields 方法（需在模板上设置 ref="queryForm"）
       if (this.$refs.queryForm) {
