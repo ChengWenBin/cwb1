@@ -26,6 +26,9 @@
           <el-option label="已完成" value="已完成" />
           <el-option label="已取消" value="已取消" />
         </el-select>
+        <el-tag v-if="queryParams.orderStatus" type="warning" size="small" style="margin-left: 5px">
+          过滤中: {{ queryParams.orderStatus }}
+        </el-tag>
       </el-form-item>
       <el-form-item label="最小金额" prop="minAmount">
         <el-input-number
@@ -142,7 +145,26 @@ export default {
     };
   },
   created() {
+    // 检查URL查询参数并应用到queryParams
+    const { orderStatus } = this.$route.query;
+    if (orderStatus) {
+      this.queryParams.orderStatus = orderStatus;
+    }
+    
     this.fetchData();
+  },
+  watch: {
+    // 监听路由参数变化
+    '$route.query': {
+      handler(query) {
+        // 当订单状态参数变化时，更新查询条件并重新获取数据
+        if (query.orderStatus !== undefined) {
+          this.queryParams.orderStatus = query.orderStatus;
+          this.fetchData();
+        }
+      },
+      immediate: false // 不立即执行，避免与created中的逻辑重复
+    }
   },
   methods: {
     fetchData(){
