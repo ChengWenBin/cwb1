@@ -183,8 +183,22 @@ export default {
   },
   created() {
     this.getList();
+    // 检查URL查询参数，处理从其他页面传来的编辑请求
+    this.checkQueryParams();
   },
   methods: {
+    // 处理URL查询参数
+    checkQueryParams() {
+      const { id, action } = this.$route.query;
+      if (id && action === 'edit') {
+        // 如果有id和action=edit参数，则打开编辑对话框
+        getProduct(id).then(response => {
+          this.form = response.data;
+          this.open = true;
+          this.title = "修改产品";
+        });
+      }
+    },
     /** 查询产品列表 */
     getList() {
       this.loading = true;
@@ -264,6 +278,18 @@ export default {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
+              
+              // 处理从首页库存警告跳转来的情况
+              const { action, 'return-to-alerts': returnToAlerts } = this.$route.query;
+              if (action === 'edit' && returnToAlerts === 'true') {
+                // 使用nextTick确保DOM更新后再跳转
+                this.$nextTick(() => {
+                  this.$router.push({
+                    path: '/',
+                    query: { refresh: 'alerts', timestamp: Date.now() }
+                  });
+                });
+              }
             });
           } else {
             addProduct(this.form).then(response => {

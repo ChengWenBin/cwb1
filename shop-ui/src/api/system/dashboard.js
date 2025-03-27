@@ -48,6 +48,14 @@ export function getOrderReport() {
   })
 }
 
+// 获取用户购买偏好数据
+export function getUserPreference() {
+  return request({
+    url: '/system/dashboard/userPreference',
+    method: 'get'
+  })
+}
+
 // 获取产品类别销售数量
 export function getCategorySales() {
   return request({
@@ -76,6 +84,30 @@ export function getHotProducts() {
 export function getSeasonalTrend() {
   return request({
     url: '/system/dashboard/seasonalTrend',
+    method: 'get'
+  })
+}
+
+// 获取管理员首页统计数据
+export function getAdminStats() {
+  return request({
+    url: '/system/dashboard/adminStats',
+    method: 'get'
+  })
+}
+
+// 获取待处理订单详情列表
+export function getPendingOrders() {
+  return request({
+    url: '/system/dashboard/pendingOrders',
+    method: 'get'
+  })
+}
+
+// 获取库存警告商品列表
+export function getLowStockProducts() {
+  return request({
+    url: '/system/dashboard/lowStockProducts',
     method: 'get'
   })
 }

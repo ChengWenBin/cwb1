@@ -1,5 +1,12 @@
 <template>
   <div class="app-container home">
+    <!-- 管理员提醒区域 -->
+    <div v-if="roles.some(role => role === 'admin' || role === 'normal_admin')">
+      <keep-alive>
+        <admin-alerts />
+      </keep-alive>
+    </div>
+    
     <!-- 推荐产品 -->
     <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
       <span class="divider-text">为您推荐</span>
@@ -74,11 +81,13 @@ import { mapGetters } from 'vuex'
 import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
 import CategoryCharts from '@/components/CategoryCharts';
+import AdminAlerts from '@/components/AdminAlerts';
 
 export default {
   name: "Index",
   components: {
-    CategoryCharts
+    CategoryCharts,
+    AdminAlerts
   },
   computed: {
     ...mapGetters([

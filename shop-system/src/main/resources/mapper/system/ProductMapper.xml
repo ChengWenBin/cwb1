@@ -17,31 +17,35 @@
     </resultMap>
 
     <!-- 查询 -->
-    <select id="selectProductList" resultMap="ProductResultMap" parameterType="com.shop.system.domain.Product">
-        SELECT * FROM product
+    <select id="selectProductList" resultMap="ProductResultMap">
+        SELECT *
+        FROM product
         <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
             <if test="name != null and name != ''">
-                name LIKE CONCAT('%', #{name}, '%')
+                AND name LIKE CONCAT('%', #{name}, '%')
             </if>
             <if test="category != null and category != ''">
                 AND category = #{category}
             </if>
-            <choose>
-                <when test="minPrice != null and maxPrice != null">
-                    AND price BETWEEN #{minPrice} AND #{maxPrice}
-                </when>
-                <when test="minPrice != null">
-                    AND price >= #{minPrice}
-                </when>
-                <when test="maxPrice != null">
-                    AND price <![CDATA[ <= ]]> #{maxPrice}
-                </when>
-            </choose>
+            <if test="description != null and description != ''">
+                AND description LIKE CONCAT('%', #{description}, '%')
+            </if>
+            <if test="minPrice != null">
+                AND price >= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                AND price &lt;= #{maxPrice}
+            </if>
             <if test="minStock != null">
                 AND stock >= #{minStock}
             </if>
+            <if test="maxStock != null">
+                AND stock &lt;= #{maxStock}
+            </if>
         </where>
-        ORDER BY updated_time DESC
     </select>
     <!-- 根据类别查询 -->
     <select id="selectProductListByCategory" resultMap="ProductResultMap">

@@ -15,6 +15,7 @@ public class Product {
     private BigDecimal minPrice;  // 最小价格
     private BigDecimal maxPrice;  // 最大价格
     private Integer minStock;     // 最小库存
+    private Integer maxStock;     // 最大库存
 
     // ... 其他字段的 getter 和 setter ...
 
@@ -112,5 +113,13 @@ public class Product {
 
     public void setMinStock(Integer minStock) {
         this.minStock = minStock;
+    }
+
+    public Integer getMaxStock() {
+        return maxStock;
+    }
+
+    public void setMaxStock(Integer maxStock) {
+        this.maxStock = maxStock;
     }
 }

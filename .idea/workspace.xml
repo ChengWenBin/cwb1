@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="首页区分管理员和用户">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="首页区分管理员和用户2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/components/CategoryCharts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/components/CategoryCharts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/api/system/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/api/system/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743047441844</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="首页区分管理员和用户2">
+      <option name="closed" value="true" />
+      <created>1743047939078</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743047939078</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +443,8 @@
     <MESSAGE value="隐藏的岗位信息" />
     <MESSAGE value="第一次修复" />
     <MESSAGE value="首页区分管理员和用户" />
-    <option name="LAST_COMMIT_MESSAGE" value="首页区分管理员和用户" />
+    <MESSAGE value="首页区分管理员和用户2" />
+    <option name="LAST_COMMIT_MESSAGE" value="首页区分管理员和用户2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
