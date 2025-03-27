@@ -451,7 +451,7 @@ export default {
 
       const option = {
         title: {
-          text: '热门产品排行',
+          text: '热门产品销量排行',
           left: 'center',
           top: 10,
           textStyle: {
