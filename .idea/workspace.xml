@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="第一次修复">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/quartz.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ruoyi-vue.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ry_20240629.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-admin/src/main/java/com/shop/web/controller/system/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/DashboardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/DashboardMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IDashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/DashboardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/DashboardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/DashboardMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/api/system/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/api/system/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

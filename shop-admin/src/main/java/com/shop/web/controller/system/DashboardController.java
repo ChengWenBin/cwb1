@@ -45,4 +45,25 @@ public class DashboardController extends BaseController {
     public AjaxResult getOrderReport() {
         return AjaxResult.success(dashboardService.getOrderReport());
     }
+    
+    @GetMapping("/categorySales")
+    public AjaxResult getCategorySales() {
+        return AjaxResult.success(dashboardService.getCategorySales());
+    }
+    
+    @GetMapping("/userCategorySales")
+    public AjaxResult getUserCategorySales() {
+        Long userId = getUserId();
+        return AjaxResult.success(dashboardService.getUserCategorySales(userId));
+    }
+    
+    @GetMapping("/hotProducts")
+    public AjaxResult getHotProducts() {
+        return AjaxResult.success(dashboardService.getHotProducts());
+    }
+    
+    @GetMapping("/seasonalTrend")
+    public AjaxResult getSeasonalTrend() {
+        return AjaxResult.success(dashboardService.getSeasonalTrend());
+    }
 }

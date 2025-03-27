@@ -47,3 +47,35 @@ export function getOrderReport() {
     method: 'get'
   })
 }
+
+// 获取产品类别销售数量
+export function getCategorySales() {
+  return request({
+    url: '/system/dashboard/categorySales',
+    method: 'get'
+  })
+}
+
+// 获取用户个人购买类别统计
+export function getUserCategorySales() {
+  return request({
+    url: '/system/dashboard/userCategorySales',
+    method: 'get'
+  })
+}
+
+// 获取热门产品排行
+export function getHotProducts() {
+  return request({
+    url: '/system/dashboard/hotProducts',
+    method: 'get'
+  })
+}
+
+// 获取季节性产品热销趋势
+export function getSeasonalTrend() {
+  return request({
+    url: '/system/dashboard/seasonalTrend',
+    method: 'get'
+  })
+}

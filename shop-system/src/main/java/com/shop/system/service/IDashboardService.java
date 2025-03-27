@@ -18,4 +18,12 @@ public interface IDashboardService {
     List<Map<String, Object>> getOrderReport();
 
     List<Map<String, Object>> getSalesReportProductSales();
+    
+    Map<String, Object> getCategorySales();
+    
+    Map<String, Object> getUserCategorySales(Long userId);
+    
+    Map<String, Object> getHotProducts();
+    
+    Map<String, Object> getSeasonalTrend();
 }

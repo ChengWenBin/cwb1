@@ -65,5 +65,80 @@
         FROM `order`
         ORDER BY create_time DESC
     </select>
+    
+    <select id="getCategorySalesByType" resultType="map">
+        SELECT 
+            p.name, 
+            SUM(oi.quantity) AS value
+        FROM 
+            order_item oi
+            JOIN product p ON oi.product_id = p.id
+            JOIN `order` o ON oi.order_id = o.order_id
+        WHERE 
+            o.order_status != '已取消'
+            <if test="category != '其他'">
+                AND p.category = #{category}
+            </if>
+            <if test="category == '其他'">
+                AND p.category NOT IN ('电脑', '手机', '平板', '耳机')
+            </if>
+        GROUP BY 
+            p.name
+        ORDER BY 
+            value DESC
+    </select>
+    
+    <!-- 用户的购买类别统计 -->
+    <select id="getUserCategorySales" resultType="map">
+        SELECT 
+            p.category AS name, 
+            SUM(oi.quantity) AS value
+        FROM 
+            order_item oi
+            JOIN product p ON oi.product_id = p.id
+            JOIN `order` o ON oi.order_id = o.order_id
+        WHERE 
+            o.order_status != '已取消'
+            AND o.user_id = #{userId}
+        GROUP BY 
+            p.category
+        ORDER BY 
+            value DESC
+    </select>
+    
+    <!-- 热门产品排行 -->
+    <select id="getHotProducts" resultType="map">
+        SELECT 
+            p.name, 
+            SUM(oi.quantity) AS sales
+        FROM 
+            order_item oi
+            JOIN product p ON oi.product_id = p.id
+            JOIN `order` o ON oi.order_id = o.order_id
+        WHERE 
+            o.order_status != '已取消'
+        GROUP BY 
+            p.name
+        ORDER BY 
+            sales DESC
+        LIMIT 10
+    </select>
+    
+    <!-- 季节性销售趋势 -->
+    <select id="getSeasonalTrendByCategory" resultType="int">
+        SELECT 
+            IFNULL(SUM(oi.quantity), 0) AS value
+        FROM 
+            order_item oi
+            JOIN product p ON oi.product_id = p.id
+            JOIN `order` o ON oi.order_id = o.order_id
+        WHERE 
+            o.order_status != '已取消'
+            AND p.category = #{category}
+        GROUP BY 
+            QUARTER(o.create_time)
+        ORDER BY 
+            QUARTER(o.create_time)
+    </select>
 
 </mapper>

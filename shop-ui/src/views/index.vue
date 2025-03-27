@@ -1,34 +1,44 @@
 <template>
   <div class="app-container home">
     <!-- 推荐产品 -->
-    <el-divider content-position="center" class="section-divider">
+    <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
       <span class="divider-text">为您推荐</span>
     </el-divider>
-    <div v-if="recommendLoading" class="loading-container">
-      <el-skeleton :rows="3" animated />
+    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
+      <div v-if="recommendLoading" class="loading-container">
+        <el-skeleton :rows="3" animated />
+      </div>
+      <div v-else-if="recommendedProducts.length === 0" class="empty-container">
+        <i class="el-icon-shopping-bag-1" style="font-size: 48px; color: #909399;"></i>
+        <p>暂无推荐产品，快去购买更多商品吧！</p>
+      </div>
+      <div v-else>
+        <p class="recommend-tip">根据您的购买历史，我们为您推荐以下产品：</p>
+        <el-row :gutter="20">
+          <el-col :xs="24" :sm="12" :md="8" v-for="(product, index) in recommendedProducts" :key="index" class="product-col">
+            <el-card shadow="hover" class="product-card">
+              <div class="product-img">
+                <el-image :src="product.imageUrl" fit="cover"></el-image>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p class="product-category">{{ product.category }}</p>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">¥{{ product.price }}</p>
+                <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </div>
     </div>
-    <div v-else-if="recommendedProducts.length === 0" class="empty-container">
-      <i class="el-icon-shopping-bag-1" style="font-size: 48px; color: #909399;"></i>
-      <p>暂无推荐产品，快去购买更多商品吧！</p>
-    </div>
-    <div v-else>
-      <p class="recommend-tip">根据您的购买历史，我们为您推荐以下产品：</p>
-      <el-row :gutter="20">
-        <el-col :xs="24" :sm="12" :md="8" v-for="(product, index) in recommendedProducts" :key="index" class="product-col">
-          <el-card shadow="hover" class="product-card">
-            <div class="product-img">
-              <el-image :src="product.imageUrl" fit="cover"></el-image>
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">{{ product.name }}</h3>
-              <p class="product-category">{{ product.category }}</p>
-              <p class="product-description">{{ product.description }}</p>
-              <p class="product-price">¥{{ product.price }}</p>
-              <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
+    
+    <!-- 产品类别销售分析 -->
+    <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
+      <span class="divider-text">产品类别销售分析</span>
+    </el-divider>
+    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
+      <category-charts :isAdmin="false" />
     </div>
     
     <!-- 核心功能 -->
@@ -63,9 +73,13 @@
 import { mapGetters } from 'vuex'
 import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
+import CategoryCharts from '@/components/CategoryCharts';
 
 export default {
   name: "Index",
+  components: {
+    CategoryCharts
+  },
   computed: {
     ...mapGetters([
       'roles'
