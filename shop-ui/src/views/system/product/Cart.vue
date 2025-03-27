@@ -9,11 +9,17 @@
 
     <el-card class="cart-card">
       <div v-if="cartList.length > 0">
-        <el-table :data="cartList" v-loading="loading" border style="width: 100%">
-          <el-table-column label="商品图片" prop="imageUrl" align="center" width="120">
+        <el-table 
+          :data="cartList" 
+          v-loading="loading" 
+          border 
+          style="width: 100%" 
+          :cell-style="{padding: '5px 0'}"
+          :header-cell-style="{background: '#f5f7fa', padding: '8px 0'}">
+          <el-table-column label="商品图片" prop="imageUrl" align="center" width="90">
             <template slot-scope="scope">
               <el-image 
-                style="width: 80px; height: 80px; border-radius: 4px;" 
+                style="width: 70px; height: 70px; border-radius: 4px;" 
                 :src="scope.row.imageUrl" 
                 :preview-src-list="[scope.row.imageUrl]"
                 fit="cover">
@@ -23,30 +29,39 @@
               </el-image>
             </template>
           </el-table-column>
-          <el-table-column label="商品名称" prop="productName" align="left" min-width="200" show-overflow-tooltip/>
-          <el-table-column label="单价" prop="price" align="center" width="150">
+          <el-table-column label="商品名称" prop="productName" align="center" width="140">
             <template slot-scope="scope">
-              <span class="price">¥ {{ scope.row.price }}</span>
+              <div class="product-name">{{ scope.row.productName }}</div>
             </template>
           </el-table-column>
-          <el-table-column label="数量" prop="quantity" align="center" width="150">
+          <el-table-column label="商品描述" prop="description" align="center" min-width="120">
+            <template slot-scope="scope">
+              <div class="product-desc">{{ scope.row.description || '暂无描述' }}</div>
+            </template>
+          </el-table-column>
+          <el-table-column label="单价" prop="price" align="center" width="90">
+            <template slot-scope="scope">
+              <span class="price">¥{{ scope.row.price }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="数量" prop="quantity" align="center" width="110">
             <template slot-scope="scope">
               <el-input-number 
                 v-model="scope.row.quantity" 
                 @change="handleQuantityChange(scope.row)" 
                 :min="1" 
                 :max="100" 
-                size="small"
+                size="mini"
                 controls-position="right">
               </el-input-number>
             </template>
           </el-table-column>
-          <el-table-column label="小计" align="center" width="150">
+          <el-table-column label="小计" align="center" width="90">
             <template slot-scope="scope">
-              <span class="subtotal">¥ {{ (scope.row.price * scope.row.quantity).toFixed(2) }}</span>
+              <span class="subtotal">¥{{ (scope.row.price * scope.row.quantity).toFixed(2) }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="操作" align="center" width="100">
+          <el-table-column label="操作" align="center" width="70">
             <template slot-scope="scope">
               <el-button 
                 size="mini" 
@@ -62,12 +77,12 @@
         <div class="cart-footer">
           <div class="cart-total">
             <span>合计金额: </span>
-            <span class="total-price">¥ {{ totalAmount }}</span>
+            <span class="total-price">¥{{ totalAmount }}</span>
           </div>
           <div class="cart-actions">
-            <el-button type="default" @click="goToShopping">继续购物</el-button>
-            <el-button type="danger" @click="handleClearCart">清空购物车</el-button>
-            <el-button type="primary" @click="openOrderDialog">去结算</el-button>
+            <el-button size="small" type="default" @click="goToShopping">继续购物</el-button>
+            <el-button size="small" type="danger" @click="handleClearCart">清空购物车</el-button>
+            <el-button size="small" type="primary" @click="openOrderDialog">去结算</el-button>
           </div>
         </div>
 
@@ -358,6 +373,7 @@ export default {
             productName: '',
             imageUrl: '',
             price: 0,
+            description: '',
           }));
           await this.getProductInfo();
         } else {
@@ -383,16 +399,19 @@ export default {
                 item.productName = res.name;
                 item.imageUrl = res.imageUrl;
                 item.price = res.price;
+                item.description = res.description || '';
               } else {
                 item.productName = '加载失败';
                 item.imageUrl = '';
                 item.price = 0;
+                item.description = '';
                 console.error("获取商品信息失败:", res);
               }
             } catch (e) {
               item.productName = '加载失败';
               item.imageUrl = '';
               item.price = 0;
+              item.description = '';
               console.error("获取商品信息失败:", e);
             }
           } else {
@@ -419,6 +438,7 @@ export default {
             name: '加载失败',
             imageUrl: '',
             price: 0,
+            description: '',
           };
         }
       } catch (e) {
@@ -427,6 +447,7 @@ export default {
           name: '加载失败',
           imageUrl: '',
           price: 0,
+          description: '',
         };
       }
     },
@@ -587,5 +608,39 @@ export default {
   background-color: #f5f7fa;
   color: #909399;
   font-size: 20px;
+}
+
+.product-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #303133;
+  line-height: 1.3;
+  margin: 0 2px;
+  text-align: center;
+}
+
+.product-desc {
+  font-size: 13px;
+  color: #606266;
+  line-height: 1.4;
+  margin: 0 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.price, .subtotal {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  white-space: nowrap;
+}
+
+.el-input-number.el-input-number--mini {
+  width: 100px !important;
+}
+
+.el-table th.is-leaf {
+  border-bottom: 1px solid #EBEEF5;
 }
 </style>

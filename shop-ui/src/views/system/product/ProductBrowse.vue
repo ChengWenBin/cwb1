@@ -163,12 +163,6 @@ export default {
   },
   created() {
     this.fetchAllProducts();
-    // 页面加载后显示推荐弹窗
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.recommendVisible = true;
-      }, 1000); // 延迟1秒显示，给页面加载留出时间
-    });
   },
   methods: {
     // 获取所有产品数据
