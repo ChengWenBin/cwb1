@@ -9,10 +9,10 @@
           style="width: 160px"
         />
       </el-form-item>
-      <el-form-item label="用户ID" prop="userId">
+      <el-form-item label="用户名称" prop="userName">
         <el-input
-          v-model="queryParams.userId"
-          placeholder="用户ID"
+          v-model="queryParams.userName"
+          placeholder="用户名称"
           clearable
           style="width: 120px"
         />
@@ -159,7 +159,7 @@ export default {
       detailDialogVisible: false,
       queryParams: {
         orderNo: undefined,
-        userId: undefined,
+        userName: undefined,
         orderStatus: '',
         minAmount: undefined, 
         maxAmount: undefined,
@@ -281,7 +281,7 @@ export default {
     resetQuery() { // 修改：重置查询条件
       this.queryParams = {
         orderNo: undefined,
-        userId: undefined,
+        userName: undefined,
         orderStatus: '',
         minAmount: undefined,
         maxAmount: undefined,

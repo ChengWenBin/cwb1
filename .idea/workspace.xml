@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="持续优化">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="优化我的订单和订单管理1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +184,7 @@
       <workItem from="1743051470227" duration="1232000" />
       <workItem from="1743055529895" duration="2748000" />
       <workItem from="1743060729581" duration="826000" />
+      <workItem from="1743146290480" duration="1234000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -439,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743058702911</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="优化我的订单和订单管理1">
+      <option name="closed" value="true" />
+      <created>1743144591042</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1743144591042</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +498,8 @@
     <MESSAGE value="数据看板功能优化" />
     <MESSAGE value="1" />
     <MESSAGE value="持续优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="持续优化" />
+    <MESSAGE value="优化我的订单和订单管理1" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化我的订单和订单管理1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

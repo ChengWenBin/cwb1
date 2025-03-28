@@ -18,53 +18,63 @@
         <!-- 添加 minAmount 和 maxAmount 的映射 -->
         <result property="minAmount" column="min_amount" />
         <result property="maxAmount" column="max_amount" />
+        <!-- 添加 userName 的映射 -->
+        <result property="userName"       column="user_name"     />
     </resultMap>
 
     <sql id="selectOrderVo">
-        select order_id, order_no, user_id, total_amount, order_status, payment_time, delivery_time, receive_time, create_time, update_time, remark,address from `order`
+        select order_id, order_no, o.user_id, total_amount, order_status, payment_time, delivery_time, receive_time, o.create_time, o.update_time, o.remark, address from `order` o
     </sql>
-    <!-- 保持原样，用于订单管理 -->
+    
+    <sql id="selectOrderWithUserVo">
+        select o.order_id, o.order_no, o.user_id, o.total_amount, o.order_status, o.payment_time, o.delivery_time, o.receive_time, o.create_time, o.update_time, o.remark, o.address, u.user_name
+        from `order` o
+        left join sys_user u on o.user_id = u.user_id
+    </sql>
+    <!-- 用于订单管理，支持按用户名称搜索 -->
     <select id="selectOrderList" parameterType="com.shop.system.domain.Order" resultMap="OrderResult">
-        <include refid="selectOrderVo"/>
+        <include refid="selectOrderWithUserVo"/>
         <where>
             <if test="userId != null">
-                and user_id = #{userId}
+                and o.user_id = #{userId}
             </if>
             <if test="orderId != null">
-                and order_id = #{orderId}
+                and o.order_id = #{orderId}
             </if>
             <if test="orderNo != null and orderNo != ''">
-                and order_no like concat('%', #{orderNo}, '%')
+                and o.order_no like concat('%', #{orderNo}, '%')
             </if>
-
+            <if test="userName != null and userName != ''">
+                and u.user_name like concat('%', #{userName}, '%')
+            </if>
             <if test="totalAmount != null">
-                and total_amount = #{totalAmount}
+                and o.total_amount = #{totalAmount}
             </if>
             <if test="orderStatus != null and orderStatus != ''">
-                and order_status = #{orderStatus}
+                and o.order_status = #{orderStatus}
             </if>
             <if test="paymentTime != null">
-                and payment_time = #{paymentTime}
+                and o.payment_time = #{paymentTime}
             </if>
             <if test="deliveryTime != null">
-                and delivery_time = #{deliveryTime}
+                and o.delivery_time = #{deliveryTime}
             </if>
             <if test="receiveTime != null">
-                and receive_time = #{receiveTime}
+                and o.receive_time = #{receiveTime}
             </if>
             <if test="createTime != null">
-                and create_time = #{createTime}
+                and o.create_time = #{createTime}
             </if>
             <if test="updateTime != null">
-                and update_time = #{updateTime}
+                and o.update_time = #{updateTime}
             </if>
 
             <!-- 新增：金额范围 -->
             <if test="minAmount != null">
-                AND total_amount >= #{minAmount}
+                AND o.total_amount >= #{minAmount}
             </if>
             <if test="maxAmount != null">
-                AND total_amount &lt;= #{maxAmount}
+                AND o.total_amount &lt;= #{maxAmount}
                 <!-- &lt;= 是小于等于的意思, (大于号): 在 XML 中，> 字符 只有 在作为标签的结束符时才具有特殊意义（例如 </select>）。
                  在其他情况下，例如在 SQL 语句中作为大于号运算符，> 通常 不需要转义。 大多数 XML 解析器足够智能，可以区分这两种情况
                   在 XML 中，< 字符 始终 被解释为标签的开始。 因此，如果你想在文本内容（例如 SQL 语句）中使用 < 作为小于号运算符,

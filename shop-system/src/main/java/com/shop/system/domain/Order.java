@@ -47,6 +47,9 @@ public class Order extends BaseEntity {
     /** 最大金额 (用于筛选) */
     private BigDecimal maxAmount;
 
+    /** 用户名称 (用于筛选) */
+    private String userName;
+
 
     //  minAmount 和 maxAmount 的 getter 和 setter
     public BigDecimal getMinAmount() {
@@ -143,6 +146,14 @@ public class Order extends BaseEntity {
     }
 
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -157,6 +168,7 @@ public class Order extends BaseEntity {
                 ", address='" + address + '\'' +
                 ", minAmount=" + minAmount +
                 ", maxAmount=" + maxAmount +
+                ", userName='" + userName + '\'' +
                 ", createTime=" + getCreateTime() +
                 ", updateTime=" + getUpdateTime() +
                 ", remark='" + getRemark() + '\'' +
