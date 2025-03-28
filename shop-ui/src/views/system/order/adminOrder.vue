@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :inline="true" :model="queryParams" class="demo-form-inline" size="small">
+    <el-form :inline="true" :model="queryParams" class="demo-form-inline" size="small" style="display: flex; flex-wrap: wrap; align-items: center;">
       <el-form-item label="订单编号" prop="orderNo">
         <el-input
           v-model="queryParams.orderNo"
@@ -26,9 +26,10 @@
           <el-option label="已完成" value="已完成" />
           <el-option label="已取消" value="已取消" />
         </el-select>
-        <el-tag v-if="queryParams.orderStatus" type="warning" size="small" style="margin-left: 5px">
+        <!-- 移除了以下标签显示 -->
+        <!-- <el-tag v-if="queryParams.orderStatus" type="warning" size="small" style="margin-left: 5px">
           过滤中: {{ queryParams.orderStatus }}
-        </el-tag>
+        </el-tag> -->
       </el-form-item>
       <el-form-item label="最小金额" prop="minAmount">
         <el-input-number
@@ -100,6 +101,19 @@
       </el-table-column>
     </el-table>
 
+    <!-- 分页控件 -->
+    <div class="pagination-container">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pageNum"
+        :page-sizes="[10, 20, 50, 100]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </div>
+
     <el-dialog title="订单详情" :visible.sync="detailDialogVisible" width="70%">
       <el-descriptions :column="3" border>
         <el-descriptions-item label="订单编号">{{ selectedOrder.orderNo }}</el-descriptions-item>
@@ -147,9 +161,15 @@ export default {
         orderNo: undefined,
         userId: undefined,
         orderStatus: '',
-        minAmount: undefined, // 使用 undefined 而不是 null
-        maxAmount: undefined  // 使用 undefined 而不是 null
+        minAmount: undefined, 
+        maxAmount: undefined,
+        orderByColumn: 'createTime',    // 排序字段
+        isAsc: 'desc'                   // 排序方式，desc为倒序
       },
+      // 分页相关变量
+      pageNum: 1,              // 当前页码
+      pageSize: 10,            // 每页显示条数
+      total: 0,                // 总条数
       selectedOrder: {},
       orderItemList: [],
       orderStatus: '', // 默认为空字符串（全部）
@@ -182,20 +202,42 @@ export default {
   methods: {
     fetchData(){
       // 创建一个新对象用于发送请求，过滤掉 undefined 值
-      const params = {};
+      const params = {
+        pageNum: this.pageNum,
+        pageSize: this.pageSize,
+        orderByColumn: 'createTime',  // 始终按创建时间排序
+        isAsc: 'desc'                 // 始终倒序排列
+      };
+      
       for (const key in this.queryParams) {
-        if (this.queryParams[key] !== undefined) {
+        if (this.queryParams[key] !== undefined && 
+            key !== 'pageNum' && 
+            key !== 'pageSize' && 
+            key !== 'orderByColumn' && 
+            key !== 'isAsc') {
           params[key] = this.queryParams[key];
         }
       }
+
       listOrder(params).then(response => {
-        // 按下单时间倒序排序
-        this.orderList = response.rows.sort((a, b) => {
-          return new Date(b.createTime) - new Date(a.createTime);
-        });
+        // 直接使用返回的数据，不再在前端排序
+        this.orderList = response.rows;
+        // 设置总记录数
+        this.total = response.total || this.orderList.length;
         // 获取所有订单的用户名称
         this.fetchUserNames();
       })
+    },
+    // 页码变化时的处理函数
+    handleCurrentChange(val) {
+      this.pageNum = val;
+      this.fetchData();
+    },
+    // 每页条数变化时的处理函数
+    handleSizeChange(val) {
+      this.pageSize = val;
+      this.pageNum = 1; // 重置为第一页
+      this.fetchData();
     },
     handleDetail(row) {
       this.selectedOrder = row;
@@ -227,7 +269,6 @@ export default {
       });
     },
     handleStatusChange(row){
-      //这里直接调用了this.fetchData()方法来刷新数据，你也可以按照userOrder.vue里面一样，调用selectOrderById来获取更新后的数据，效果是一样的。
       updateOrder(row).then(response =>{
         if (response.code === 200){
           this.$message.success("修改成功")
@@ -242,9 +283,12 @@ export default {
         orderNo: undefined,
         userId: undefined,
         orderStatus: '',
-        minAmount: undefined, // 关键修改：使用 undefined 而不是 null
-        maxAmount: undefined  // 关键修改：使用 undefined 而不是 null
+        minAmount: undefined,
+        maxAmount: undefined,
+        orderByColumn: 'createTime',  // 保留排序字段
+        isAsc: 'desc'                 // 保留排序方式
       };
+      this.pageNum = 1; // 重置为第一页
       this.fetchData(); // 重置后重新查询
     },
     // 获取用户名称
@@ -319,6 +363,7 @@ export default {
 
 .el-form-item {
   margin-bottom: 15px;
+  margin-right: 10px; /* 添加右边距，使表单项之间有间隔 */
 }
 
 .el-descriptions {
@@ -330,5 +375,17 @@ h3 {
   margin-bottom: 15px;
   font-weight: 600;
   color: #303133;
+}
+
+/* 分页容器样式 */
+.pagination-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* 优化搜索栏样式 */
+.demo-form-inline {
+  justify-content: flex-start;
+  margin-bottom: 15px;
 }
 </style>

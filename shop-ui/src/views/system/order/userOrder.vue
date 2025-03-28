@@ -112,56 +112,74 @@
 
     <!-- 订单详情对话框 -->
     <el-dialog title="订单详情" :visible.sync="detailDialogVisible" width="70%" class="detail-dialog">
-      <div class="order-detail-header">
-        <el-tag :type="getStatusType(selectedOrder.orderStatus)" effect="dark">
-          {{ selectedOrder.orderStatus }}
-        </el-tag>
-        <div class="order-no">订单编号：{{ selectedOrder.orderNo }}</div>
-      </div>
-      
-      <el-card shadow="never" class="detail-card">
-        <div slot="header" class="card-header">
-          <i class="el-icon-user"></i> 订单信息
+      <div v-loading="detailLoading" element-loading-text="加载订单详情中..." class="detail-content">
+        <div class="order-detail-header">
+          <el-tag :type="getStatusType(selectedOrder.orderStatus)" effect="dark">
+            {{ selectedOrder.orderStatus }}
+          </el-tag>
+          <div class="order-no">订单编号：{{ selectedOrder.orderNo }}</div>
         </div>
-        <el-descriptions :column="3" border size="medium">
-          <el-descriptions-item label="下单时间">{{ selectedOrder.createTime | formatDate }}</el-descriptions-item>
-          <el-descriptions-item label="总金额">
-            <span class="amount">¥ {{ selectedOrder.totalAmount }}</span>
-          </el-descriptions-item>
-          <el-descriptions-item label="收货地址">{{ selectedOrder.address }}</el-descriptions-item>
-          <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
-          <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>
-          <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>
-          <el-descriptions-item label="备注" :span="3">{{ selectedOrder.remark || '无' }}</el-descriptions-item>
-        </el-descriptions>
-      </el-card>
+        
+        <el-card shadow="never" class="detail-card">
+          <div slot="header" class="card-header">
+            <i class="el-icon-user"></i> 订单信息
+          </div>
+          <el-descriptions :column="3" border size="medium">
+            <el-descriptions-item label="下单时间">{{ selectedOrder.createTime | formatDate }}</el-descriptions-item>
+            <el-descriptions-item label="总金额">
+              <span class="amount">¥ {{ selectedOrder.totalAmount }}</span>
+            </el-descriptions-item>
+            <el-descriptions-item label="收货地址">{{ selectedOrder.address }}</el-descriptions-item>
+            <el-descriptions-item label="支付时间">{{ selectedOrder.paymentTime | formatDate }}</el-descriptions-item>
+            <el-descriptions-item label="发货时间">{{ selectedOrder.deliveryTime | formatDate }}</el-descriptions-item>
+            <el-descriptions-item label="完成时间">{{ selectedOrder.receiveTime | formatDate }}</el-descriptions-item>
+            <el-descriptions-item label="备注" :span="3">{{ selectedOrder.remark || '无' }}</el-descriptions-item>
+          </el-descriptions>
+        </el-card>
 
-      <el-card shadow="never" class="detail-card" style="margin-top: 20px;">
-        <div slot="header" class="card-header">
-          <i class="el-icon-shopping-cart-full"></i> 商品信息
-        </div>
-        <el-table :data="orderItemList" style="width: 100%" border stripe>
-          <el-table-column label="商品图片" width="100" align="center">
-            <template slot-scope="scope">
-              <div class="product-image-placeholder">
-                <i class="el-icon-picture-outline"></i>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="商品名称" prop="productName" min-width="200" show-overflow-tooltip/>
-          <el-table-column label="购买数量" prop="quantity" width="100" align="center"/>
-          <el-table-column label="单价" width="120" align="center">
-            <template slot-scope="scope">
-              <span class="amount">¥ {{ scope.row.unitPrice }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="小计" width="120" align="center">
-            <template slot-scope="scope">
-              <span class="amount">¥ {{ scope.row.totalPrice }}</span>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-card>
+        <el-card shadow="never" class="detail-card" style="margin-top: 20px;">
+          <div slot="header" class="card-header">
+            <i class="el-icon-shopping-cart-full"></i> 商品信息
+          </div>
+          <el-table :data="orderItemList" style="width: 100%" border stripe>
+            <el-table-column label="商品图片" width="100" align="center">
+              <template slot-scope="scope">
+                <el-image 
+                  v-if="scope.row.imageUrl" 
+                  style="width: 70px; height: 70px; border-radius: 4px;" 
+                  :src="scope.row.imageUrl" 
+                  :preview-src-list="[scope.row.imageUrl]"
+                  fit="cover">
+                  <div slot="placeholder" class="image-slot">
+                    <i class="el-icon-loading"></i>
+                  </div>
+                  <div slot="error" class="image-slot">
+                    <i class="el-icon-picture-outline"></i>
+                  </div>
+                </el-image>
+                <div v-else-if="scope.row.imageLoading" class="product-image-placeholder">
+                  <i class="el-icon-loading"></i>
+                </div>
+                <div v-else class="product-image-placeholder">
+                  <i class="el-icon-picture-outline"></i>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="商品名称" prop="productName" min-width="200" show-overflow-tooltip align="center"/>
+            <el-table-column label="购买数量" prop="quantity" width="100" align="center"/>
+            <el-table-column label="单价" width="120" align="center">
+              <template slot-scope="scope">
+                <span class="amount">¥ {{ scope.row.unitPrice }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column label="小计" width="120" align="center">
+              <template slot-scope="scope">
+                <span class="amount">¥ {{ scope.row.totalPrice }}</span>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-card>
+      </div>
     </el-dialog>
 
     <!-- 支付确认对话框 -->
@@ -230,6 +248,7 @@
 <script>
 import {listOrder, cancelOrder, updateOrder, selectOrderById, listMyOrder} from '@/api/system/order';
 import {listOrderItem} from '@/api/system/orderItem';
+import request from '@/utils/request';
 import { getToken } from "@/utils/auth";
 
 export default {
@@ -237,6 +256,7 @@ export default {
     return {
       orderList: [],
       loading: false,
+      detailLoading: false, // 订单详情加载状态
       statusFilter: '',
       detailDialogVisible: false,
       selectedOrder: {},
@@ -338,6 +358,8 @@ export default {
     handleDetail(row) {
       this.selectedOrder = row; // 先赋值基本信息
       this.detailDialogVisible = true;
+      this.detailLoading = true; // 显示订单详情加载状态
+      this.orderItemList = []; // 清空之前的数据
       
       // 调用API获取订单详情
       selectOrderById(row.orderId).then(response => {
@@ -345,17 +367,85 @@ export default {
           this.selectedOrder = response.data; // 更新为完整订单信息
           
           // 获取订单商品明细
-          listOrderItem({orderId: row.orderId}).then(itemResponse => {
-            this.orderItemList = itemResponse.rows || [];
-          }).catch(() => {
-            this.$message.warning("订单商品信息加载失败");
-          });
+          return listOrderItem({orderId: row.orderId});
         } else {
           this.$message.error("加载订单详情失败");
+          this.detailLoading = false;
+          return Promise.reject();
         }
-      }).catch(() => {
-        this.$message.error("加载订单详情失败");
+      }).then(itemResponse => {
+        if (itemResponse && itemResponse.rows) {
+          this.orderItemList = itemResponse.rows.map(item => ({
+            ...item,
+            imageLoading: true, // 添加图片加载状态
+            imageUrl: ''
+          }));
+          // 获取产品图片
+          return this.getProductInfo();
+        } else {
+          this.$message.warning("订单商品信息加载失败");
+          this.detailLoading = false;
+          return Promise.reject();
+        }
+      }).catch((error) => {
+        if (error) console.error("订单详情加载失败:", error);
+        this.detailLoading = false;
+      }).finally(() => {
+        this.detailLoading = false;
       });
+    },
+    
+    // 获取产品图片信息
+    async getProductInfo() {
+      try {
+        // 创建所有产品图片的请求
+        const productInfoPromises = this.orderItemList.map(async (item, index) => {
+          if (item && item.productId) {
+            try {
+              return this.getProduct(item.productId).then(res => {
+                if (res && res.imageUrl) {
+                  // 更新单个商品的图片，不等待所有请求完成
+                  this.$set(this.orderItemList[index], 'imageUrl', res.imageUrl);
+                  this.$set(this.orderItemList[index], 'imageLoading', false);
+                  return { ...item, imageUrl: res.imageUrl, imageLoading: false };
+                } else {
+                  this.$set(this.orderItemList[index], 'imageLoading', false);
+                  return { ...item, imageLoading: false };
+                }
+              });
+            } catch (e) {
+              console.error(`获取商品(ID:${item.productId})图片失败:`, e);
+              this.$set(this.orderItemList[index], 'imageLoading', false);
+              return { ...item, imageLoading: false };
+            }
+          }
+          return item;
+        });
+        
+        // 等待所有请求完成，但通过上面的代码已经逐个更新了视图
+        await Promise.all(productInfoPromises);
+        return Promise.resolve();
+      } catch (e) {
+        console.error('获取商品图片失败', e);
+        this.$message.warning('获取商品图片失败');
+        return Promise.reject(e);
+      }
+    },
+    
+    // 获取单个产品信息
+    async getProduct(productId) {
+      try {
+        const response = await request({ url: `/system/product/${productId}`, method: 'get' });
+        if (response && response.data) {
+          return response.data;
+        } else {
+          console.error("获取商品信息失败:", response);
+          return { imageUrl: '' };
+        }
+      } catch (e) {
+        console.error("获取商品信息失败:", e);
+        return { imageUrl: '' };
+      }
     },
     
     // 去购物页面
@@ -647,8 +737,8 @@ export default {
 }
 
 .product-image-placeholder {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background-color: #f5f7fa;
   display: flex;
   align-items: center;
@@ -726,5 +816,40 @@ export default {
   color: #909399;
   font-size: 12px;
   font-style: italic;
+}
+
+.el-image {
+  display: flex;
+  margin: 0 auto;
+}
+
+.image-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f7fa;
+  color: #909399;
+}
+
+.image-slot .el-icon-loading {
+  font-size: 20px;
+  color: #409EFF;
+  animation: rotating 2s linear infinite;
+}
+
+.detail-content {
+  min-height: 300px;
+  position: relative;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
