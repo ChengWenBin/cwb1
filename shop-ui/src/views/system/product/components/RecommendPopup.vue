@@ -26,7 +26,9 @@
               <p class="product-category">{{ product.category }}</p>
               <p class="product-price">¥{{ product.price }}</p>
               <p class="product-description">{{ product.description }}</p>
-              <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
+              <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
+              <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
+              <el-button type="primary" size="small" @click="handleAddToCart(product)" :class="{ 'out-of-stock-btn': product.stock <= 0 }">{{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
             </div>
           </el-card>
         </el-col>
@@ -168,5 +170,23 @@ export default {
   margin-top: 15px;
   color: #909399;
   font-size: 16px;
+}
+
+.product-stock {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.out-of-stock {
+  color: #f56c6c;
+}
+
+.in-stock {
+  color: #67c23a;
+}
+
+.out-of-stock-btn {
+  color: #909399 !important;
+  border-color: #dcdfe6 !important;
 }
 </style>

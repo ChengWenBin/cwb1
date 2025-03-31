@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="优化我的订单和订单管理1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/order/adminOrder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/components/RecommendPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/components/RecommendPopup.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

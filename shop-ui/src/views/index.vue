@@ -30,9 +30,11 @@
               <div class="product-info">
                 <h3 class="product-name">{{ product.name }}</h3>
                 <p class="product-category">{{ product.category }}</p>
-                <p class="product-description">{{ product.description }}</p>
+                <p class="product-description" v-if="product.description">{{ product.description | truncateText(50) }}</p>
                 <p class="product-price">¥{{ product.price }}</p>
-                <el-button type="primary" size="small" @click="handleAddToCart(product)">加入购物车</el-button>
+                <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
+                <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
+                <el-button type="primary" size="small" @click="handleAddToCart(product)" :class="{ 'out-of-stock-btn': product.stock <= 0 }">{{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
               </div>
             </el-card>
           </el-col>
@@ -88,6 +90,14 @@ export default {
   components: {
     CategoryCharts,
     AdminAlerts
+  },
+  filters: {
+    // 添加文本截断过滤器
+    truncateText(text, length) {
+      if (!text) return '';
+      if (text.length <= length) return text;
+      return text.substring(0, length) + '...';
+    }
   },
   computed: {
     ...mapGetters([
@@ -314,9 +324,9 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
 
 // --- 分隔线样式 ---
 .section-divider {
-  margin: 50px 0; // 增加分隔线与上下内容的间距
+  margin: 30px 0; // 减少分隔线与上下内容的间距
   .divider-text {
-    font-size: 22px; // 增大字号
+    font-size: 20px; // 减小字号
     font-weight: 500;
     color: $text-color-primary; // 使用主要文字颜色增强对比度
     padding: 0 20px; // 增加左右内边距
@@ -367,14 +377,14 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
 
 // --- 推荐产品区域样式 ---
 .recommend-tip {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 10px; // 减少底部间距
+  font-size: 15px; // 减小字体大小
   color: $text-color-secondary;
   text-align: center;
 }
 
 .product-col {
-  margin-bottom: 25px;
+  margin-bottom: 15px; // 减少列间距
 }
 
 .product-card {
@@ -384,13 +394,13 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
   overflow: hidden;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px); // 减小悬停效果
     box-shadow: $shadow-hover;
   }
 }
 
 .product-img {
-  height: 180px;
+  height: 140px; // 减小图片高度
   overflow: hidden;
 
   .el-image {
@@ -400,12 +410,12 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
 }
 
 .product-info {
-  padding: 15px;
+  padding: 10px; // 减少内边距
 }
 
 .product-name {
-  margin: 5px 0;
-  font-size: 16px;
+  margin: 3px 0; // 减少间距
+  font-size: 15px; // 减小字体大小
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -414,21 +424,53 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
 
 .product-category {
   color: $text-color-light;
-  font-size: 14px;
-  margin: 5px 0;
+  font-size: 13px; // 减小字体大小
+  margin: 3px 0; // 减少间距
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* 限制显示两行 */
+  -webkit-line-clamp: 1; /* 限制显示一行 */
   -webkit-box-orient: vertical;
-  line-height: 1.4;
+  line-height: 1.3; // 减小行高
+}
+
+.product-description {
+  color: $text-color-secondary;
+  font-size: 12px; // 小字体
+  margin: 3px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* 限制显示一行 */
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
 }
 
 .product-price {
   color: #f56c6c;
-  font-size: 18px;
+  font-size: 16px; // 减小字体大小
   font-weight: bold;
-  margin: 10px 0;
+  margin: 5px 0; // 减少间距
+}
+
+.product-stock {
+  font-size: 13px; // 减小字体大小
+  margin: 3px 0; // 减少间距
+}
+
+.out-of-stock {
+  color: #f56c6c;
+  font-weight: bold;
+}
+
+.in-stock {
+  color: #67c23a;
+}
+
+.out-of-stock-btn {
+  background-color: #fef0f0;
+  border-color: #fbc4c4;
+  color: #f56c6c;
 }
 
 .loading-container,

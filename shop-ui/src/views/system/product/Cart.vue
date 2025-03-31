@@ -39,6 +39,12 @@
               <div class="product-desc">{{ scope.row.description || '暂无描述' }}</div>
             </template>
           </el-table-column>
+          <el-table-column label="库存状态" prop="stock" align="center" width="100">
+            <template slot-scope="scope">
+              <el-tag v-if="scope.row.stock > 0" type="success" size="mini">有库存</el-tag>
+              <el-tag v-else type="danger" size="mini">暂时缺货</el-tag>
+            </template>
+          </el-table-column>
           <el-table-column label="单价" prop="price" align="center" width="90">
             <template slot-scope="scope">
               <span class="price">¥{{ scope.row.price }}</span>
@@ -583,11 +589,13 @@ export default {
                 item.imageUrl = res.imageUrl;
                 item.price = res.price;
                 item.description = res.description || '';
+                item.stock = res.stock || 0; // 添加库存信息
               } else {
                 item.productName = '加载失败';
                 item.imageUrl = '';
                 item.price = 0;
                 item.description = '';
+                item.stock = 0; // 设置库存为0
                 console.error("获取商品信息失败:", res);
               }
             } catch (e) {
@@ -595,6 +603,7 @@ export default {
               item.imageUrl = '';
               item.price = 0;
               item.description = '';
+              item.stock = 0; // 设置库存为0
               console.error("获取商品信息失败:", e);
             }
           } else {
@@ -631,6 +640,7 @@ export default {
           imageUrl: '',
           price: 0,
           description: '',
+          stock: 0, // 设置库存为0
         };
       }
     },

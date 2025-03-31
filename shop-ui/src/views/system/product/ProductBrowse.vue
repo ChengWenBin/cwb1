@@ -40,7 +40,7 @@
         </el-select>
       </div>
 
-      <el-table v-loading="loading" :data="paginatedProductList">
+      <el-table v-loading="loading" :data="paginatedProductList" :row-class-name="tableRowClassName">
         <el-table-column label="产品名称" prop="name" align="center" />
         <el-table-column label="产品描述" prop="description" align="center" />
         <el-table-column label="产品类别" prop="category" align="center" />
@@ -58,7 +58,8 @@
               type="text"
               icon="el-icon-shopping-cart-full"
               @click="handleAddToCart(scope.row)"
-            >加入购物车</el-button>
+              :class="{ 'out-of-stock': scope.row.stock <= 0 }"
+            >{{ scope.row.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -223,6 +224,14 @@ export default {
       this.currentPage = page;
     },
 
+    // 根据库存状态设置表格行的类名
+    tableRowClassName({row}) {
+      if (row.stock <= 0) {
+        return 'out-of-stock-row';
+      }
+      return '';
+    },
+    
     handleAddToCart(row) {
       const cart = {
         productId: row.id,
@@ -295,5 +304,17 @@ export default {
   margin-top: 20px;
   text-align: right;
   padding: 10px 20px;
+}
+
+/* 库存为0的商品行样式 */
+.out-of-stock-row {
+  color: #909399;
+  background-color: #f5f7fa;
+}
+
+/* 库存为0的按钮样式 */
+.out-of-stock {
+  color: #909399 !important;
+  border-color: #dcdfe6 !important;
 }
 </style>
