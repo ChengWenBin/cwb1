@@ -1,17 +1,17 @@
 <template>
   <div class="app-container home">
     <!-- 管理员提醒区域 -->
-    <div v-if="roles.some(role => role === 'admin' || role === 'normal_admin')">
+    <div v-if="roles.some(role => role === 'admin' || role === 'normal_admin')" class="alert-section">
       <keep-alive>
         <admin-alerts />
       </keep-alive>
     </div>
     
     <!-- 推荐产品 -->
-    <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
-      <span class="divider-text">为您推荐</span>
-    </el-divider>
-    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
+    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="recommend-section">
+      <el-divider content-position="center" class="section-divider">
+        <span class="divider-text">为您推荐</span>
+      </el-divider>
       <div v-if="recommendLoading" class="loading-container">
         <el-skeleton :rows="3" animated />
       </div>
@@ -19,9 +19,9 @@
         <i class="el-icon-shopping-bag-1" style="font-size: 48px; color: #909399;"></i>
         <p>暂无推荐产品，快去购买更多商品吧！</p>
       </div>
-      <div v-else>
+      <div v-else class="recommend-content">
         <p class="recommend-tip">根据您的购买历史，我们为您推荐以下产品：</p>
-        <el-row :gutter="20">
+        <el-row :gutter="24">
           <el-col :xs="24" :sm="12" :md="8" v-for="(product, index) in recommendedProducts" :key="index" class="product-col">
             <el-card shadow="hover" class="product-card">
               <div class="product-img">
@@ -31,10 +31,14 @@
                 <h3 class="product-name">{{ product.name }}</h3>
                 <p class="product-category">{{ product.category }}</p>
                 <p class="product-description" v-if="product.description">{{ product.description | truncateText(50) }}</p>
-                <p class="product-price">¥{{ product.price }}</p>
-                <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
-                <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
-                <el-button type="primary" size="small" @click="handleAddToCart(product)" :class="{ 'out-of-stock-btn': product.stock <= 0 }">{{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
+                <div class="product-footer">
+                  <p class="product-price">¥{{ product.price }}</p>
+                  <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
+                  <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
+                  <el-button type="primary" size="small" @click="handleAddToCart(product)" :class="{ 'out-of-stock-btn': product.stock <= 0 }">
+                    {{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}
+                  </el-button>
+                </div>
               </div>
             </el-card>
           </el-col>
@@ -43,38 +47,40 @@
     </div>
 
     <!-- 可视化图表 -->
-    <el-divider content-position="center" class="section-divider" v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
-      <span class="divider-text">可视化图表</span>
-    </el-divider>
-    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')">
+    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="charts-section">
+      <el-divider content-position="center" class="section-divider">
+        <span class="divider-text">可视化图表</span>
+      </el-divider>
       <category-charts :isAdmin="false" />
     </div>
 
     <!-- 核心功能 -->
-    <el-divider content-position="center" class="section-divider">
-      <span class="divider-text">快速跳转</span>
-    </el-divider>
-    <el-row class="features-row" :gutter="30">
-      <el-col
-        v-for="(feature, index) in filteredFeatures"
-        :key="index"
-        :xs="24"
-        :sm="12"
-        :md="8"
-        class="feature-col"
-        @click.native="goTarget(feature.path)"
-      >
-        <el-card shadow="never" class="feature-card">
-          <div class="function-card-content">
-            <div class="icon-wrapper" :style="{ backgroundColor: feature.bgColor }">
-              <!-- 动态绑定图标颜色 -->
-              <i :class="[feature.icon, 'function-icon']" :style="{ color: feature.iconColor }"></i>
+    <div class="features-section">
+      <el-divider content-position="center" class="section-divider">
+        <span class="divider-text">快速跳转</span>
+      </el-divider>
+      <el-row class="features-row" :gutter="36">
+        <el-col
+          v-for="(feature, index) in filteredFeatures"
+          :key="index"
+          :xs="12"
+          :sm="8"
+          :md="6"
+          :lg="6"
+          class="feature-col"
+          @click.native="goTarget(feature.path)"
+        >
+          <el-card shadow="hover" class="feature-card">
+            <div class="function-card-content">
+              <div class="icon-wrapper" :style="{ backgroundColor: feature.bgColor }">
+                <i :class="[feature.icon, 'function-icon']" :style="{ color: feature.iconColor }"></i>
+              </div>
+              <div class="function-name">{{ feature.name }}</div>
             </div>
-            <div class="function-name">{{ feature.name }}</div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -163,7 +169,9 @@ export default {
       ],
       // 推荐产品数据
       recommendedProducts: [],
-      recommendLoading: true
+      recommendLoading: true,
+      // 设置推荐产品最大展示数量
+      maxRecommendProducts: 6
     };
   },
   created() {
@@ -184,7 +192,8 @@ export default {
       this.recommendLoading = true;
       getRecommendedProducts()
         .then(response => {
-          this.recommendedProducts = response.data || [];
+          // 限制最大展示数量
+          this.recommendedProducts = (response.data || []).slice(0, this.maxRecommendProducts);
           this.recommendLoading = false;
         })
         .catch(error => {
@@ -213,17 +222,19 @@ export default {
 
 <style scoped lang="scss">
 // --- SCSS 变量定义 ---
-$primary-color: #4ea3f4; // 主色调
-$text-color-primary: #303133; // 主要文字颜色
-$text-color-secondary: #5f6368; // 次要文字颜色
-$text-color-light: #909399; // 浅色文字
-$bg-color-page: #f8f9fc; // 页面背景色
+$primary-color: #1890ff; // 更新主色调为更现代的蓝色
+$secondary-color: #52c41a; // 次要色调
+$accent-color: #fa8c16; // 强调色调
+$text-color-primary: #262626; // 更深的主要文字颜色
+$text-color-secondary: #595959; // 次要文字颜色
+$text-color-light: #8c8c8c; // 浅色文字
+$bg-color-page: #f5f7fa; // 更柔和的页面背景色
 $bg-color-card: #ffffff; // 卡片背景色
-$border-color: #ebeef5; // 边框颜色
-$border-radius: 10px; // 圆角大小
-$shadow-light: 0 6px 18px rgba(100, 115, 143, 0.08); // 轻微阴影
-$shadow-hover: 0 8px 25px rgba(100, 115, 143, 0.12); // 悬停时阴影
-$transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡效果
+$border-color: #eaedf1; // 更柔和的边框颜色
+$border-radius: 10px; // 更大的圆角
+$shadow-light: 0 8px 18px rgba(0, 0, 0, 0.05); // 升级阴影效果
+$shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.08); // 升级悬停阴影
+$transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢过渡时间
 
 // --- 混合器定义 ---
 @mixin flex-center($direction: column) {
@@ -233,372 +244,519 @@ $transition-common: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 通用过渡�
   justify-content: center;
 }
 
-// --- 基础样式 ---
-.app-container.home {
-  padding: 30px;
-  background-color: $bg-color-page;
-  min-height: calc(100vh - 84px); // 根据头部高度调整
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03); // 添加轻微阴影提升立体感
-}
-
-// --- 顶部展示区域样式 ---
-.hero-row {
-  background: linear-gradient(135deg, $primary-color, darken($primary-color, 15%)); // 添加渐变背景
-  border-radius: $border-radius;
-  color: #fff;
-  margin-bottom: 40px;
-  box-shadow: $shadow-light;
-  overflow: hidden;
-  position: relative; // 为可能的装饰元素做准备
-
-  .hero-content {
-    text-align: center;
-    padding: 65px 30px; // 增加一点垂直内边距
-
-    .home-title {
-      font-size: 36px; // 增大标题字号
-      font-weight: 600;
-      margin-bottom: 15px;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    }
-    .home-description {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 25px;
-      font-weight: 400;
-      max-width: 700px; // 限制宽度提高可读性
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-divider {
-      border: none;
-      border-top: 2px solid rgba(255, 255, 255, 0.4);
-      width: 60px;
-      margin: 0 auto;
-    }
+@mixin card-hover-effect {
+  transition: $transition-common;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-hover;
   }
 }
 
-// --- 系统简介部分样式 ---
-.intro-row {
-  margin-bottom: 45px; // 增加一点底部间距
+// --- 基础样式 ---
+.app-container.home {
+  padding: 25px 30px;
+  background-color: $bg-color-page;
+  min-height: calc(100vh - 84px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+}
 
-  .intro-box {
-    background-color: $bg-color-card;
-    border-radius: $border-radius;
-    box-shadow: $shadow-light;
-    padding: 40px 45px; // 增加内边距
-    border-top: 3px solid $primary-color; // 添加顶部边框增强视觉效果
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 600;
-      color: $text-color-primary;
-      margin-bottom: 25px; // 增加标题与内容的间距
-      text-align: center;
-      position: relative; // 为装饰元素做准备
-
-      &:after { // 添加下划线装饰
-        content: '';
-        display: block;
-        width: 40px;
-        height: 3px;
-        background-color: $primary-color;
-        margin: 12px auto 0;
-        border-radius: 2px;
-      }
-    }
-    .system-description {
-      font-size: 16px;
-      line-height: 1.8;
-      color: $text-color-secondary;
-      text-align: justify;
-      hyphens: auto;
-      margin: 0 auto;
-      max-width: 800px;
-      letter-spacing: 0.3px; // 增加字间距提高可读性
-    }
+// 每个区域块样式
+.alert-section, .recommend-section, .charts-section, .features-section {
+  margin-bottom: 28px;
+  background-color: $bg-color-card;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  
+  // 添加左侧边框装饰
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, $primary-color, lighten($primary-color, 15%));
   }
 }
 
 // --- 分隔线样式 ---
 .section-divider {
-  margin: 30px 0; // 减少分隔线与上下内容的间距
+  margin: 18px 0 25px;
   .divider-text {
-    font-size: 20px; // 减小字号
-    font-weight: 500;
-    color: $text-color-primary; // 使用主要文字颜色增强对比度
-    padding: 0 20px; // 增加左右内边距
-    background-color: $bg-color-page; // 确保文本背景与页面背景匹配
+    font-size: 20px;
+    font-weight: 600;
+    color: $primary-color;
+    padding: 0 20px;
+    background-color: $bg-color-card;
+    position: relative;
+    
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 40px;
+      height: 3px;
+      background-color: $primary-color;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
   }
-  // 使用深度选择器修改Element UI内部元素
+  
   ::v-deep .el-divider__line {
-    border-color: lighten($primary-color, 30%); // 使用主色调的浅色版本作为分隔线颜色
-    border-width: 1px; // 调整分隔线宽度
+    border-color: rgba($primary-color, 0.15);
+    border-width: 1px;
+  }
+}
+
+// --- 推荐产品区域样式 ---
+.recommend-content {
+  padding: 5px 10px;
+}
+
+.recommend-tip {
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: $text-color-secondary;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.product-col {
+  margin-bottom: 20px;
+}
+
+.product-card {
+  height: 100%;
+  @include card-hover-effect;
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: none;
+  
+  ::v-deep .el-card__body {
+    padding: 0;
+  }
+}
+
+.product-img {
+  height: 170px;
+  overflow: hidden;
+  position: relative;
+
+  .el-image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease;
+  }
+
+  &:hover .el-image {
+    transform: scale(1.08);
+  }
+  
+  // 添加产品图片顶部渐变遮罩
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+    z-index: 1;
+  }
+}
+
+.product-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 140px;
+}
+
+.product-name {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $text-color-primary;
+  letter-spacing: 0.3px;
+}
+
+.product-category {
+  color: $primary-color;
+  font-size: 13px;
+  margin: 0 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: rgba($primary-color, 0.08);
+  border-radius: 15px;
+}
+
+.product-description {
+  color: $text-color-secondary;
+  font-size: 13px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.product-footer {
+  margin-top: auto;
+  border-top: 1px solid rgba($border-color, 0.7);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product-price {
+  color: #ff4d4f;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 3px 0;
+}
+
+.product-stock {
+  font-size: 13px;
+  margin: 2px 0 10px;
+  padding: 3px 0;
+}
+
+.out-of-stock {
+  color: #ff4d4f;
+  font-weight: 500;
+}
+
+.in-stock {
+  color: $secondary-color;
+  font-weight: 500;
+}
+
+.el-button {
+  width: 100%;
+  border-radius: 6px;
+  height: 34px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+  
+  &.el-button--primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    
+    &:hover, &:focus {
+      background-color: darken($primary-color, 5%);
+      border-color: darken($primary-color, 5%);
+    }
+  }
+}
+
+.out-of-stock-btn {
+  background-color: #fff2f0;
+  border-color: #ffccc7;
+  color: #ff4d4f;
+  
+  &:hover, &:focus {
+    background-color: #fff1ef;
+    border-color: #ffb4a9;
+    color: #ff4d4f;
+  }
+}
+
+.loading-container,
+.empty-container {
+  @include flex-center;
+  padding: 40px 0;
+  min-height: 300px;
+}
+
+.empty-container {
+  .el-icon-shopping-bag-1 {
+    margin-bottom: 18px;
+  }
+  
+  p {
+    margin-top: 15px;
+    color: $text-color-light;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 
 // --- 功能卡片区域样式 ---
 .features-row {
-  // 间距通过模板中的 :gutter="30" 应用
+  margin: 15px -10px;
 }
+
 .feature-col {
-  margin-bottom: 35px; // 增加列间距
-}
-.feature-card {
-  background-color: $bg-color-card;
-  border-radius: $border-radius;
-  border: 1px solid $border-color; // 细微边框
-  box-shadow: none; // 初始无阴影
-  transition: $transition-common;
+  margin-bottom: 25px;
+  padding: 0 10px;
   cursor: pointer;
-  height: 200px; // 增加卡片高度
-  overflow: hidden; // 防止内容溢出
-  @include flex-center(); // 使用混合器居中内容
-
-  &:hover {
-    transform: translateY(-8px); // 增强悬停时的上浮效果
-    box-shadow: $shadow-hover; // 悬停时添加阴影
-    border-color: lighten($primary-color, 15%); // 悬停时边框颜色变化
-
-    // 添加悬停时的背景色变化
-    background-color: rgba(lighten($primary-color, 38%), 0.3);
-  }
-
-  // 使用深度选择器修改卡片内部样式
-  ::v-deep .el-card__body {
-    padding: 25px; // 增加内边距
-    width: 100%;
-    height: 100%;
-    @include flex-center(); // 同样在卡片体内居中内容
-  }
 }
 
-// --- 推荐产品区域样式 ---
-.recommend-tip {
-  margin-bottom: 10px; // 减少底部间距
-  font-size: 15px; // 减小字体大小
-  color: $text-color-secondary;
-  text-align: center;
-}
-
-.product-col {
-  margin-bottom: 15px; // 减少列间距
-}
-
-.product-card {
-  height: 100%;
-  transition: $transition-common;
+.feature-card {
   border-radius: $border-radius;
+  border: none;
+  box-shadow: $shadow-light;
+  transition: $transition-common;
+  height: 160px;
   overflow: hidden;
-
+  position: relative;
+  
   &:hover {
-    transform: translateY(-3px); // 减小悬停效果
+    transform: translateY(-6px);
     box-shadow: $shadow-hover;
+    
+    &::after {
+      opacity: 1;
+    }
   }
-}
+  
+  // 添加悬停时的细微背景效果
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba($primary-color, 0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+  }
 
-.product-img {
-  height: 140px; // 减小图片高度
-  overflow: hidden;
-
-  .el-image {
+  ::v-deep .el-card__body {
+    padding: 20px;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
   }
-}
-
-.product-info {
-  padding: 10px; // 减少内边距
-}
-
-.product-name {
-  margin: 3px 0; // 减少间距
-  font-size: 15px; // 减小字体大小
-  font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.product-category {
-  color: $text-color-light;
-  font-size: 13px; // 减小字体大小
-  margin: 3px 0; // 减少间距
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1; /* 限制显示一行 */
-  -webkit-box-orient: vertical;
-  line-height: 1.3; // 减小行高
-}
-
-.product-description {
-  color: $text-color-secondary;
-  font-size: 12px; // 小字体
-  margin: 3px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1; /* 限制显示一行 */
-  -webkit-box-orient: vertical;
-  line-height: 1.3;
-}
-
-.product-price {
-  color: #f56c6c;
-  font-size: 16px; // 减小字体大小
-  font-weight: bold;
-  margin: 5px 0; // 减少间距
-}
-
-.product-stock {
-  font-size: 13px; // 减小字体大小
-  margin: 3px 0; // 减少间距
-}
-
-.out-of-stock {
-  color: #f56c6c;
-  font-weight: bold;
-}
-
-.in-stock {
-  color: #67c23a;
-}
-
-.out-of-stock-btn {
-  background-color: #fef0f0;
-  border-color: #fbc4c4;
-  color: #f56c6c;
-}
-
-.loading-container,
-.empty-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 0;
-
-  .el-icon-shopping-bag-1 {
-    margin-bottom: 15px;
-  }
-}
-
-.empty-container p {
-  margin-top: 15px;
-  color: $text-color-light;
-  font-size: 16px;
 }
 
 // 功能卡片内部内容样式
 .function-card-content {
-  text-align: center; // 文本居中
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 
   .icon-wrapper {
-    width: 75px; // 增大图标背景尺寸
-    height: 75px;
-    border-radius: 50%; // 圆形背景
-    margin: 0 auto 25px auto; // 水平居中并增加底部间距
-    @include flex-center(); // 使用混合器居中图标
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: $transition-common;
-    position: relative; // 为可能添加的伪元素做准备
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); // 添加轻微阴影增强立体感
-    // 背景色通过 :style 动态设置
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px dashed transparent;
+      transition: all 0.5s ease;
+    }
 
     .function-icon {
-      font-size: 34px; // 增大图标尺寸
-      transition: transform 0.3s ease;
-      // 图标颜色通过 :style 动态设置
+      font-size: 32px;
+      transition: transform 0.4s ease;
     }
   }
 
   .function-name {
-    font-size: 17px; // 增大字号
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
     color: $text-color-primary;
-    transition: color $transition-common;
-    letter-spacing: 0.5px; // 增加字间距
-    margin-top: 5px; // 增加与图标的间距
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $primary-color;
+      transition: all 0.4s ease;
+      transform: translateX(-50%);
+    }
   }
 
   // 卡片悬停时内容的特定效果
   .feature-card:hover & {
     .icon-wrapper {
-      transform: scale(1.05); // 悬停时图标背景轻微放大
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); // 增强阴影
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba($primary-color, 0.2);
+      
+      &::after {
+        border-color: rgba($primary-color, 0.3);
+        transform: rotate(45deg);
+      }
     }
     .function-icon {
-      transform: scale(1.15); // 悬停时图标放大
+      transform: scale(1.1);
     }
     .function-name {
-      color: $primary-color; // 悬停时文本颜色变为主色调
-      font-weight: 600; // 悬停时加粗文本
+      color: $primary-color;
+      
+      &::after {
+        width: 80%;
+      }
     }
   }
 }
 
 // --- 响应式布局调整 ---
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .app-container.home {
-    padding: 20px; // 在小屏幕上减少内边距
+    padding: 20px 25px;
   }
-  .hero-content {
-    padding: 45px 20px;
-    .home-title { font-size: 28px; }
-    .home-description {
-      font-size: 16px;
-      max-width: 100%; // 确保在小屏幕上不会溢出
-    }
-  }
-  .intro-box {
-    padding: 30px 20px;
-    .section-title {
-      font-size: 22px;
-      &:after {
-        margin-top: 10px; // 调整装饰线位置
-      }
-    }
-    .system-description { font-size: 15px; }
-  }
+  
   .feature-card {
-    height: 180px; // 调整小屏幕上的卡片高度
+    height: 140px;
   }
-  .icon-wrapper {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 15px; // 调整间距
-    .function-icon { font-size: 30px; } // 调整图标大小
-  }
-  .function-name {
-    font-size: 15px; // 调整字体大小
-  }
-  .section-divider {
-    margin: 35px 0; // 减少分隔线间距
-    .divider-text {
-      font-size: 20px; // 减小分隔线文本大小
-    }
-  }
-}
-
-// 添加更小屏幕的响应式调整
-@media (max-width: 480px) {
-  .hero-content {
-    padding: 40px 15px;
-    .home-title { font-size: 26px; }
-    .home-description { font-size: 15px; }
-  }
-  .intro-box {
-    padding: 25px 15px;
-  }
-  .feature-card {
-    height: 160px; // 进一步调整超小屏幕的卡片高度
-  }
+  
   .icon-wrapper {
     width: 60px;
     height: 60px;
-    margin-bottom: 12px;
+    .function-icon {
+      font-size: 28px;
+    }
+  }
+  
+  .function-name {
+    font-size: 16px;
+  }
+  
+  .product-img {
+    height: 180px;
+  }
+  
+  .product-info {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container.home {
+    padding: 15px 20px;
+  }
+  
+  .section-divider .divider-text {
+    font-size: 18px;
+  }
+  
+  .product-img {
+    height: 160px;
+  }
+  
+  .product-name {
+    font-size: 16px;
+  }
+  
+  .product-category {
+    font-size: 13px;
+  }
+  
+  .alert-section, .recommend-section, .charts-section, .features-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-container.home {
+    padding: 12px 15px;
+  }
+  
+  .feature-card {
+    height: 120px;
+  }
+  
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    
+    .function-icon {
+      font-size: 24px;
+    }
+  }
+  
+  .function-name {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  
+  .product-img {
+    height: 140px;
+  }
+  
+  .product-info {
+    padding: 12px;
+    min-height: 140px;
+  }
+  
+  .product-description {
+    -webkit-line-clamp: 2;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .product-price {
+    font-size: 18px;
+  }
+  
+  .product-stock {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .el-button {
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .section-divider {
+    margin: 15px 0 20px;
+    
+    .divider-text {
+      font-size: 17px;
+      padding: 0 15px;
+      
+      &::after {
+        bottom: -4px;
+        width: 30px;
+        height: 2px;
+      }
+    }
   }
 }
 </style>
