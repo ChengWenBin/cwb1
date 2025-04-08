@@ -33,7 +33,7 @@ export default {
       orderStats: [
         { name: '待付款', count: 0, icon: 'el-icon-wallet', class: 'pending-payment', status: '待付款' },
         { name: '待发货', count: 0, icon: 'el-icon-box', class: 'pending-delivery', status: '待发货' },
-        { name: '待收货', count: 0, icon: 'el-icon-truck', class: 'pending-receive', status: '已发货' },
+        { name: '已发货', count: 0, icon: 'el-icon-truck', class: 'pending-receive', status: '已发货' },
         { name: '已完成', count: 0, icon: 'el-icon-circle-check', class: 'completed', status: '已完成' }
       ]
     };
@@ -80,12 +80,12 @@ export default {
   transition: all 0.3s ease;
   margin-bottom: 15px;
   border: none;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
-  
+
   &.pending-payment {
     .stat-icon i {
       color: #ff9800;
@@ -96,7 +96,7 @@ export default {
       color: #ff9800;
     }
   }
-  
+
   &.pending-delivery {
     .stat-icon i {
       color: #2196f3;
@@ -107,7 +107,7 @@ export default {
       color: #2196f3;
     }
   }
-  
+
   &.pending-receive {
     .stat-icon i {
       color: #9c27b0;
@@ -118,7 +118,7 @@ export default {
       color: #9c27b0;
     }
   }
-  
+
   &.completed {
     .stat-icon i {
       color: #4caf50;
@@ -139,7 +139,7 @@ export default {
 
 .stat-icon {
   margin-right: 15px;
-  
+
   i {
     font-size: 24px;
     width: 50px;
@@ -177,7 +177,7 @@ export default {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.03);
   }
