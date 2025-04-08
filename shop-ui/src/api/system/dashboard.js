@@ -111,3 +111,11 @@ export function getLowStockProducts() {
     method: 'get'
   })
 }
+
+// 获取用户订单状态统计
+export function getUserOrderStats() {
+  return request({
+    url: '/system/dashboard/userOrderStats',
+    method: 'get'
+  })
+}

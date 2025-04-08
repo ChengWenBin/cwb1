@@ -7,6 +7,14 @@
       </keep-alive>
     </div>
     
+    <!-- 用户订单状态统计 -->
+    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="order-stats-section">
+      <el-divider content-position="center" class="section-divider">
+        <span class="divider-text">我的订单</span>
+      </el-divider>
+      <user-order-stats />
+    </div>
+    
     <!-- 推荐产品 -->
     <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="recommend-section">
       <el-divider content-position="center" class="section-divider">
@@ -90,12 +98,14 @@ import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
 import CategoryCharts from '@/components/CategoryCharts';
 import AdminAlerts from '@/components/AdminAlerts';
+import UserOrderStats from '@/components/UserOrderStats';
 
 export default {
   name: "Index",
   components: {
     CategoryCharts,
-    AdminAlerts
+    AdminAlerts,
+    UserOrderStats
   },
   filters: {
     // 添加文本截断过滤器
@@ -261,7 +271,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
 }
 
 // 每个区域块样式
-.alert-section, .recommend-section, .charts-section, .features-section {
+.alert-section, .recommend-section, .charts-section, .features-section, .order-stats-section {
   margin-bottom: 28px;
   background-color: $bg-color-card;
   border-radius: $border-radius;

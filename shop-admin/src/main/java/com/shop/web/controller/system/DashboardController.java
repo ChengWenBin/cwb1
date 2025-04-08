@@ -142,4 +142,36 @@ public class DashboardController extends BaseController {
         
         return AjaxResult.success(result);
     }
+
+    /**
+     * 获取用户订单状态统计
+     */
+    @GetMapping("/userOrderStats")
+    public AjaxResult getUserOrderStats() {
+        Long userId = getUserId();
+        Map<String, Integer> orderStats = new HashMap<>();
+        orderStats.put("pendingPayment", 0); // 待付款
+        orderStats.put("pendingDelivery", 0); // 待发货
+        orderStats.put("pendingReceive", 0); // 待收货/已发货
+        orderStats.put("completed", 0); // 已完成
+        
+        // 获取用户所有订单
+        List<Order> orders = orderService.selectOrderByUserId(userId);
+        
+        // 统计各状态订单数量
+        for (Order order : orders) {
+            String status = order.getOrderStatus();
+            if ("待付款".equals(status)) {
+                orderStats.put("pendingPayment", orderStats.get("pendingPayment") + 1);
+            } else if ("待发货".equals(status)) {
+                orderStats.put("pendingDelivery", orderStats.get("pendingDelivery") + 1);
+            } else if ("已发货".equals(status)) {
+                orderStats.put("pendingReceive", orderStats.get("pendingReceive") + 1);
+            } else if ("已完成".equals(status)) {
+                orderStats.put("completed", orderStats.get("completed") + 1);
+            }
+        }
+        
+        return AjaxResult.success(orderStats);
+    }
 }
