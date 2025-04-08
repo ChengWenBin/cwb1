@@ -1,6 +1,11 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="20">
+    <el-row :gutter="20" v-if="!isAdmin">
+      <el-col :span="24">
+        <user-order-stats />
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" :class="{'mt-4': !isAdmin}">
       <el-col :span="6" :xs="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -58,17 +63,19 @@
 import userAvatar from "./userAvatar";
 import userInfo from "./userInfo";
 import resetPwd from "./resetPwd";
+import UserOrderStats from "@/components/UserOrderStats";
 import { getUserProfile } from "@/api/system/user";
 
 export default {
   name: "Profile",
-  components: { userAvatar, userInfo, resetPwd },
+  components: { userAvatar, userInfo, resetPwd, UserOrderStats },
   data() {
     return {
       user: {},
       roleGroup: {},
       postGroup: {},
-      activeTab: "userinfo"
+      activeTab: "userinfo",
+      isAdmin: false
     };
   },
   created() {
@@ -80,6 +87,8 @@ export default {
         this.user = response.data;
         this.roleGroup = response.roleGroup;
         this.postGroup = response.postGroup;
+        // 判断是否为管理员
+        this.isAdmin = this.roleGroup.includes('管理员') || this.roleGroup.includes('admin');
       });
     }
   }

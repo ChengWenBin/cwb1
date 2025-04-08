@@ -7,13 +7,7 @@
       </keep-alive>
     </div>
     
-    <!-- 用户订单状态统计 -->
-    <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="order-stats-section">
-      <el-divider content-position="center" class="section-divider">
-        <span class="divider-text">我的订单</span>
-      </el-divider>
-      <user-order-stats />
-    </div>
+
     
     <!-- 推荐产品 -->
     <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="recommend-section">
@@ -98,14 +92,13 @@ import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
 import CategoryCharts from '@/components/CategoryCharts';
 import AdminAlerts from '@/components/AdminAlerts';
-import UserOrderStats from '@/components/UserOrderStats';
+
 
 export default {
   name: "Index",
   components: {
     CategoryCharts,
-    AdminAlerts,
-    UserOrderStats
+    AdminAlerts
   },
   filters: {
     // 添加文本截断过滤器

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="优化我的订单和订单管理1">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="用户个人中心添加订单状态以及产品浏览分类">
+      <change afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/components/ProductDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/components/RecommendPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/components/RecommendPopup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/user/profile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/user/profile/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +75,7 @@
     &quot;project.structure.last.edited&quot;: &quot;库&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;8a817c5716e8c38f5b41c08122d81398&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -186,6 +189,16 @@
       <workItem from="1743055529895" duration="2748000" />
       <workItem from="1743060729581" duration="826000" />
       <workItem from="1743146290480" duration="1234000" />
+      <workItem from="1743498061670" duration="994000" />
+      <workItem from="1744032335920" duration="2052000" />
+      <workItem from="1744081460668" duration="2528000" />
+      <workItem from="1744085803360" duration="48000" />
+      <workItem from="1744088157404" duration="70000" />
+      <workItem from="1744088235969" duration="152000" />
+      <workItem from="1744088395120" duration="447000" />
+      <workItem from="1744091833088" duration="3516000" />
+      <workItem from="1744101418036" duration="12159000" />
+      <workItem from="1744124111799" duration="407000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -451,7 +464,55 @@
       <option name="project" value="LOCAL" />
       <updated>1743144591042</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="优化3（添加库存不足）">
+      <option name="closed" value="true" />
+      <created>1743413365111</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1743413365111</updated>
+    </task>
+    <task id="LOCAL-00035" summary="首页视觉优化1">
+      <option name="closed" value="true" />
+      <created>1744037677696</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1744037677696</updated>
+    </task>
+    <task id="LOCAL-00036" summary="用户端首页增加订单统计">
+      <option name="closed" value="true" />
+      <created>1744083246635</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1744083246635</updated>
+    </task>
+    <task id="LOCAL-00037" summary="无">
+      <option name="closed" value="true" />
+      <created>1744083763539</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1744083763539</updated>
+    </task>
+    <task id="LOCAL-00038" summary="首页增加个人中心快速跳转">
+      <option name="closed" value="true" />
+      <created>1744084905838</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1744084905838</updated>
+    </task>
+    <task id="LOCAL-00039" summary="123">
+      <option name="closed" value="true" />
+      <created>1744088194011</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1744088194011</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit" />
     <MESSAGE value="3 commit" />
     <MESSAGE value="4 commit" />
     <MESSAGE value="5 commit" />
@@ -500,7 +560,14 @@
     <MESSAGE value="1" />
     <MESSAGE value="持续优化" />
     <MESSAGE value="优化我的订单和订单管理1" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化我的订单和订单管理1" />
+    <MESSAGE value="优化3（添加库存不足）" />
+    <MESSAGE value="首页视觉优化1" />
+    <MESSAGE value="用户端首页增加订单统计" />
+    <MESSAGE value="无" />
+    <MESSAGE value="首页增加个人中心快速跳转" />
+    <MESSAGE value="123" />
+    <MESSAGE value="用户个人中心添加订单状态以及产品浏览分类" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户个人中心添加订单状态以及产品浏览分类" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

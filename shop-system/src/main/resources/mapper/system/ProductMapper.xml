@@ -12,6 +12,7 @@
         <result column="price" property="price" />
         <result column="stock" property="stock" />
         <result column="image_url" property="imageUrl" />
+        <result column="description_images_json" property="descriptionImagesJson" />
         <result column="created_time" property="createdTime" />
         <result column="updated_time" property="updatedTime" />
     </resultMap>
@@ -74,8 +75,8 @@
 
     <!-- 插入 -->
     <insert id="insertProduct">
-        INSERT INTO product (name, description, price, stock, image_url, category)
-        VALUES (#{name}, #{description}, #{price}, #{stock}, #{imageUrl}, #{category})
+        INSERT INTO product (name, description, price, stock, image_url, category, description_images_json)
+        VALUES (#{name}, #{description}, #{price}, #{stock}, #{imageUrl}, #{category}, #{descriptionImagesJson})
     </insert>
 
     <!-- 更新 -->
@@ -83,7 +84,7 @@
         UPDATE product
         SET name = #{name}, description = #{description},
             price = #{price}, stock = #{stock}, image_url = #{imageUrl},
-            category=#{category},
+            category=#{category}, description_images_json = #{descriptionImagesJson},
             updated_time = NOW()
         WHERE id = #{id}
     </update>

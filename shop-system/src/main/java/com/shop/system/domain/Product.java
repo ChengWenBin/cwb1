@@ -16,6 +16,7 @@ public class Product {
     private BigDecimal maxPrice;  // 最大价格
     private Integer minStock;     // 最小库存
     private Integer maxStock;     // 最大库存
+    private String descriptionImagesJson; // 描述图片JSON字符串
 
     // ... 其他字段的 getter 和 setter ...
 
@@ -121,5 +122,13 @@ public class Product {
 
     public void setMaxStock(Integer maxStock) {
         this.maxStock = maxStock;
+    }
+
+    public String getDescriptionImagesJson() {
+        return descriptionImagesJson;
+    }
+
+    public void setDescriptionImagesJson(String descriptionImagesJson) {
+        this.descriptionImagesJson = descriptionImagesJson;
     }
 }

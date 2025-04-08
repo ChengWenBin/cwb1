@@ -70,6 +70,22 @@
           ></el-image>
         </template>
       </el-table-column>
+      <!-- 添加描述图片显示列 -->
+      <el-table-column label="描述图片" align="center" width="120">
+        <template slot-scope="scope">
+          <div v-if="getDescriptionImages(scope.row).length > 0">
+            <el-image
+              style="width: 80px; height: 80px"
+              :src="getDescriptionImages(scope.row)[0]"
+              :preview-src-list="getDescriptionImages(scope.row)"
+            ></el-image>
+            <div v-if="getDescriptionImages(scope.row).length > 1" style="text-align: center; margin-top: 5px">
+              +{{ getDescriptionImages(scope.row).length - 1 }}张
+            </div>
+          </div>
+          <span v-else>无</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="createdTime" label="上架时间" align="center" width="160">
         <template #default="scope">
           {{ scope.row.createdTime | formatDate }}
@@ -134,12 +150,49 @@
             <el-option label="其他" value="其他" />
           </el-select>
         </el-form-item>
+        <!-- 原有描述文本框，注释掉 -->
+        <!--
         <el-form-item label="描述" prop="description">
           <el-input
             v-model="form.description"
             type="textarea"
             placeholder="请输入描述"
           />
+        </el-form-item>
+        -->
+        <!-- 新增描述图片上传和预览功能 -->
+        <el-form-item label="描述" prop="description">
+          <div>
+            <el-input
+              v-model="form.description"
+              type="textarea"
+              placeholder="请输入描述"
+              style="margin-bottom: 10px;"
+            />
+            <div class="description-images" v-if="form.descriptionImages && form.descriptionImages.length > 0">
+              <div v-for="(img, index) in form.descriptionImages" :key="index" class="image-item">
+                <el-image
+                  style="width: 100px; height: 100px; margin-right: 10px;"
+                  :src="img"
+                  :preview-src-list="form.descriptionImages"
+                ></el-image>
+                <el-button type="danger" icon="el-icon-delete" circle size="mini" 
+                  @click="removeDescriptionImage(index)" class="delete-btn"></el-button>
+              </div>
+            </div>
+            <el-upload
+              action="#"
+              list-type="picture-card"
+              :auto-upload="false"
+              :file-list="descriptionFileList"
+              :on-change="handleDescriptionImageChange"
+              :on-remove="handleDescriptionImageRemove"
+              :limit="5"
+            >
+              <i class="el-icon-plus"></i>
+            </el-upload>
+            <div class="el-upload__tip">支持jpg、png格式，单个文件不超过2MB，最多上传5张</div>
+          </div>
         </el-form-item>
         <el-form-item label="图片" prop="imageUrl">
           <el-input v-model="form.imageUrl" placeholder="请输入图片URL"/>
@@ -190,13 +243,15 @@ export default {
         imageUrl: '',
         category: '',
         createdTime: '',
-        updatedTime: ''
+        updatedTime: '',
+        descriptionImages: []
       },
       rules: {
         name: [{ required: true, message: "产品名称不能为空", trigger: "blur" }],
         price: [{ required: true, message: "价格不能为空", trigger: "blur" }],
         stock: [{ required: true, message: "库存不能为空", trigger: "blur" }],
       },
+      descriptionFileList: []
     };
   },
   created() {
@@ -244,8 +299,12 @@ export default {
         imageUrl: '',
         category: '',
         createdTime: '',
-        updatedTime: ''
+        updatedTime: '',
+        descriptionImages: []
       };
+      // 重置描述图片文件列表
+      this.descriptionFileList = [];
+      
       if (this.$refs.form) {
         this.$refs.form.resetFields();
       }
@@ -289,6 +348,28 @@ export default {
       const id = row.id || this.ids;
       getProduct(id).then(response => {
         this.form = response.data;
+        
+        // 处理描述图片数据
+        if (this.form.descriptionImagesJson) {
+          try {
+            this.form.descriptionImages = JSON.parse(this.form.descriptionImagesJson);
+            // 更新文件列表，用于上传组件显示
+            this.descriptionFileList = this.form.descriptionImages.map((url, index) => {
+              return {
+                name: `描述图片${index + 1}`,
+                url: url
+              };
+            });
+          } catch (e) {
+            console.error('解析描述图片JSON失败', e);
+            this.form.descriptionImages = [];
+            this.descriptionFileList = [];
+          }
+        } else {
+          this.form.descriptionImages = [];
+          this.descriptionFileList = [];
+        }
+        
         this.open = true;
         this.title = "修改产品";
       });
@@ -297,6 +378,13 @@ export default {
     submitForm() {
       this.$refs.form.validate(valid => {
         if (valid) {
+          // 处理描述图片数据，将图片数组转为JSON字符串存储
+          if (this.form.descriptionImages && this.form.descriptionImages.length > 0) {
+            this.form.descriptionImagesJson = JSON.stringify(this.form.descriptionImages);
+          } else {
+            this.form.descriptionImagesJson = '';
+          }
+          
           if (this.form.id !== undefined) {
             updateProduct(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
@@ -349,6 +437,54 @@ export default {
       if (this.$refs[formName]) {
         this.$refs[formName].resetFields();
       }
+    },
+    // 删除描述图片
+    removeDescriptionImage(index) {
+      this.form.descriptionImages.splice(index, 1);
+    },
+    // 处理描述图片上传变化
+    handleDescriptionImageChange(file, fileList) {
+      this.descriptionFileList = fileList;
+      
+      // 如果是新添加的文件，转换为Base64用于预览
+      if (file.status === 'ready') {
+        this.getBase64(file.raw).then(base64Url => {
+          // 更新文件的URL
+          file.url = base64Url;
+          
+          // 更新描述图片数组
+          this.form.descriptionImages = fileList.map(f => f.url || '');
+        });
+      } else {
+        this.form.descriptionImages = fileList.map(f => f.url || '');
+      }
+    },
+    // 处理描述图片上传移除
+    handleDescriptionImageRemove(file, fileList) {
+      this.descriptionFileList = fileList;
+      this.form.descriptionImages = fileList.map(f => f.url || '');
+    },
+    // 将文件转换为Base64
+    getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    },
+    // 获取描述图片数组
+    getDescriptionImages(row) {
+      if (row.descriptionImagesJson) {
+        try {
+          return JSON.parse(row.descriptionImagesJson);
+        } catch (e) {
+          console.error('解析描述图片JSON失败', e);
+          return [];
+        }
+      } else {
+        return [];
+      }
     }
   },
   filters: {
@@ -373,5 +509,32 @@ export default {
 .el-form--inline .el-form-item {
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+/* 描述图片相关样式 */
+.description-images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.image-item {
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 4px;
+  transform: scale(0.7);
+}
+
+.el-upload__tip {
+  color: #909399;
+  font-size: 12px;
+  margin-top: 5px;
 }
 </style>
