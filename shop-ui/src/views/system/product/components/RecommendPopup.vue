@@ -22,10 +22,12 @@
               <el-image :src="product.imageUrl" fit="cover"></el-image>
             </div>
             <div class="product-info">
-              <h3 class="product-name">{{ product.name }}</h3>
+              <h3 class="product-name">
+                <a href="javascript:;" @click="viewProductDetail(product)">{{ product.name }}</a>
+              </h3>
               <p class="product-category">{{ product.category }}</p>
               <p class="product-price">¥{{ product.price }}</p>
-              <p class="product-description">{{ product.description }}</p>
+              <!-- <p class="product-description">{{ product.description }}</p> -->
               <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
               <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
               <el-button type="primary" size="small" @click="handleAddToCart(product)" :class="{ 'out-of-stock-btn': product.stock <= 0 }">{{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
@@ -34,15 +36,22 @@
         </el-col>
       </el-row>
     </div>
+    
+    <!-- 商品详情弹窗 -->
+    <ProductDetail :visible.sync="productDetailVisible" :productId="selectedProductId" />
   </el-dialog>
 </template>
 
 <script>
 import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
+import ProductDetail from './ProductDetail.vue';
 
 export default {
   name: 'RecommendPopup',
+  components: {
+    ProductDetail
+  },
   props: {
     visible: {
       type: Boolean,
@@ -52,7 +61,9 @@ export default {
   data() {
     return {
       recommendedProducts: [],
-      loading: true
+      loading: true,
+      productDetailVisible: false,
+      selectedProductId: null
     };
   },
   watch: {
@@ -91,6 +102,10 @@ export default {
           console.error(err);
           this.$modal.msgError('添加购物车失败');
         });
+    },
+    viewProductDetail(product) {
+      this.selectedProductId = product.id;
+      this.productDetailVisible = true;
     }
   }
 };
@@ -138,6 +153,17 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.product-name a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.product-name a:hover {
+  color: #409EFF;
+  text-decoration: underline;
 }
 
 .product-category {

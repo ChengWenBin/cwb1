@@ -30,9 +30,10 @@
                 <el-image :src="product.imageUrl" fit="cover"></el-image>
               </div>
               <div class="product-info">
-                <h3 class="product-name">{{ product.name }}</h3>
+                <h3 class="product-name">
+                  <a href="javascript:;" @click="viewProductDetail(product)">{{ product.name }}</a>
+                </h3>
                 <p class="product-category">{{ product.category }}</p>
-                <p class="product-description" v-if="product.description">{{ product.description | truncateText(50) }}</p>
                 <div class="product-footer">
                   <p class="product-price">¥{{ product.price }}</p>
                   <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
@@ -83,6 +84,9 @@
         </el-col>
       </el-row>
     </div>
+    
+    <!-- 商品详情弹窗 -->
+    <ProductDetail :visible.sync="productDetailVisible" :productId="selectedProductId" />
   </div>
 </template>
 
@@ -92,13 +96,15 @@ import { getRecommendedProducts } from '@/api/system/recommend';
 import { addCart } from '@/api/system/cart';
 import CategoryCharts from '@/components/CategoryCharts';
 import AdminAlerts from '@/components/AdminAlerts';
+import ProductDetail from '@/views/system/product/components/ProductDetail.vue';
 
 
 export default {
   name: "Index",
   components: {
     CategoryCharts,
-    AdminAlerts
+    AdminAlerts,
+    ProductDetail
   },
   filters: {
     // 添加文本截断过滤器
@@ -178,7 +184,10 @@ export default {
       recommendedProducts: [],
       recommendLoading: true,
       // 设置推荐产品最大展示数量
-      maxRecommendProducts: 6
+      maxRecommendProducts: 6,
+      // 商品详情弹窗
+      productDetailVisible: false,
+      selectedProductId: null
     };
   },
   created() {
@@ -222,6 +231,11 @@ export default {
           console.error(err);
           this.$modal.msgError('添加购物车失败');
         });
+    },
+    // 查看商品详情
+    viewProductDetail(product) {
+      this.selectedProductId = product.id;
+      this.productDetailVisible = true;
     }
   }
 };
@@ -395,6 +409,17 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   white-space: nowrap;
   color: $text-color-primary;
   letter-spacing: 0.3px;
+}
+
+.product-name a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.product-name a:hover {
+  color: $primary-color;
+  text-decoration: underline;
 }
 
 .product-category {
