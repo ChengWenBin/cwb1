@@ -7,19 +7,21 @@
       </div>
     </div>
 
-    <el-card class="cart-card">
+    <el-card class="cart-card" shadow="hover">
       <div v-if="cartList.length > 0">
         <el-table 
           :data="cartList" 
           v-loading="loading" 
           border 
           style="width: 100%" 
-          :cell-style="{padding: '5px 0'}"
-          :header-cell-style="{background: '#f5f7fa', padding: '8px 0'}">
-          <el-table-column label="商品图片" prop="imageUrl" align="center" width="90">
+          :cell-style="cellStyle"
+          :header-cell-style="headerCellStyle"
+          highlight-current-row
+          stripe>
+          <el-table-column label="商品图片" prop="imageUrl" align="center" width="120">
             <template slot-scope="scope">
               <el-image 
-                style="width: 70px; height: 70px; border-radius: 4px;" 
+                style="width: 80px; height: 80px; border-radius: 6px;" 
                 :src="scope.row.imageUrl" 
                 :preview-src-list="[scope.row.imageUrl]"
                 fit="cover">
@@ -29,45 +31,46 @@
               </el-image>
             </template>
           </el-table-column>
-          <el-table-column label="商品名称" prop="productName" align="center" width="140">
+          <el-table-column label="商品名称" prop="productName" align="center" min-width="180">
             <template slot-scope="scope">
               <div class="product-name">{{ scope.row.productName }}</div>
             </template>
           </el-table-column>
-          <el-table-column label="商品描述" prop="description" align="center" min-width="120">
+          <!-- 注释掉商品描述列 -->
+          <!-- <el-table-column label="商品描述" prop="description" align="center" min-width="120">
             <template slot-scope="scope">
               <div class="product-desc">{{ scope.row.description || '暂无描述' }}</div>
             </template>
-          </el-table-column>
+          </el-table-column> -->
           <el-table-column label="库存状态" prop="stock" align="center" width="100">
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.stock > 0" type="success" size="mini">有库存</el-tag>
-              <el-tag v-else type="danger" size="mini">暂时缺货</el-tag>
+              <el-tag v-if="scope.row.stock > 0" type="success" size="mini" effect="dark">有库存</el-tag>
+              <el-tag v-else type="danger" size="mini" effect="dark">暂时缺货</el-tag>
             </template>
           </el-table-column>
-          <el-table-column label="单价" prop="price" align="center" width="90">
+          <el-table-column label="单价" prop="price" align="center" width="120">
             <template slot-scope="scope">
               <span class="price">¥{{ scope.row.price }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="数量" prop="quantity" align="center" width="110">
+          <el-table-column label="数量" prop="quantity" align="center" width="140">
             <template slot-scope="scope">
               <el-input-number 
                 v-model="scope.row.quantity" 
                 @change="handleQuantityChange(scope.row)" 
                 :min="1" 
                 :max="100" 
-                size="mini"
+                size="small"
                 controls-position="right">
               </el-input-number>
             </template>
           </el-table-column>
-          <el-table-column label="小计" align="center" width="90">
+          <el-table-column label="小计" align="center" width="120">
             <template slot-scope="scope">
               <span class="subtotal">¥{{ (scope.row.price * scope.row.quantity).toFixed(2) }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="操作" align="center" width="70">
+          <el-table-column label="操作" align="center" width="80">
             <template slot-scope="scope">
               <el-button 
                 size="mini" 
@@ -86,9 +89,9 @@
             <span class="total-price">¥{{ totalAmount }}</span>
           </div>
           <div class="cart-actions">
-            <el-button size="small" type="default" @click="goToShopping">继续购物</el-button>
-            <el-button size="small" type="danger" @click="handleClearCart">清空购物车</el-button>
-            <el-button size="small" type="primary" @click="openOrderDialog">去结算</el-button>
+            <el-button size="medium" plain icon="el-icon-shopping-bag-1" @click="goToShopping">继续购物</el-button>
+            <el-button size="medium" type="info" plain icon="el-icon-delete" @click="handleClearCart">清空购物车</el-button>
+            <el-button size="medium" type="danger" icon="el-icon-wallet" @click="openOrderDialog">去结算</el-button>
           </div>
         </div>
 
@@ -102,35 +105,45 @@
       </div>
 
       <div v-else class="empty-cart">
-        <i class="el-icon-shopping-cart-2"></i>
+        <div class="empty-cart-icon">
+          <i class="el-icon-shopping-cart-2"></i>
+        </div>
         <p>购物车还是空的，去挑选喜欢的商品吧~</p>
-        <el-button type="primary" @click="goToShopping">去购物</el-button>
+        <el-button type="primary" size="medium" icon="el-icon-shopping-bag-1" @click="goToShopping">去购物</el-button>
       </div>
     </el-card>
 
-    <!-- 收货地址填写对话框，内含省市区联动和详细地址输入 -->
+    <!-- 收货地址填写对话框 -->
     <el-dialog
       title="填写收货地址"
       :visible.sync="dialogVisible"
       width="500px"
+      center
+      :close-on-click-modal="false"
     >
-      <!-- 省市区联动 -->
-      <el-cascader
-        v-model="addressData.region"
-        :options="regionOptions"
-        placeholder="请选择省市区"
-        clearable
-        style="width: 100%; margin-bottom: 20px;"
-      ></el-cascader>
-
-      <!-- 详细地址输入框 -->
-      <el-input
-        type="textarea"
-        v-model="addressData.detail"
-        placeholder="请输入详细地址"
-        rows="3"
-        style="width: 100%;"
-      ></el-input>
+      <div class="address-form">
+        <div class="form-item">
+          <div class="form-label">选择地区：</div>
+          <el-cascader
+            v-model="addressData.region"
+            :options="regionOptions"
+            placeholder="请选择省市区"
+            clearable
+            style="width: 100%;"
+          ></el-cascader>
+        </div>
+        
+        <div class="form-item" style="margin-top: 20px;">
+          <div class="form-label">详细地址：</div>
+          <el-input
+            type="textarea"
+            v-model="addressData.detail"
+            placeholder="请输入详细地址，如街道名称、门牌号等"
+            rows="3"
+            style="width: 100%;"
+          ></el-input>
+        </div>
+      </div>
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
@@ -143,7 +156,7 @@
 <script>
 import { listCart, deleteCart, updateCart, deleteCartByProductIds } from "@/api/system/cart";
 import { createOrder } from "@/api/system/order";
-import request from '@/utils/request'; // 若依封装的 request
+import request from '@/utils/request';
 import { getToken } from "@/utils/auth";
 
 export default {
@@ -163,7 +176,7 @@ export default {
         region: [], // 数组形式，如 ["山西省", "太原市", "小店区"]
         detail: ''  // 详细地址
       },
-      // 省市区数据，增加更多省份选择
+      // 省市区数据
       regionOptions: [
         {
           value: '山西省',
@@ -523,6 +536,23 @@ export default {
     this.getList();
   },
   methods: {
+    // 表格单元格样式
+    cellStyle() {
+      return {
+        padding: '12px 0',
+        fontSize: '14px'
+      };
+    },
+    // 表格表头样式
+    headerCellStyle() {
+      return {
+        background: '#f5f7fa',
+        color: '#606266',
+        fontWeight: 'bold',
+        padding: '12px 0',
+        fontSize: '15px'
+      };
+    },
     getUserId() {
       const token = getToken();
       if (token) {
@@ -737,59 +767,78 @@ export default {
 
 .cart-card {
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .empty-cart {
-  text-align: center;
-  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
   color: #909399;
 }
 
-.empty-cart i {
-  font-size: 60px;
-  color: #DCDFE6;
+.empty-cart-icon {
+  background-color: #f5f7fa;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
+}
+
+.empty-cart i {
+  font-size: 50px;
+  color: #DCDFE6;
 }
 
 .empty-cart p {
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .cart-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  padding: 15px;
+  margin-top: 25px;
+  padding: 15px 20px;
   background-color: #f5f7fa;
-  border-radius: 4px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .cart-total {
   font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .total-price {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 700;
   color: #F56C6C;
   margin-left: 10px;
 }
 
 .cart-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .price {
   color: #F56C6C;
   font-weight: 500;
+  font-size: 15px;
 }
 
 .subtotal {
   color: #F56C6C;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .image-error {
@@ -804,12 +853,15 @@ export default {
 }
 
 .product-name {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: #303133;
-  line-height: 1.3;
-  margin: 0 2px;
-  text-align: center;
+  line-height: 1.4;
+  padding: 0 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product-desc {
@@ -829,11 +881,26 @@ export default {
   white-space: nowrap;
 }
 
-.el-input-number.el-input-number--mini {
-  width: 100px !important;
+.el-input-number.el-input-number--small {
+  width: 120px !important;
 }
 
 .el-table th.is-leaf {
   border-bottom: 1px solid #EBEEF5;
+}
+
+.address-form {
+  padding: 10px;
+}
+
+.form-item {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #606266;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 </style>

@@ -56,10 +56,15 @@
       :header-cell-style="headerCellStyle"
     >
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column prop="name" label="产品名称" align="center" />
+      <el-table-column prop="name" label="产品名称" align="center">
+        <template slot-scope="scope">
+          <el-link type="primary" @click="showProductDetail(scope.row)">{{ scope.row.name }}</el-link>
+        </template>
+      </el-table-column>
       <el-table-column prop="price" label="价格" align="center" />
       <el-table-column prop="stock" label="库存" align="center" />
-      <el-table-column prop="description" label="产品描述" align="center"/>
+      <!-- 注释掉产品描述列 -->
+      <!-- <el-table-column prop="description" label="产品描述" align="center"/> -->
       <el-table-column prop="category" label="产品类型" align="center"/>
       <el-table-column prop="imageUrl" label="产品图片" align="center" width="100">
         <template slot-scope="scope">
@@ -70,8 +75,8 @@
           ></el-image>
         </template>
       </el-table-column>
-      <!-- 添加描述图片显示列 -->
-      <el-table-column label="描述图片" align="center" width="120">
+      <!-- 注释掉描述图片显示列 -->
+      <!-- <el-table-column label="描述图片" align="center" width="120">
         <template slot-scope="scope">
           <div v-if="getDescriptionImages(scope.row).length > 0">
             <el-image
@@ -85,7 +90,7 @@
           </div>
           <span v-else>无</span>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column prop="createdTime" label="上架时间" align="center" width="160">
         <template #default="scope">
           {{ scope.row.createdTime | formatDate }}
@@ -150,17 +155,7 @@
             <el-option label="其他" value="其他" />
           </el-select>
         </el-form-item>
-        <!-- 原有描述文本框，注释掉 -->
-        <!--
-        <el-form-item label="描述" prop="description">
-          <el-input
-            v-model="form.description"
-            type="textarea"
-            placeholder="请输入描述"
-          />
-        </el-form-item>
-        -->
-        <!-- 新增描述图片上传和预览功能 -->
+        <!-- 恢复描述和描述图片上传功能 -->
         <el-form-item label="描述" prop="description">
           <div>
             <el-input
@@ -209,14 +204,21 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
+
+    <!-- 商品详情组件 -->
+    <ProductDetail :visible.sync="productDetailVisible" :productId="selectedProductId" />
   </div>
 </template>
 
 <script>
 import { listProduct, delProduct, addProduct, updateProduct, getProduct, deleteProduct } from "@/api/system/product";
+import ProductDetail from "./components/ProductDetail.vue";
 
 export default {
   name: "Product",
+  components: {
+    ProductDetail
+  },
   data() {
     return {
       loading: true,
@@ -251,7 +253,10 @@ export default {
         price: [{ required: true, message: "价格不能为空", trigger: "blur" }],
         stock: [{ required: true, message: "库存不能为空", trigger: "blur" }],
       },
-      descriptionFileList: []
+      descriptionFileList: [],
+      // 商品详情弹窗控制变量
+      productDetailVisible: false,
+      selectedProductId: null
     };
   },
   created() {
@@ -378,16 +383,28 @@ export default {
     submitForm() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          // 处理描述图片数据，将图片数组转为JSON字符串存储
-          if (this.form.descriptionImages && this.form.descriptionImages.length > 0) {
-            this.form.descriptionImagesJson = JSON.stringify(this.form.descriptionImages);
-          } else {
-            this.form.descriptionImagesJson = '';
-          }
+          // 显示加载提示
+          const loading = this.$loading({
+            lock: true,
+            text: '提交中...',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
           
-          if (this.form.id !== undefined) {
-            updateProduct(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+          // 使用nextTick让UI先渲染，避免卡顿感
+          this.$nextTick(() => {
+            // 处理描述图片数据，将图片数组转为JSON字符串存储
+            if (this.form.descriptionImages && this.form.descriptionImages.length > 0) {
+              // 限制图片数量和大小，避免过大数据传输
+              const optimizedImages = this.form.descriptionImages.slice(0, 5);
+              this.form.descriptionImagesJson = JSON.stringify(optimizedImages);
+            } else {
+              this.form.descriptionImagesJson = '';
+            }
+            
+            // 分开处理更新和新增操作
+            const handleSuccess = () => {
+              loading.close();
               this.open = false;
               this.getList();
               
@@ -402,14 +419,26 @@ export default {
                   });
                 });
               }
-            });
-          } else {
-            addProduct(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
-          }
+            };
+            
+            if (this.form.id !== undefined) {
+              updateProduct(this.form).then(response => {
+                this.$modal.msgSuccess("修改成功");
+                handleSuccess();
+              }).catch(err => {
+                loading.close();
+                console.error('更新产品失败:', err);
+              });
+            } else {
+              addProduct(this.form).then(response => {
+                this.$modal.msgSuccess("新增成功");
+                handleSuccess();
+              }).catch(err => {
+                loading.close();
+                console.error('添加产品失败:', err);
+              });
+            }
+          });
         }
       });
     },
@@ -467,10 +496,72 @@ export default {
     // 将文件转换为Base64
     getBase64(file) {
       return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
+        // 限制文件大小，超过1MB的图片进行压缩
+        const maxSize = 1 * 1024 * 1024; // 1MB
+        if (file.size > maxSize) {
+          this.compressImage(file).then(compressedFile => {
+            const reader = new FileReader();
+            reader.readAsDataURL(compressedFile);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+          }).catch(error => {
+            console.error('图片压缩失败:', error);
+            // 压缩失败时，仍然使用原图
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+          });
+        } else {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        }
+      });
+    },
+    
+    // 图片压缩方法
+    compressImage(file) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.src = URL.createObjectURL(file);
+        image.onload = () => {
+          // 创建Canvas
+          const canvas = document.createElement('canvas');
+          let width = image.width;
+          let height = image.height;
+          
+          // 计算压缩比例，目标控制在800px以内
+          const maxDimension = 800;
+          if (width > maxDimension || height > maxDimension) {
+            const ratio = Math.min(maxDimension / width, maxDimension / height);
+            width *= ratio;
+            height *= ratio;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          // 绘制压缩后的图片
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(image, 0, 0, width, height);
+          
+          // 转换为Blob
+          canvas.toBlob(
+            blob => {
+              resolve(new File([blob], file.name, { 
+                type: 'image/jpeg', 
+                lastModified: Date.now() 
+              }));
+            },
+            'image/jpeg',
+            0.75 // 压缩质量，0.75为适中的压缩率
+          );
+        };
+        image.onerror = (error) => {
+          reject(error);
+        };
       });
     },
     // 获取描述图片数组
@@ -485,6 +576,11 @@ export default {
       } else {
         return [];
       }
+    },
+    showProductDetail(row) {
+      // 打开商品详情弹窗
+      this.selectedProductId = row.id;
+      this.productDetailVisible = true;
     }
   },
   filters: {

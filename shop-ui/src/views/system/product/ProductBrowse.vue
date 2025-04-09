@@ -76,7 +76,8 @@
                 <el-link type="primary" @click="showProductDetail(scope.row)">{{ scope.row.name }}</el-link>
               </template>
             </el-table-column>
-            <el-table-column label="产品描述" prop="description" align="center" />
+            <!-- 注释掉产品描述列 -->
+            <!-- <el-table-column label="产品描述" prop="description" align="center" /> -->
             <el-table-column label="产品类别" prop="category" align="center" />
             <el-table-column label="价格" prop="price" align="center" />
             <el-table-column label="库存" prop="stock" align="center" />
