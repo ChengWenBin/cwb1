@@ -13,11 +13,7 @@
       </el-form-item>
       <el-form-item label="产品类型" prop="category">
         <el-select v-model="queryParams.category" placeholder="请选择产品类型" clearable style="width: 240px">
-          <el-option label="电脑" value="电脑" />
-          <el-option label="手机" value="手机" />
-          <el-option label="平板" value="平板" />
-          <el-option label="耳机" value="耳机" />
-          <el-option label="其他" value="其他" />
+          <el-option v-for="item in categoryOptions" :key="item" :label="item" :value="item" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -148,11 +144,7 @@
         </el-form-item>
         <el-form-item label="产品类型" prop="category">
           <el-select v-model="form.category" placeholder="请选择产品类型" style="width: 100%">
-            <el-option label="电脑" value="电脑" />
-            <el-option label="手机" value="手机" />
-            <el-option label="平板" value="平板" />
-            <el-option label="耳机" value="耳机" />
-            <el-option label="其他" value="其他" />
+            <el-option v-for="item in categoryOptions" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
         <!-- 恢复描述和描述图片上传功能 -->
@@ -212,6 +204,7 @@
 
 <script>
 import { listProduct, delProduct, addProduct, updateProduct, getProduct, deleteProduct } from "@/api/system/product";
+import { listCategory } from "@/api/system/category";
 import ProductDetail from "./components/ProductDetail.vue";
 
 export default {
@@ -252,15 +245,19 @@ export default {
         name: [{ required: true, message: "产品名称不能为空", trigger: "blur" }],
         price: [{ required: true, message: "价格不能为空", trigger: "blur" }],
         stock: [{ required: true, message: "库存不能为空", trigger: "blur" }],
+        category: [{ required: true, message: "产品类型不能为空", trigger: "change" }]
       },
       descriptionFileList: [],
       // 商品详情弹窗控制变量
       productDetailVisible: false,
-      selectedProductId: null
+      selectedProductId: null,
+      // 类型选项
+      categoryOptions: []
     };
   },
   created() {
     this.getList();
+    this.getCategoryOptions();
     // 检查URL查询参数，处理从其他页面传来的编辑请求
     this.checkQueryParams();
   },
@@ -581,6 +578,12 @@ export default {
       // 打开商品详情弹窗
       this.selectedProductId = row.id;
       this.productDetailVisible = true;
+    },
+    // 获取产品类型选项
+    getCategoryOptions() {
+      listCategory().then(response => {
+        this.categoryOptions = response.rows || [];
+      });
     }
   },
   filters: {

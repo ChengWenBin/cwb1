@@ -13,25 +13,9 @@
               <i class="el-icon-menu"></i>
               <span slot="title">全部产品</span>
             </el-menu-item>
-            <el-menu-item index="电脑">
-              <i class="el-icon-monitor"></i>
-              <span slot="title">电脑</span>
-            </el-menu-item>
-            <el-menu-item index="手机">
-              <i class="el-icon-mobile-phone"></i>
-              <span slot="title">手机</span>
-            </el-menu-item>
-            <el-menu-item index="平板">
-              <i class="el-icon-mobile"></i>
-              <span slot="title">平板</span>
-            </el-menu-item>
-            <el-menu-item index="耳机">
-              <i class="el-icon-headset"></i>
-              <span slot="title">耳机</span>
-            </el-menu-item>
-            <el-menu-item index="其他">
-              <i class="el-icon-goods"></i>
-              <span slot="title">其他</span>
+            <el-menu-item v-for="category in categoryOptions" :key="category" :index="category">
+              <i :class="getCategoryIcon(category)"></i>
+              <span slot="title">{{ category }}</span>
             </el-menu-item>
           </el-menu>
         </div>
@@ -123,6 +107,7 @@
 
 <script>
 import { listProduct } from "@/api/system/product-browse";
+import { listCategory } from "@/api/system/category";
 import { addCart } from "@/api/system/cart";
 import RecommendPopup from "./components/RecommendPopup.vue";
 import ProductDetail from "./components/ProductDetail.vue";
@@ -152,6 +137,14 @@ export default {
       recommendVisible: false,
       productDetailVisible: false,
       selectedProductId: null,
+      categoryOptions: [],
+      categoryIcons: {
+        '电脑': 'el-icon-monitor',
+        '手机': 'el-icon-mobile-phone',
+        '平板': 'el-icon-mobile',
+        '耳机': 'el-icon-headset',
+        '其他': 'el-icon-goods'
+      }
     };
   },
   computed: {
@@ -205,6 +198,7 @@ export default {
   },
   created() {
     this.fetchAllProducts();
+    this.getCategoryOptions();
   },
   methods: {
     fetchAllProducts() {
@@ -226,6 +220,18 @@ export default {
           this.loading = false;
           console.error("获取电子产品列表失败:", err);
         });
+    },
+
+    // 获取产品类型选项
+    getCategoryOptions() {
+      listCategory().then(response => {
+        this.categoryOptions = response.rows || [];
+      });
+    },
+
+    // 获取类型对应的图标
+    getCategoryIcon(category) {
+      return this.categoryIcons[category] || 'el-icon-goods';
     },
 
     handleQuery() {

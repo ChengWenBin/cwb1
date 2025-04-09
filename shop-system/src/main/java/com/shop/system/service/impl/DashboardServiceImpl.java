@@ -22,20 +22,6 @@ public class DashboardServiceImpl implements IDashboardService {
     }
     @Override
     public List<Map<String, Object>> getProductSales() {
-        String sql = "SELECT " +
-                "CASE p.category " +
-                "  WHEN '电脑' THEN '电脑' " +
-                "  WHEN '手机' THEN '手机' " +
-                "  WHEN '平板' THEN '平板' " +
-                "  WHEN '耳机' THEN '耳机' " +
-                "  ELSE '其他' " +
-                "END AS category, " +
-                "SUM(oi.total_price) AS sales " +
-                "FROM order_item oi " +
-                "JOIN product p ON oi.product_id = p.id " +
-                "JOIN `order` o ON oi.order_id = o.order_id " +
-                "WHERE o.order_status != '已取消' " +
-                "GROUP BY category";  // 按类别分组
         return dashboardMapper.getProductSales();
     }
 
@@ -80,54 +66,30 @@ public class DashboardServiceImpl implements IDashboardService {
     public Map<String, Object> getCategorySales() {
         Map<String, Object> categoryData = new HashMap<>();
         
-        // 获取各类别销售数据
-        List<Map<String, Object>> phoneData = dashboardMapper.getCategorySalesByType("手机");
-        List<Map<String, Object>> computerData = dashboardMapper.getCategorySalesByType("电脑");
-        List<Map<String, Object>> tabletData = dashboardMapper.getCategorySalesByType("平板");
-        List<Map<String, Object>> headphoneData = dashboardMapper.getCategorySalesByType("耳机");
-        List<Map<String, Object>> otherData = dashboardMapper.getCategorySalesByType("其他");
+        // 获取所有产品类型
+        List<String> categories = dashboardMapper.getAllProductCategories();
         
-        // 如果数据为空，添加占位数据
-        if (phoneData.isEmpty()) {
-            Map<String, Object> placeholder = new HashMap<>();
-            placeholder.put("name", "暂无数据");
-            placeholder.put("value", 0);
-            phoneData.add(placeholder);
+        // 确保"其他"类别也被处理
+        if (!categories.contains("其他")) {
+            categories.add("其他");
         }
         
-        if (computerData.isEmpty()) {
-            Map<String, Object> placeholder = new HashMap<>();
-            placeholder.put("name", "暂无数据");
-            placeholder.put("value", 0);
-            computerData.add(placeholder);
+        // 为每个类别获取销售数据
+        for (String category : categories) {
+            List<Map<String, Object>> data = dashboardMapper.getCategorySalesByType(category);
+            
+            // 如果数据为空，添加占位数据
+            if (data.isEmpty()) {
+                Map<String, Object> placeholder = new HashMap<>();
+                placeholder.put("name", "暂无数据");
+                placeholder.put("value", 0);
+                data.add(placeholder);
+            }
+            
+            // 使用类别名称作为key，避免硬编码
+            String categoryKey = category.replaceAll("\\s+", "") + "Data";
+            categoryData.put(categoryKey, data);
         }
-        
-        if (tabletData.isEmpty()) {
-            Map<String, Object> placeholder = new HashMap<>();
-            placeholder.put("name", "暂无数据");
-            placeholder.put("value", 0);
-            tabletData.add(placeholder);
-        }
-        
-        if (headphoneData.isEmpty()) {
-            Map<String, Object> placeholder = new HashMap<>();
-            placeholder.put("name", "暂无数据");
-            placeholder.put("value", 0);
-            headphoneData.add(placeholder);
-        }
-        
-        if (otherData.isEmpty()) {
-            Map<String, Object> placeholder = new HashMap<>();
-            placeholder.put("name", "暂无数据");
-            placeholder.put("value", 0);
-            otherData.add(placeholder);
-        }
-        
-        categoryData.put("phoneData", phoneData);
-        categoryData.put("computerData", computerData);
-        categoryData.put("tabletData", tabletData);
-        categoryData.put("headphoneData", headphoneData);
-        categoryData.put("otherData", otherData);
         
         return categoryData;
     }

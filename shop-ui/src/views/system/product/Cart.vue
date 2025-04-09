@@ -614,18 +614,20 @@ export default {
           if (item && item.productId) {
             try {
               const res = await this.getProduct(item.productId);
-              if (res && res.name && res.imageUrl && res.price) {
+              if (res && res.name) {
                 item.productName = res.name;
-                item.imageUrl = res.imageUrl;
-                item.price = res.price;
+                item.imageUrl = res.imageUrl || '';
+                item.price = res.price || 0;
                 item.description = res.description || '';
                 item.stock = res.stock || 0; // 添加库存信息
+                item.category = res.category || ''; // 确保类别属性存在
               } else {
                 item.productName = '加载失败';
                 item.imageUrl = '';
                 item.price = 0;
                 item.description = '';
                 item.stock = 0; // 设置库存为0
+                item.category = ''; // 设置空类别
                 console.error("获取商品信息失败:", res);
               }
             } catch (e) {
@@ -634,6 +636,7 @@ export default {
               item.price = 0;
               item.description = '';
               item.stock = 0; // 设置库存为0
+              item.category = ''; // 设置空类别
               console.error("获取商品信息失败:", e);
             }
           } else {
@@ -653,7 +656,17 @@ export default {
       try {
         const response = await request({ url: `/system/product/${productId}`, method: 'get' });
         if (response && response.data) {
-          return response.data;
+          // 确保返回的对象包含所有必要的属性，防止解析错误
+          const product = response.data;
+          return {
+            id: product.id,
+            name: product.name || '未知商品',
+            imageUrl: product.imageUrl || '',
+            price: product.price || 0,
+            description: product.description || '',
+            stock: product.stock || 0,
+            category: product.category || '' // 确保类别属性存在
+          };
         } else {
           console.error("获取商品信息失败:", response);
           return {
@@ -661,6 +674,8 @@ export default {
             imageUrl: '',
             price: 0,
             description: '',
+            stock: 0,
+            category: ''
           };
         }
       } catch (e) {
@@ -670,7 +685,8 @@ export default {
           imageUrl: '',
           price: 0,
           description: '',
-          stock: 0, // 设置库存为0
+          stock: 0,
+          category: ''
         };
       }
     },

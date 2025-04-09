@@ -392,7 +392,7 @@ export default {
           name: '销售额',
           type: 'pie',
           radius: '50%',
-          center: ['60%', '55%'],  // 调整圆心位置，为图例腾出空间。  注意这里改了
+          center: ['60%', '55%'],  // 调整圆心位置，为图例腾出空间
           data: data.map(item => ({ value: item.sales, name: item.category })),
           emphasis: {
             itemStyle: {

@@ -12,13 +12,10 @@
 
     <select id="getProductSales" resultType="map">
         SELECT
-            CASE p.category
-                WHEN '电脑' THEN '电脑'
-                WHEN '手机' THEN '手机'
-                WHEN '平板' THEN '平板'
-                WHEN '耳机' THEN '耳机'
-                ELSE '其他'
-                END AS category,
+            CASE 
+                WHEN p.category IS NULL OR p.category = '' THEN '其他'
+                ELSE p.category
+            END AS category,
             SUM(oi.total_price) AS sales
         FROM order_item oi
                  JOIN product p ON oi.product_id = p.id
@@ -80,7 +77,7 @@
                 AND p.category = #{category}
             </if>
             <if test="category == '其他'">
-                AND p.category NOT IN ('电脑', '手机', '平板', '耳机')
+                AND (p.category IS NULL OR p.category = '')
             </if>
         GROUP BY 
             p.name
@@ -139,6 +136,13 @@
             QUARTER(o.create_time)
         ORDER BY 
             QUARTER(o.create_time)
+    </select>
+    
+    <!-- 获取所有产品类型 -->
+    <select id="getAllProductCategories" resultType="java.lang.String">
+        SELECT DISTINCT category 
+        FROM product 
+        WHERE category IS NOT NULL AND category != ''
     </select>
 
 </mapper>

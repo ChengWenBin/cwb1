@@ -31,4 +31,7 @@ public interface DashboardMapper {
     List<Map<String, Object>> getHotProducts();
     
     List<Integer> getSeasonalTrendByCategory(@Param("category") String category);
+    
+    // 获取所有产品类型
+    List<String> getAllProductCategories();
 }

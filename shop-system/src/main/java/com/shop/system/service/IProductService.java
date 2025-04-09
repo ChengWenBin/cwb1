@@ -12,4 +12,11 @@ public interface IProductService {
 
     // 添加 reduceStock 方法
     boolean reduceStock(Long productId, Integer quantity);
+    
+    // 类型管理相关方法
+    List<String> selectAllCategories();
+    int insertCategory(String category);
+    int updateCategory(String oldCategory, String newCategory);
+    int deleteCategory(String category);
+    int getCategoryCount(String category);
 }

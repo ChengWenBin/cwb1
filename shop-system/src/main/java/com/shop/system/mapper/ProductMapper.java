@@ -13,4 +13,12 @@ public interface ProductMapper {
     Product selectProductById(Long productId);
     List<Product> selectProductListByCategory(Product product);
     int reduceStock(@Param("productId") Long productId, @Param("quantity") Integer quantity);
+    
+    // 类型管理相关方法
+    List<String> selectAllCategories();
+    int checkCategoryExists(String category);
+    int insertCategory(String category);
+    int updateProductCategory(@Param("oldCategory") String oldCategory, @Param("newCategory") String newCategory);
+    int deleteCategory(String category);
+    int getCategoryCount(String category);
 }
