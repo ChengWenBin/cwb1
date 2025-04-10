@@ -54,34 +54,41 @@
             </el-select>
           </div>
 
-          <el-table v-loading="loading" :data="paginatedProductList" :row-class-name="tableRowClassName">
-            <el-table-column label="产品名称" prop="name" align="center">
-              <template slot-scope="scope">
-                <el-link type="primary" @click="showProductDetail(scope.row)">{{ scope.row.name }}</el-link>
-              </template>
-            </el-table-column>
-            <!-- 注释掉产品描述列 -->
-            <!-- <el-table-column label="产品描述" prop="description" align="center" /> -->
-            <el-table-column label="产品类别" prop="category" align="center" />
-            <el-table-column label="价格" prop="price" align="center" />
-            <el-table-column label="库存" prop="stock" align="center" />
-            <el-table-column label="图片" prop="imageUrl" align="center" width="100">
-              <template slot-scope="scope">
-                <el-image style="width: 80px;height:80px" :src="scope.row.imageUrl" :preview-src-list="[scope.row.imageUrl]"></el-image>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" width="120" align="center">
-              <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  type="text"
-                  icon="el-icon-shopping-cart-full"
-                  @click="handleAddToCart(scope.row)"
-                  :class="{ 'out-of-stock': scope.row.stock <= 0 }"
-                >{{ scope.row.stock <= 0 ? '缺货可加购' : '加入购物车' }}</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
+          <!-- 产品卡片网格布局 -->
+          <div v-loading="loading" class="product-grid">
+            <div v-if="paginatedProductList.length === 0" class="empty-container">
+              <i class="el-icon-shopping-bag-1" style="font-size: 48px; color: #909399;"></i>
+              <p>暂无符合条件的产品</p>
+            </div>
+            <el-row :gutter="24" v-else>
+              <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="(product, index) in paginatedProductList" :key="index" class="product-col">
+                <el-card shadow="hover" class="product-card" :class="{ 'out-of-stock-card': product.stock <= 0 }">
+                  <div class="product-img" @click="showProductDetail(product)">
+                    <el-image :src="product.imageUrl" fit="cover" :preview-src-list="[product.imageUrl]"></el-image>
+                    <div class="category-tag">{{ product.category }}</div>
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-name" @click="showProductDetail(product)">{{ product.name }}</h3>
+                    <div class="product-meta">
+                      <p class="product-price">¥{{ product.price }}</p>
+                      <p v-if="product.stock <= 0" class="product-stock out-of-stock">暂时缺货</p>
+                      <p v-else class="product-stock in-stock">库存: {{ product.stock }}</p>
+                    </div>
+                    <el-button 
+                      type="primary" 
+                      size="small" 
+                      class="cart-button" 
+                      @click="handleAddToCart(product)" 
+                      :class="{ 'out-of-stock-btn': product.stock <= 0 }"
+                    >
+                      <i class="el-icon-shopping-cart-full"></i>
+                      {{ product.stock <= 0 ? '缺货可加购' : '加入购物车' }}
+                    </el-button>
+                  </div>
+                </el-card>
+              </el-col>
+            </el-row>
+          </div>
 
           <!-- 分页 -->
           <div class="pagination-container">
@@ -311,9 +318,41 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+/* 变量定义 */
+$primary-color: #1890ff;
+$secondary-color: #52c41a;
+$accent-color: #fa8c16;
+$text-color-primary: #262626;
+$text-color-secondary: #595959;
+$text-color-light: #8c8c8c;
+$bg-color-page: #f5f7fa;
+$bg-color-card: #ffffff;
+$border-color: #eaedf1;
+$border-radius: 10px;
+$shadow-light: 0 8px 18px rgba(0, 0, 0, 0.05);
+$shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.08);
+$transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+/* 混合器定义 */
+@mixin flex-center($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-hover-effect {
+  transition: $transition-common;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-hover;
+  }
+}
+
 .app-container {
   padding: 20px;
+  background-color: $bg-color-page;
 }
 
 .directory-container {
@@ -323,7 +362,11 @@ export default {
 .directory-menu {
   width: 200px;
   margin-right: 20px;
-  border-right: 1px solid #e6e6e6;
+  border-right: 1px solid $border-color;
+  background-color: $bg-color-card;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  overflow: hidden;
 }
 
 .directory-content {
@@ -339,9 +382,10 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  background-color: #f5f7fa;
-  padding: 15px;
-  border-radius: 4px;
+  background-color: $bg-color-card;
+  padding: 15px 20px;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
 }
 
 .search-form {
@@ -385,7 +429,7 @@ export default {
 
 .price-separator {
   margin: 0 5px;
-  color: #606266;
+  color: $text-color-secondary;
 }
 
 .sort-container {
@@ -393,29 +437,270 @@ export default {
   align-items: center;
   margin-bottom: 15px;
   padding: 0 10px;
+  background-color: $bg-color-card;
+  border-radius: $border-radius;
+  padding: 12px 20px;
+  box-shadow: $shadow-light;
 }
 
 .sort-label {
   margin-right: 10px;
   font-size: 14px;
-  color: #606266;
+  color: $text-color-secondary;
+  font-weight: 500;
+}
+
+/* 产品网格布局样式 */
+.product-grid {
+  margin-bottom: 20px;
+}
+
+.product-col {
+  margin-bottom: 24px;
+}
+
+.product-card {
+  height: 100%;
+  @include card-hover-effect;
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: none;
+  
+  &.out-of-stock-card {
+    opacity: 0.85;
+  }
+  
+  ::v-deep .el-card__body {
+    padding: 0;
+  }
+}
+
+.product-img {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  .el-image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease;
+  }
+
+  &:hover .el-image {
+    transform: scale(1.08);
+  }
+  
+  /* 添加产品图片顶部渐变遮罩 */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+    z-index: 1;
+  }
+}
+
+.category-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba($primary-color, 0.8);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 140px;
+}
+
+.product-name {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $text-color-primary;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-price {
+  color: #ff4d4f;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.product-stock {
+  font-size: 13px;
+  margin: 0;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.out-of-stock {
+  color: #ff4d4f;
+  background-color: rgba(#ff4d4f, 0.1);
+  font-weight: 500;
+}
+
+.in-stock {
+  color: $secondary-color;
+  background-color: rgba($secondary-color, 0.1);
+  font-weight: 500;
+}
+
+.cart-button {
+  width: 100%;
+  border-radius: 6px;
+  height: 36px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  margin-top: auto;
+  
+  &.el-button--primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    
+    &:hover, &:focus {
+      background-color: darken($primary-color, 5%);
+      border-color: darken($primary-color, 5%);
+    }
+  }
+  
+  &.out-of-stock-btn {
+    background-color: #fff2f0;
+    border-color: #ffccc7;
+    color: #ff4d4f;
+    
+    &:hover, &:focus {
+      background-color: #fff1ef;
+      border-color: #ffb4a9;
+      color: #ff4d4f;
+    }
+  }
+}
+
+.empty-container {
+  @include flex-center;
+  padding: 40px 0;
+  min-height: 300px;
+  background-color: $bg-color-card;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  
+  .el-icon-shopping-bag-1 {
+    margin-bottom: 18px;
+  }
+  
+  p {
+    margin-top: 15px;
+    color: $text-color-light;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
 
 .pagination-container {
   margin-top: 20px;
   text-align: right;
-  padding: 10px 20px;
+  padding: 15px 20px;
+  background-color: $bg-color-card;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
 }
 
-/* 库存为0的商品行样式 */
-.out-of-stock-row {
-  color: #909399;
-  background-color: #f5f7fa;
+/* 响应式布局调整 */
+@media (max-width: 992px) {
+  .product-img {
+    height: 200px;
+  }
+  
+  .product-info {
+    min-height: 130px;
+  }
 }
 
-/* 库存为0的按钮样式 */
-.out-of-stock {
-  color: #909399 !important;
-  border-color: #dcdfe6 !important;
+@media (max-width: 768px) {
+  .directory-container {
+    flex-direction: column;
+  }
+  
+  .directory-menu {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+    border-right: none;
+  }
+  
+  .search-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-form {
+    margin-right: 0;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .header-buttons {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+  
+  .product-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-img {
+    height: 160px;
+  }
+  
+  .product-info {
+    padding: 12px;
+    min-height: 120px;
+  }
+  
+  .product-name {
+    font-size: 15px;
+  }
+  
+  .product-price {
+    font-size: 16px;
+  }
+  
+  .cart-button {
+    height: 34px;
+    font-size: 13px;
+  }
 }
 </style>

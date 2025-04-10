@@ -158,6 +158,10 @@ export default {
   watch: {
     visible(val) {
       this.dialogVisible = val;
+      if (val && this.productId) {
+        // 每次弹窗打开时，都重新获取商品详情
+        this.getProductDetail(this.productId);
+      }
       if (!val) {
         this.$emit('update:visible', false);
       }
