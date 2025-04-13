@@ -142,7 +142,8 @@ export default {
           feature.name === '订单管理' ||
           feature.name === '数据看板' ||
           feature.name === '个人中心' ||
-          feature.name === '产品类型管理'
+          feature.name === '产品类型管理' ||
+          feature.name === '客服反馈'
         );
       }
 
@@ -168,6 +169,7 @@ export default {
       { bgColor: '#f9f0ff', iconColor: '#722ed1' },
       { bgColor: '#e6f7ff', iconColor: '#1890ff' },
       { bgColor: '#fff7e6', iconColor: '#fa8c16' },
+      { bgColor: '#f6ffed', iconColor: '#52c41a' },
     ]
 
     return {
@@ -181,7 +183,9 @@ export default {
         { icon: "el-icon-s-order", name: "订单管理", path: "/system/adminOrder", ...featureStyles[6] },
         { icon: "el-icon-data-analysis", name: "数据看板", path: "/dashboard", ...featureStyles[7] },
         { icon: "el-icon-s-home", name: "个人中心", path: "/user/profile", ...featureStyles[8] },
-        { icon: "el-icon-menu", name: "产品类型管理", path: "/system/setting", ...featureStyles[9] }
+        { icon: "el-icon-menu", name: "产品类型管理", path: "/system/setting", ...featureStyles[9] },
+        { icon: "el-icon-chat-line-square", name: "客服反馈", path: "/feedback", ...featureStyles[10] },
+        
       ],
       // 推荐产品数据
       recommendedProducts: [],

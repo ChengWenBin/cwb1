@@ -23,6 +23,14 @@
           <size-select id="size-select" class="right-menu-item hover-effect" />
         </el-tooltip>
 
+        <el-tooltip :content="isAdmin ? '用户反馈' : '联系客服'" effect="dark" placement="bottom">
+          <el-badge :value="unreadCount > 0 ? unreadCount : ''" :hidden="unreadCount === 0" class="item">
+            <div id="customer-service" class="right-menu-item hover-effect" @click="openFeedbackDialog">
+              <i class="el-icon-service"></i>
+            </div>
+          </el-badge>
+        </el-tooltip>
+
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
@@ -56,6 +64,7 @@ import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
 import RuoYiGit from '@/components/RuoYi/Git'
 import RuoYiDoc from '@/components/RuoYi/Doc'
+import { getUnreadCount, getUserUnreadCount } from '@/api/system/feedback'
 
 export default {
   components: {
@@ -68,11 +77,18 @@ export default {
     RuoYiGit,
     RuoYiDoc
   },
+  data() {
+    return {
+      unreadCount: 0,
+      feedbackTimer: null
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
       'avatar',
-      'device'
+      'device',
+      'roles'
     ]),
     setting: {
       get() {
@@ -89,6 +105,25 @@ export default {
       get() {
         return this.$store.state.settings.topNav
       }
+    },
+    isAdmin() {
+      return this.roles.some(role => role === 'admin' || role === 'normal_admin')
+    }
+  },
+  created() {
+    if (this.isAdmin) {
+      this.getUnreadFeedbackCount();
+      // 定时获取未读反馈数量
+      this.feedbackTimer = setInterval(this.getUnreadFeedbackCount, 60000); // 每分钟更新一次
+    } else {
+      this.getUserUnreadReplyCount();
+      // 定时获取用户未读回复数量
+      this.feedbackTimer = setInterval(this.getUserUnreadReplyCount, 60000); // 每分钟更新一次
+    }
+  },
+  beforeDestroy() {
+    if (this.feedbackTimer) {
+      clearInterval(this.feedbackTimer);
     }
   },
   methods: {
@@ -105,6 +140,32 @@ export default {
           location.href = '/index';
         })
       }).catch(() => {});
+    },
+    // 获取未读反馈数量
+    getUnreadFeedbackCount() {
+      getUnreadCount().then(res => {
+        this.unreadCount = res.data;
+      });
+    },
+    // 获取用户未读回复数量
+    getUserUnreadReplyCount() {
+      getUserUnreadCount().then(res => {
+        this.unreadCount = res.data;
+      });
+    },
+    // 打开反馈对话框
+    openFeedbackDialog() {
+      if (this.isAdmin) {
+        // 管理员打开反馈列表页面
+        this.$router.push({ path: '/system/feedback' });
+      } else {
+        // 用户打开发送反馈对话框
+        this.$emit('openFeedback');
+        // 刷新未读消息数量，清除角标
+        setTimeout(() => {
+          this.getUserUnreadReplyCount();
+        }, 200);
+      }
     }
   }
 }

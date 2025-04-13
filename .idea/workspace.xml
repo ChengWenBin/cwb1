@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="用户个人中心添加订单状态以及产品浏览分类">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/DashboardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/DashboardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/mapper/ProductMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/IProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/DashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/DashboardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/java/com/shop/system/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/DashboardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/DashboardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shop-system/src/main/resources/mapper/system/ProductMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/Cart.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/ProductBrowse.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/product/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
