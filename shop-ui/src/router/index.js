@@ -69,7 +69,7 @@ export const constantRoutes = [
   {
     path: '/feedback',
     component: Layout,
-    hidden: false,
+    hidden: true,
     redirect: 'noredirect',
     children: [
       {

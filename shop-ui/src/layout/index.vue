@@ -22,10 +22,10 @@
             <p>暂无反馈历史，请点击"新增反馈"发送消息</p>
           </div>
           <el-timeline v-else>
-            <el-timeline-item 
-              v-for="(item, index) in feedbackList" 
-              :key="index" 
-              :timestamp="item.createTime" 
+            <el-timeline-item
+              v-for="(item, index) in feedbackList"
+              :key="index"
+              :timestamp="item.createTime"
               :icon="item.reply ? 'el-icon-chat-dot-round' : 'el-icon-chat-line-round'"
               :type="item.reply ? 'primary' : 'info'">
               <el-card shadow="hover" :class="{'unread-feedback': item.reply && item.isRead === '0'}">
@@ -54,10 +54,10 @@
       <div v-else>
         <el-form ref="feedbackForm" :model="feedbackForm" :rules="feedbackRules" label-width="80px">
           <el-form-item label="反馈内容" prop="content">
-            <el-input 
-              v-model="feedbackForm.content" 
-              type="textarea" 
-              placeholder="请输入您的问题或反馈" 
+            <el-input
+              v-model="feedbackForm.content"
+              type="textarea"
+              placeholder="请输入您的问题或反馈"
               :autosize="{ minRows: 4, maxRows: 8 }">
             </el-input>
           </el-form-item>
@@ -101,7 +101,7 @@ export default {
       feedbackRules: {
         content: [
           { required: true, message: '请输入反馈内容', trigger: 'blur' },
-          { min: 5, max: 500, message: '反馈内容长度应在5到500个字符之间', trigger: 'blur' }
+          { min: 2, max: 500, message: '反馈内容长度应在2到500个字符之间', trigger: 'blur' }
         ]
       }
     }
@@ -169,7 +169,7 @@ export default {
         if (!valid) {
           return;
         }
-        
+
         addFeedback(this.feedbackForm).then(response => {
           this.$message.success('反馈提交成功');
           this.showFeedbackHistory();
