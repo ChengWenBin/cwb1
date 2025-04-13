@@ -6,9 +6,8 @@
         <admin-alerts />
       </keep-alive>
     </div>
-    
 
-    
+
     <!-- 推荐产品 -->
     <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="recommend-section">
       <el-divider content-position="center" class="section-divider">
@@ -84,7 +83,7 @@
         </el-col>
       </el-row>
     </div>
-    
+
     <!-- 商品详情弹窗 -->
     <ProductDetail :visible.sync="productDetailVisible" :productId="selectedProductId" />
   </div>
@@ -152,7 +151,7 @@ export default {
         feature.name === '电子产品浏览' ||
         feature.name === '购物车' ||
         feature.name === '我的订单' ||
-        feature.name === '个人中心' 
+        feature.name === '个人中心'
       );
     }
   },
@@ -185,7 +184,7 @@ export default {
         { icon: "el-icon-s-home", name: "个人中心", path: "/user/profile", ...featureStyles[8] },
         { icon: "el-icon-menu", name: "产品类型管理", path: "/system/setting", ...featureStyles[9] },
         { icon: "el-icon-chat-line-square", name: "客服反馈", path: "/feedback", ...featureStyles[10] },
-        
+
       ],
       // 推荐产品数据
       recommendedProducts: [],
@@ -297,7 +296,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   padding: 20px;
   position: relative;
   overflow: hidden;
-  
+
   // 添加左侧边框装饰
   &::before {
     content: '';
@@ -320,7 +319,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
     padding: 0 20px;
     background-color: $bg-color-card;
     position: relative;
-    
+
     &::after {
       content: '';
       display: block;
@@ -334,7 +333,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
       border-radius: 3px;
     }
   }
-  
+
   ::v-deep .el-divider__line {
     border-color: rgba($primary-color, 0.15);
     border-width: 1px;
@@ -365,7 +364,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   border-radius: $border-radius;
   overflow: hidden;
   border: none;
-  
+
   ::v-deep .el-card__body {
     padding: 0;
   }
@@ -385,7 +384,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   &:hover .el-image {
     transform: scale(1.08);
   }
-  
+
   // 添加产品图片顶部渐变遮罩
   &::after {
     content: '';
@@ -495,11 +494,11 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   font-weight: 500;
   letter-spacing: 0.5px;
   font-size: 13px;
-  
+
   &.el-button--primary {
     background-color: $primary-color;
     border-color: $primary-color;
-    
+
     &:hover, &:focus {
       background-color: darken($primary-color, 5%);
       border-color: darken($primary-color, 5%);
@@ -511,7 +510,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   background-color: #fff2f0;
   border-color: #ffccc7;
   color: #ff4d4f;
-  
+
   &:hover, &:focus {
     background-color: #fff1ef;
     border-color: #ffb4a9;
@@ -530,7 +529,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   .el-icon-shopping-bag-1 {
     margin-bottom: 18px;
   }
-  
+
   p {
     margin-top: 15px;
     color: $text-color-light;
@@ -558,16 +557,16 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   height: 160px;
   overflow: hidden;
   position: relative;
-  
+
   &:hover {
     transform: translateY(-6px);
     box-shadow: $shadow-hover;
-    
+
     &::after {
       opacity: 1;
     }
   }
-  
+
   // 添加悬停时的细微背景效果
   &::after {
     content: '';
@@ -609,7 +608,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
     transition: $transition-common;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -634,7 +633,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
     margin-top: 10px;
     position: relative;
     display: inline-block;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -653,7 +652,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
     .icon-wrapper {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba($primary-color, 0.2);
-      
+
       &::after {
         border-color: rgba($primary-color, 0.3);
         transform: rotate(45deg);
@@ -664,7 +663,7 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
     }
     .function-name {
       color: $primary-color;
-      
+
       &::after {
         width: 80%;
       }
@@ -677,11 +676,11 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   .app-container.home {
     padding: 20px 25px;
   }
-  
+
   .feature-card {
     height: 140px;
   }
-  
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -689,15 +688,15 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
       font-size: 28px;
     }
   }
-  
+
   .function-name {
     font-size: 16px;
   }
-  
+
   .product-img {
     height: 180px;
   }
-  
+
   .product-info {
     min-height: 150px;
   }
@@ -707,23 +706,23 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   .app-container.home {
     padding: 15px 20px;
   }
-  
+
   .section-divider .divider-text {
     font-size: 18px;
   }
-  
+
   .product-img {
     height: 160px;
   }
-  
+
   .product-name {
     font-size: 16px;
   }
-  
+
   .product-category {
     font-size: 13px;
   }
-  
+
   .alert-section, .recommend-section, .charts-section, .features-section {
     padding: 15px;
     margin-bottom: 20px;
@@ -734,62 +733,62 @@ $transition-common: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); // 略微放慢�
   .app-container.home {
     padding: 12px 15px;
   }
-  
+
   .feature-card {
     height: 120px;
   }
-  
+
   .icon-wrapper {
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
-    
+
     .function-icon {
       font-size: 24px;
     }
   }
-  
+
   .function-name {
     font-size: 14px;
     margin-top: 6px;
   }
-  
+
   .product-img {
     height: 140px;
   }
-  
+
   .product-info {
     padding: 12px;
     min-height: 140px;
   }
-  
+
   .product-description {
     -webkit-line-clamp: 2;
     font-size: 13px;
     margin-bottom: 8px;
   }
-  
+
   .product-price {
     font-size: 18px;
   }
-  
+
   .product-stock {
     font-size: 13px;
     margin-bottom: 10px;
   }
-  
+
   .el-button {
     height: 36px;
     font-size: 13px;
   }
-  
+
   .section-divider {
     margin: 15px 0 20px;
-    
+
     .divider-text {
       font-size: 17px;
       padding: 0 15px;
-      
+
       &::after {
         bottom: -4px;
         width: 30px;
