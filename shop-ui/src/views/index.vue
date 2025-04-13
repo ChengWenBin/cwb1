@@ -8,9 +8,6 @@
     </div>
 
 
-
-
-
     <!-- 推荐产品 -->
     <div v-if="!roles.some(role => role === 'admin' || role === 'normal_admin')" class="recommend-section">
       <el-divider content-position="center" class="section-divider">
