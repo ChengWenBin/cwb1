@@ -65,6 +65,20 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
+  },
+  {
+    path: '/feedback',
+    component: Layout,
+    hidden: false,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/system/feedback/index'),
+        name: 'FeedbackManage',
+        meta: { title: '客服反馈', icon: 'message', roles: ['admin', 'normal_admin'] }
+      }
+    ]
   }
 ]
 
@@ -180,13 +194,7 @@ export const dynamicRoutes = [
         name: 'Dashboard',
         component: Dashboard, // 确保这里指向了正确的组件
         meta: { title: '数据看板', icon: 'dashboard' } // 您可以自定义图标和标题
-      },
-      {
-        path: 'feedback',
-        name: 'Feedback',
-        component: () => import('@/views/system/feedback/index'),
-        meta: { title: '客服反馈', icon: 'message', roles: ['admin', 'normal_admin'] }
-      },
+      }
     ]
   },
 ]

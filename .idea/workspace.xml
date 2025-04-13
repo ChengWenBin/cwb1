@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="用户个人中心添加订单状态以及产品浏览分类">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="添加反馈功能。">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +25,12 @@
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GiteeDefaultAccount">
+    <option name="defaultAccountId" value="d9e89922-2419-43f4-9793-8561c3cf76f0" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="de1b313a-6242-4838-8da5-ed3890dcac84" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -71,7 +76,7 @@
     &quot;project.structure.last.edited&quot;: &quot;库&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;8a817c5716e8c38f5b41c08122d81398&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -197,6 +202,15 @@
       <workItem from="1744124111799" duration="541000" />
       <workItem from="1744124666093" duration="28000" />
       <workItem from="1744166765353" duration="3927000" />
+      <workItem from="1744527416856" duration="53000" />
+      <workItem from="1744527476944" duration="15000" />
+      <workItem from="1744527517704" duration="87000" />
+      <workItem from="1744527616958" duration="420000" />
+      <workItem from="1744528128128" duration="361000" />
+      <workItem from="1744528557988" duration="52000" />
+      <workItem from="1744528618441" duration="24000" />
+      <workItem from="1744528657341" duration="297000" />
+      <workItem from="1744528968458" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -518,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744124552355</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="添加反馈功能。">
+      <option name="closed" value="true" />
+      <created>1744527334957</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1744527334957</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +557,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="gitee/master" />
                       </list>
                     </value>
                   </entry>
@@ -548,7 +570,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3 commit" />
     <MESSAGE value="4 commit" />
     <MESSAGE value="5 commit" />
     <MESSAGE value="6 commit" />
@@ -573,7 +594,8 @@
     <MESSAGE value="首页增加个人中心快速跳转" />
     <MESSAGE value="123" />
     <MESSAGE value="用户个人中心添加订单状态以及产品浏览分类" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户个人中心添加订单状态以及产品浏览分类" />
+    <MESSAGE value="添加反馈功能。" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加反馈功能。" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

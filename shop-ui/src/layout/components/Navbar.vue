@@ -157,7 +157,7 @@ export default {
     openFeedbackDialog() {
       if (this.isAdmin) {
         // 管理员打开反馈列表页面
-        this.$router.push({ path: '/system/feedback' });
+        this.$router.push({ path: '/feedback' });
       } else {
         // 用户打开发送反馈对话框
         this.$emit('openFeedback');
