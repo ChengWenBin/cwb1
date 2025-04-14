@@ -101,7 +101,7 @@ export default {
       feedbackRules: {
         content: [
           { required: true, message: '请输入反馈内容', trigger: 'blur' },
-          { min: 2, max: 500, message: '反馈内容长度应在2到500个字符之间', trigger: 'blur' }
+          { min: 3, max: 500, message: '反馈内容长度应在2到500个字符之间', trigger: 'blur' }
         ]
       }
     }
