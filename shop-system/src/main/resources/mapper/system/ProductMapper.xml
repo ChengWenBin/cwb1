@@ -22,6 +22,8 @@
         SELECT *
         FROM product
         <where>
+            <!-- 排除类型记录 -->
+            name != '__TYPE_ONLY__'
             <if test="id != null">
                 AND id = #{id}
             </if>
@@ -52,8 +54,10 @@
     <select id="selectProductListByCategory" resultMap="ProductResultMap">
         SELECT * FROM product
         <where>
+            <!-- 排除类型记录 -->
+            name != '__TYPE_ONLY__'
             <if test="category != null and category != ''">
-                category = #{category}
+                AND category = #{category}
             </if>
             <if test="name != null and name != ''">
                 AND name LIKE CONCAT('%', #{name}, '%')
@@ -120,10 +124,10 @@
         SELECT COUNT(1) FROM product WHERE category = #{category}
     </select>
     
-    <!-- 插入新类型（通过创建一个临时产品记录） -->
+    <!-- 插入新类型（通过创建一个不可见的类型记录） -->
     <insert id="insertCategory">
         INSERT INTO product (name, description, price, stock, image_url, category, created_time, updated_time)
-        VALUES ('类型模板', '类型模板描述', 0, 0, '', #{category}, NOW(), NOW())
+        VALUES ('__TYPE_ONLY__', '产品类型', -1, -1, '', #{category}, NOW(), NOW())
     </insert>
     
     <!-- 更新产品类型 -->
@@ -131,13 +135,13 @@
         UPDATE product SET category = #{newCategory}, updated_time = NOW() WHERE category = #{oldCategory}
     </update>
     
-    <!-- 删除类型（通过删除对应的临时产品记录） -->
+    <!-- 删除类型（通过删除对应的类型记录） -->
     <delete id="deleteCategory">
-        DELETE FROM product WHERE category = #{category} AND name = '类型模板'
+        DELETE FROM product WHERE category = #{category} AND name = '__TYPE_ONLY__' AND price = -1
     </delete>
     
     <!-- 获取类型使用数量 -->
     <select id="getCategoryCount" resultType="int">
-        SELECT COUNT(1) FROM product WHERE category = #{category}
+        SELECT COUNT(1) FROM product WHERE category = #{category} AND name != '__TYPE_ONLY__'
     </select>
 </mapper>
