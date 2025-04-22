@@ -85,6 +85,23 @@ public class SysRegisterService
             else
             {
                 AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.register.success")));
+                
+                try
+                {
+                    // 获取默认角色ID，如果没有配置，默认使用2号角色(假设2为普通用户角色)
+                    String defaultRoleId = configService.selectConfigByKey("sys.user.default.role");
+                    defaultRoleId = StringUtils.isEmpty(defaultRoleId) ? "2" : defaultRoleId;
+                    
+                    // 设置用户角色
+                    Long[] roleIds = {Long.valueOf(defaultRoleId)};
+                    userService.insertUserAuth(sysUser.getUserId(), roleIds);
+                }
+                catch (Exception e)
+                {
+                    // 记录日志但不影响注册流程
+                    AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.REGISTER, 
+                            "用户注册成功，但分配默认角色失败: " + e.getMessage()));
+                }
             }
         }
         return msg;

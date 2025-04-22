@@ -33,7 +33,7 @@ export default {
       orderStats: [
         { name: '待付款', count: 0, icon: 'el-icon-wallet', class: 'pending-payment', status: '待付款' },
         { name: '待发货', count: 0, icon: 'el-icon-box', class: 'pending-delivery', status: '待发货' },
-        { name: '已发货', count: 0, icon: 'el-icon -truck', class: 'pending-receive', status: '已发货' },
+        { name: '已发货', count: 0, icon: 'el-icon-truck', class: 'pending-receive', status: '已发货' },
         { name: '已完成', count: 0, icon: 'el-icon-circle-check', class: 'completed', status: '已完成' }
       ]
     };
