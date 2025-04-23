@@ -95,6 +95,8 @@ public class RecommendServiceImpl implements IRecommendService {
         
         // 查找符合条件的推荐产品
         List<Product> recommendedProducts = new ArrayList<>();
+        // 收集每个类别的推荐产品
+        java.util.Map<String, List<Product>> categoryProductsMap = new java.util.HashMap<>();
         
         // 为每个类别单独计算价格范围并查找推荐产品
         for (java.util.Map.Entry<String, List<BigDecimal>> entry : categoryPricesMap.entrySet()) {
@@ -132,7 +134,57 @@ public class RecommendServiceImpl implements IRecommendService {
                                 p.getPrice().compareTo(categoryMaxPrice) <= 0)
                     .collect(Collectors.toList());
             
-            recommendedProducts.addAll(similarProducts);
+            // 将该类别的产品保存到映射中
+            if (!similarProducts.isEmpty()) {
+                categoryProductsMap.put(category, similarProducts);
+            }
+        }
+        
+        // 先确保每个类别至少有一个产品被推荐
+        for (String category : categoryProductsMap.keySet()) {
+            List<Product> products = categoryProductsMap.get(category);
+            if (!products.isEmpty()) {
+                recommendedProducts.add(products.get(0));
+                products.remove(0);  // 从列表中移除已添加的产品
+            }
+        }
+        
+        // 如果总推荐数量小于6且还有产品可以推荐，继续添加产品
+        if (recommendedProducts.size() < 6) {
+            // 按轮询方式从每个类别添加更多产品
+            List<String> categories = new ArrayList<>(categoryProductsMap.keySet());
+            int categoryIndex = 0;
+            
+            while (recommendedProducts.size() < 6 && !categories.isEmpty()) {
+                if (categories.isEmpty()) {
+                    break;
+                }
+                
+                String currentCategory = categories.get(categoryIndex % categories.size());
+                List<Product> remainingProducts = categoryProductsMap.get(currentCategory);
+                
+                if (remainingProducts != null && !remainingProducts.isEmpty()) {
+                    recommendedProducts.add(remainingProducts.remove(0));
+                    
+                    // 如果该类别没有更多产品，从轮询中移除
+                    if (remainingProducts.isEmpty()) {
+                        categories.remove(currentCategory);
+                        if (categories.isEmpty()) {
+                            break;
+                        }
+                        categoryIndex = categoryIndex % categories.size();
+                    } else {
+                        categoryIndex++;
+                    }
+                } else {
+                    // 移除没有产品的类别
+                    categories.remove(currentCategory);
+                    if (categories.isEmpty()) {
+                        break;
+                    }
+                    categoryIndex = categoryIndex % categories.size();
+                }
+            }
         }
         
         // 限制推荐产品数量，最多返回6个

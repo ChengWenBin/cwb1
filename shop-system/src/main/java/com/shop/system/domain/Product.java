@@ -18,6 +18,15 @@ public class Product {
     private Integer maxStock;     // 最大库存
     private String descriptionImagesJson; // 描述图片JSON字符串
 
+    // 无参构造函数
+    public Product() {
+    }
+
+    // 接受类别参数的构造函数
+    public Product(String category) {
+        this.category = category;
+    }
+
     // ... 其他字段的 getter 和 setter ...
 
     public Long getId() {
