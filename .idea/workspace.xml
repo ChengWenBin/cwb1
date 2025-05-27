@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="添加反馈功能。">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="登录页面和整个页面的角标修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
     <option name="defaultAccountId" value="d9e89922-2419-43f4-9793-8561c3cf76f0" />
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="de1b313a-6242-4838-8da5-ed3890dcac84" />
+    <option name="defaultAccountId" value="dcec422d-d64a-417b-be9f-83618d262f67" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,41 +54,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/java-learn/cwb/shop-ui/public&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;库&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;8a817c5716e8c38f5b41c08122d81398&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/java-learn/cwb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.language",
+    "spring.configuration.checksum": "8a817c5716e8c38f5b41c08122d81398",
+    "ts.external.directory.path": "D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\java-learn\cwb\shop-ui\public" />
@@ -211,6 +210,35 @@
       <workItem from="1744528618441" duration="24000" />
       <workItem from="1744528657341" duration="297000" />
       <workItem from="1744528968458" duration="653000" />
+      <workItem from="1745319686530" duration="118000" />
+      <workItem from="1745379676422" duration="2023000" />
+      <workItem from="1745393939291" duration="103000" />
+      <workItem from="1745394157363" duration="152000" />
+      <workItem from="1745394317947" duration="55000" />
+      <workItem from="1745549875032" duration="617000" />
+      <workItem from="1745567224458" duration="134000" />
+      <workItem from="1745745892427" duration="693000" />
+      <workItem from="1746522907712" duration="659000" />
+      <workItem from="1746771596434" duration="289000" />
+      <workItem from="1747062342307" duration="335000" />
+      <workItem from="1747067865950" duration="109000" />
+      <workItem from="1747099528868" duration="57000" />
+      <workItem from="1747099596509" duration="160000" />
+      <workItem from="1747109935799" duration="212000" />
+      <workItem from="1747119429627" duration="238000" />
+      <workItem from="1747210771652" duration="512000" />
+      <workItem from="1747213985122" duration="1409000" />
+      <workItem from="1747215611457" duration="710000" />
+      <workItem from="1747323105107" duration="61000" />
+      <workItem from="1747815536426" duration="1717000" />
+      <workItem from="1748058344781" duration="38000" />
+      <workItem from="1748062933452" duration="28000" />
+      <workItem from="1748063587751" duration="1969000" />
+      <workItem from="1748074467879" duration="123000" />
+      <workItem from="1748170061957" duration="970000" />
+      <workItem from="1748180087281" duration="672000" />
+      <workItem from="1748218174530" duration="5448000" />
+      <workItem from="1748345050014" duration="675000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -540,7 +568,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744527334957</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="产品推荐保证每个类型的产品都至少有一个">
+      <option name="closed" value="true" />
+      <created>1745382060692</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1745382060692</updated>
+    </task>
+    <task id="LOCAL-00043" summary="登录页面和整个页面的角标修改">
+      <option name="closed" value="true" />
+      <created>1748071255417</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1748071255417</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,8 +614,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="4 commit" />
-    <MESSAGE value="5 commit" />
     <MESSAGE value="6 commit" />
     <MESSAGE value="7 commit" />
     <MESSAGE value="8 commit" />
@@ -595,7 +637,9 @@
     <MESSAGE value="123" />
     <MESSAGE value="用户个人中心添加订单状态以及产品浏览分类" />
     <MESSAGE value="添加反馈功能。" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加反馈功能。" />
+    <MESSAGE value="产品推荐保证每个类型的产品都至少有一个" />
+    <MESSAGE value="登录页面和整个页面的角标修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录页面和整个页面的角标修改" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

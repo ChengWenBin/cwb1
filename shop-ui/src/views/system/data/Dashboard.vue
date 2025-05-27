@@ -126,8 +126,13 @@
               </template>
             </el-table-column>
           </el-table>
-          <div v-else class="loading-container">
-            <el-loading :visible="salesLoading" text="正在加载数据..." :element-loading-spinner-size="30">加载中</el-loading>
+          <div v-else
+               class="loading-container"
+               v-loading="salesLoading"
+               element-loading-text="正在加载数据..."
+               element-loading-spinner="el-icon-loading"
+          >
+            <!-- 加载指示器将覆盖此容器 -->
           </div>
           <el-pagination
             v-if="!salesLoading && filteredSalesData.length > 0"
@@ -207,8 +212,13 @@
             </el-table-column>
             <el-table-column prop="address" label="收货地址" min-width="200"></el-table-column>
           </el-table>
-          <div v-else class="loading-container">
-            <el-loading :visible="orderLoading" text="正在加载数据..." :element-loading-spinner-size="30">加载中</el-loading>
+          <div v-else
+               class="loading-container"
+               v-loading="orderLoading"
+               element-loading-text="正在加载数据..."
+               element-loading-spinner="el-icon-loading"
+          >
+            <!-- 加载指示器将覆盖此容器 -->
           </div>
           <el-pagination
             v-if="!orderLoading && filteredOrderData.length > 0"
@@ -1067,11 +1077,11 @@ export default {
   }
   
   // 表格行样式
-  :deep(.even-row) {
+  ::v-deep .even-row {
     background-color: #fafafa;
   }
   
-  :deep(.odd-row) {
+  ::v-deep .odd-row {
     background-color: #ffffff;
   }
   
