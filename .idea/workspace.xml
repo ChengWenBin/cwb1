@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="登录页面和整个页面的角标修改">
+    <list default="true" id="6143fec4-1fdd-4b53-93fd-4e1cb312377b" name="更改" comment="sql文件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/views/system/data/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shop-ui/src/layout/components/Navbar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,46 +54,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/java-learn/cwb",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.language",
-    "spring.configuration.checksum": "8a817c5716e8c38f5b41c08122d81398",
-    "ts.external.directory.path": "D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java-learn/cwb/sql&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8a817c5716e8c38f5b41c08122d81398&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\idea\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java-learn\cwb\sql" />
       <recent name="D:\java-learn\cwb\shop-ui\public" />
       <recent name="D:\java-learn\cwb\shop-ui\src\assets\logo" />
-      <recent name="D:\java-learn\cwb\sql" />
       <recent name="D:\java-learn\cwb\shop-ui\src\views\system\order" />
       <recent name="D:\java-learn\cwb\shop-ui\src\api\system" />
     </key>
@@ -239,6 +239,22 @@
       <workItem from="1748180087281" duration="672000" />
       <workItem from="1748218174530" duration="5448000" />
       <workItem from="1748345050014" duration="675000" />
+      <workItem from="1748349833886" duration="345000" />
+      <workItem from="1748350230186" duration="313000" />
+      <workItem from="1748409500545" duration="102000" />
+      <workItem from="1748410100079" duration="244000" />
+      <workItem from="1748410647946" duration="54000" />
+      <workItem from="1748410928102" duration="72000" />
+      <workItem from="1748411502168" duration="31000" />
+      <workItem from="1748412031811" duration="11000" />
+      <workItem from="1748412274728" duration="33000" />
+      <workItem from="1748412315103" duration="1204000" />
+      <workItem from="1748760572100" duration="59000" />
+      <workItem from="1748760737655" duration="100000" />
+      <workItem from="1748771040655" duration="629000" />
+      <workItem from="1749101893418" duration="34000" />
+      <workItem from="1750479069034" duration="124000" />
+      <workItem from="1753002396965" duration="1576000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -584,7 +600,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748071255417</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="优化掉doc文档">
+      <option name="closed" value="true" />
+      <created>1748349984304</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1748349984304</updated>
+    </task>
+    <task id="LOCAL-00045" summary="sql文件">
+      <option name="closed" value="true" />
+      <created>1748350290935</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1748350290935</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,8 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="6 commit" />
-    <MESSAGE value="7 commit" />
     <MESSAGE value="8 commit" />
     <MESSAGE value="9 commit" />
     <MESSAGE value="logo" />
@@ -639,7 +669,9 @@
     <MESSAGE value="添加反馈功能。" />
     <MESSAGE value="产品推荐保证每个类型的产品都至少有一个" />
     <MESSAGE value="登录页面和整个页面的角标修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录页面和整个页面的角标修改" />
+    <MESSAGE value="优化掉doc文档" />
+    <MESSAGE value="sql文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql文件" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

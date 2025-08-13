@@ -25,7 +25,7 @@
 
         <el-tooltip :content="isAdmin ? '用户反馈' : '联系客服'" effect="dark" placement="bottom">
           <el-badge :value="unreadCount > 0 ? unreadCount : ''" :hidden="unreadCount === 0" class="item">
-            <div id="customer-service" class="right-menu-item hover-effect" @click="openFeedbackDialog">
+            <div id="customer-service" style="margin-top: -25px;" class="right-menu-item hover-effect" @click="openFeedbackDialog">
               <i class="el-icon-service"></i>
             </div>
           </el-badge>
